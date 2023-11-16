@@ -3,7 +3,7 @@ export async function up(knex) {
     table.increments('id').primary()
     table.string('name')
     table.string('user_email')
-    table.string('added_by_user')
+    table.string('auth0Id')
   })
 }
 
