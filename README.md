@@ -1,4 +1,8 @@
-# 🌎 EarthMates 🌎
+🌎 EarthMates 🌎
+
+The focus of this app is to practice using the Full Stack we teach, (with auth in place) in a large scale app.
+
+The idea of the app is to create a site for Earth Friendly Events, to post their events so people can join them, and to view the events as a user (MVP version)
 
 ## The Tech
 
@@ -16,15 +20,24 @@ A Boilerplate is already set up for you with everything you will need to get sta
 
 As a non-registered user:
 
+* I want to register for the App under my name
+* I want to browse a list of all the events posted by other users
+* I want to click into an event and view the details
+* I want to sort the places by date
+* Filter events by location
 
 As a registered user:
-
+* I want to save reviews to the 'myevents' component so I can remember my events too!
+* I want to view my joined events in the 'myevents' component
+* Be able to post about an event
+* Be able to register or join an event
+* As a user I want to save my event and view them on the 'myevents'
 
 ### Stretch
 
 As a registered user:
-
-  ---
+* Badges for users per events attended (every time you go to an event you get 'points' added to your profile, level up)
+* Community Forum - blog/ reviews page
 
 ## Components (Client Side)
 | name | purpose |
@@ -33,8 +46,6 @@ As a registered user:
 | Register | View for user to sign up |
 | Home | Welcome users and link to reviews |
 
-
-
 ## API (Client - Server)
 
 | Method | Endpoint | Protected | Usage | Response |
@@ -42,16 +53,12 @@ As a registered user:
 | Post | /api/auth/login | Yes | Log In a User | The Users JWT Token |
 | Post | /api/auth/register | Yes | Register a User | The Users JWT Token |
 
-
 ## DB (Server Side) -
-
 
 ## Authentication
 
 Authentication is already set up in the client side of this project using Auth0. Users are currently able to login and logout.
-
 When you wish to protect your server side routes (those for registered users only), you may need to reference other exercises or materials.
-
 If you wish to replace the Auth0 authentication with your own, so you can customise the login for example, you will need to update the `client/index.tsx` file of the project with your own Auth0 details.
 
 ## Setup
@@ -69,5 +76,3 @@ npm run lint
 npm run format
 npm run test
 ```
-
----
