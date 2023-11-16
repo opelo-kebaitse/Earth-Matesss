@@ -1,10 +1,14 @@
 import * as Path from 'node:path'
 
+import eventRoutes from './routes/eventsRoute'
 import express from 'express'
-
 
 const server = express()
 server.use(express.json())
+
+// Mount the routes at api endpoints
+
+server.use('/api/v1/events', eventRoutes)
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))
