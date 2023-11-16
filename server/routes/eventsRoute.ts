@@ -1,6 +1,8 @@
 import express from 'express'
 import * as db from '../db/events.ts'
 
+const router = express.Router()
+
 // route to get events list
 
 router.get('/', async (req, res) => {
@@ -11,3 +13,5 @@ router.get('/', async (req, res) => {
     res.status(500).json('Internal server error')
   }
 })
+
+export default router
