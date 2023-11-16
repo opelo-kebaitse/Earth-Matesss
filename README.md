@@ -1,4 +1,4 @@
-# Earth Mates
+🌎 EarthMates 🌎
 
 The focus of this app is to practice using the Full Stack we teach, (with auth in place) in a large scale app.
 
