@@ -14,7 +14,7 @@ function Header() {
       >
         <div className="title-container">
           <Link to="/" className="title-link">
-            <h1 className="header-title">Pickles Picks</h1>
+            <h1 className="header-title">EarthMates</h1>
           </Link>
         </div>
         <div className="button-container">
