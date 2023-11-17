@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { Event } from '../../models/event'
+import { ListEvent } from '../../models/event'
 import { getEventList } from '../apis/events'
 import { Link } from 'react-router-dom'
 
@@ -16,7 +16,7 @@ export default function EventList() {
 
   return (
     <div>
-      {events.map((event: Event, index) => (
+      {events.map((event: ListEvent, index: number) => (
         <div key={index}>
           <Link to={`/${event.id}`}>
             <h3>{event.name}</h3>

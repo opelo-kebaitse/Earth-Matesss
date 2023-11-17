@@ -1,15 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
-
 import { getEventDetail } from '../apis/events'
 import { useParams } from 'react-router-dom'
 
 export default function EventDetails() {
   const { id } = useParams()
+  const numId = Number(id)
   const {
     data: event,
     isLoading,
     error,
-  } = useQuery(['event', id], () => getEventDetail(id))
+  } = useQuery(['event', id], () => getEventDetail(numId))
 
   if (error) {
     return <p>Something went wrong!</p>

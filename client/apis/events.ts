@@ -1,4 +1,5 @@
 import request from 'superagent'
+import { Event } from '../../models/event'
 
 const rootURL = '/api/v1'
 
