@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 // route to get event list by id
 router.get('/:id', async (req, res) => {
   try {
-    const { id } = req.params.id
+    const id = req.params.id
     const event = await db.getEventDetails(id)
     res.json(event)
   } catch (error) {
