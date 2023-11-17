@@ -1,8 +1,8 @@
 {
-  "name": "pickles-picks",
+  "name": "earth-mates",
   "type": "module",
   "version": "0.1.0",
-  "description": "Pickle's Picks",
+  "description": "Earth Mates",
   "repository": "https://https://github.com/dev-academy-challenges/my-fullstack-collection-query",
   "main": "server/index.ts",
   "scripts": {
