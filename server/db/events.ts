@@ -1,26 +1,33 @@
-import { ListEvent, SavedEvent } from '../../models/event.ts'
 import connection from './connection.ts'
 
-import { NewEvent } from '../../models/event.ts'
+import { NewEvent, Event } from '../../models/Event.ts'
 
+//function to get the details we need for the list of events
 export async function getEventList(db = connection) {
-  // return db('events').select('name', 'location', 'date')
+  // return db('events').select('name', 'location', 'date', 'id, 'photo')
 
-return db('events').select('*')
-
+  return db('events').select('*')
 }
 
+//function to add a new event
 export function newEvent(newEventData: NewEvent) {
   return connection('events')
     .insert({ ...newEventData })
-    .returning(['id', 'name', 'location', 'date','description', 'added_by_user', 'photo'])
+    .returning([
+      'id',
+      'name',
+      'location',
+      'date',
+      'description',
+      'added_by_user',
+      'photo',
+    ])
+}
 
-
-
+//function to get details of a single event
 export async function getEventDetails(
   id: number,
   db = connection
-): Promise<SavedEvent> {
+): Promise<Event> {
   return db('events').where({ id }).select('*').first()
 }
-

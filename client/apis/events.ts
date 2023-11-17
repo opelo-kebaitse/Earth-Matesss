@@ -1,13 +1,14 @@
 import request from 'superagent'
-import { Event } from '../../models/event'
+import { Event, ListEvent } from '../../models/Event.ts'
 
 const rootURL = '/api/v1'
 
-export async function getEventList() {
+export async function getEventList(): Promise<ListEvent[]> {
   const res = await request.get(rootURL + '/events')
   return res.body
 }
 
+//clientside api call to get details for one event
 export async function getEventDetail(id: number): Promise<Event> {
   const res = await request.get(`${rootURL}/events/${id}`)
   return res.body

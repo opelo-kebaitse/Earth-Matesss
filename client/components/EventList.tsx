@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { ListEvent } from '../../models/event'
+import { ListEvent } from '../../models/Event.ts'
 import { getEventList } from '../apis/events'
 import { Link } from 'react-router-dom'
 
