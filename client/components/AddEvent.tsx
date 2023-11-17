@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { NewEvent } from '../../models/Event'
 import { useEvents } from '../hooks/event.ts'
+import { useNavigate } from 'react-router-dom'
 
 function AddEvent() {
   const initialForm: NewEvent = {
@@ -13,6 +14,7 @@ function AddEvent() {
   }
 
   const events = useEvents()
+  const navigate = useNavigate()
 
   const [newEvent, setNewEvent] = useState(initialForm)
 
@@ -24,6 +26,7 @@ function AddEvent() {
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     events.add.mutate(newEvent)
+    navigate('/')
   }
 
   return (
@@ -68,7 +71,7 @@ function AddEvent() {
   )
 }
 
-//still need to put some kind of navigation so can tell it has submitted
+//Would like to change the navigation to go to the individual event page, but need to work out how to give it the correct id
 //have just set this up to start with using the feilds we have not the ones on the image as have realised on our wire frame it says time but we dont have that elsewhere
 //Also we talked about a drop down of suburbs, think this may have become stretch aye?
 //For date do we want a date picker?
