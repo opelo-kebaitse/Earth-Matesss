@@ -1,19 +1,17 @@
-import { useQuery} from "@tanstack/react-query";
-import { Event } from '../../models/event' 
-import {getEventList} from '../apis/events'
+import { useQuery } from '@tanstack/react-query'
+import { Event } from '../../models/event'
+import { getEventList } from '../apis/events'
 
-export default function EventList(){
+export default function EventList() {
+  const { data: events, isLoading, error } = useQuery(['events'], getEventList)
 
-  const {data: events, isLoading, error} = useQuery(['events'], getEventList)
-
-  if (error){
-  return <p>Something went wrong!</p>
+  if (error) {
+    return <p>Something went wrong!</p>
   }
 
-if(!events || isLoading){
-return <p> Loading... </p>
+  if (!events || isLoading) {
+    return <p> Loading... </p>
   }
-
 
   return (
     <div>
