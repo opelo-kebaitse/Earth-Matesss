@@ -11,17 +11,17 @@ function AddEvent() {
     description: '',
     added_by_user: 'Auth0|123',
   }
-  
+
   const events = useEvents()
 
   const [newEvent, setNewEvent] = useState(initialForm)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setNewEvent({ ...newEvent, [name]: value,})
+    setNewEvent({ ...newEvent, [name]: value })
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     events.add.mutate(newEvent)
   }
@@ -68,8 +68,7 @@ function AddEvent() {
   )
 }
 
-
-//still need to put some kind of navigation so can tell it has submitted 
+//still need to put some kind of navigation so can tell it has submitted
 //have just set this up to start with using the feilds we have not the ones on the image as have realised on our wire frame it says time but we dont have that elsewhere
 //Also we talked about a drop down of suburbs, think this may have become stretch aye?
 //For date do we want a date picker?
