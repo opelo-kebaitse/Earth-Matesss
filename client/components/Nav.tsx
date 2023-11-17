@@ -1,10 +1,18 @@
 function Nav() {
   return (
     <nav className="nav-buttons">
-      <h2 className="nav">Find Events</h2>
-      <h2 className="nav">Blog</h2>
-      <h2 className="nav">My Events</h2>
-      <h2 className="nav">My Profile</h2>
+      <a href="#find-events" className="nav">
+        Find Events
+      </a>
+      <a href="#blog" className="nav">
+        Blog
+      </a>
+      <a href="#my-events" className="nav">
+        My Events
+      </a>
+      <a href="#my-profile" className="nav">
+        My Profile
+      </a>
     </nav>
   )
 }
