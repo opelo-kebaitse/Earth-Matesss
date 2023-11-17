@@ -14,7 +14,6 @@ if(!events || isLoading){
 return <p> Loading... </p>
   }
 
-  console.log(events)
 
   return (
     <div>

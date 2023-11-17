@@ -7,9 +7,7 @@ const router = Router()
 
 router.get('/', async (req, res) => {
   try {
-    console.log('ROUTES')
     const events = await db.getEventList()
-    console.log(events)
     res.json(events)
   } catch (error) {
     res.status(500).json('Internal server error')
