@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import { Event } from '../../models/event'
 import { getEventDetail } from '../apis/events'
+import { useParams } from 'react-router-dom'
 
 export default function EventDetails() {
+  const { id } = useParams()
   const {
     data: event,
     isLoading,
