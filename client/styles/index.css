@@ -7,7 +7,7 @@ body {
   top: 0;
   left: 0;
   margin: 0;
-  /* font: 14px 'Newsreader', Helvetica, Arial, sans-serif; */
+  font: 14px 'Newsreader', 'Philosopher', Helvetica, Arial, sans-serif;
   color: #004a8f;
 }
 
@@ -61,4 +61,13 @@ body {
   line-height: 1.5;
   word-spacing: -2.5px;
   font-weight: 100;
+}
+
+.nav-buttons {
+  display: flex;
+  color: black;
+
+  .nav-buttons & .nav {
+  padding: 20px;
+  }
 }

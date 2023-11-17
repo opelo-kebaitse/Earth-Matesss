@@ -1,6 +1,6 @@
 function Nav() {
   return (
-    <nav className="nav-container">
+    <nav className="nav-buttons">
       <h2 className="nav">Find Events</h2>
       <h2 className="nav">Blog</h2>
       <h2 className="nav">My Events</h2>
