@@ -1,0 +1,76 @@
+import { useState } from 'react'
+import { NewEvent } from '../../models/Event'
+import { useEvents } from '../hooks/event.ts'
+
+function AddEvent() {
+  const initialForm: NewEvent = {
+    name: '',
+    date: '',
+    location: '',
+    photo: 'images/placeholder.jpg',
+    description: '',
+    added_by_user: 'Auth0|123',
+  }
+  
+  const events = useEvents()
+
+  const [newEvent, setNewEvent] = useState(initialForm)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setNewEvent({ ...newEvent, [name]: value,})
+  }
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    events.add.mutate(newEvent)
+  }
+
+  return (
+    <>
+      <h2>Create event</h2>
+      <form>
+        <label htmlFor="name">Name:</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          value={newEvent.name}
+          onChange={handleChange}
+        />
+        <label htmlFor="date">Date:</label>
+        <input
+          type="text"
+          name="date"
+          id="date"
+          value={newEvent.date}
+          onChange={handleChange}
+        />
+        <label htmlFor="location">Location:</label>
+        <input
+          type="text"
+          name="location"
+          id="location"
+          value={newEvent.location}
+          onChange={handleChange}
+        />
+        <label htmlFor="description">Description:</label>
+        <input
+          type="text"
+          name="description"
+          id="description"
+          value={newEvent.description}
+          onChange={handleChange}
+        />
+        <button onClick={handleSubmit}>Post event!</button>
+      </form>
+    </>
+  )
+}
+
+//have just set this up to start with using the feilds we have not the ones on the image as have realised on our wire frame it says time but we dont have that elsewhere
+//Also we talked about a drop down of suburbs, think this may have become stretch aye?
+//For date do we want a date picker?
+//Need to add Auth0 here still
+
+export default AddEvent
