@@ -16,13 +16,19 @@ router.get('/', async (req, res) => {
 
 // route to get event list by id
 router.get('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+
+  if (!id) {
+    console.error('No valid id')
+    return res.status(404).send('Bad request')
+  }
+
   try {
-    const id = req.params.id
     const event = await db.getEventDetails(id)
     res.json(event)
   } catch (error) {
     console.error(error)
-    res.status(500).json('Interal server error')
+    res.status(500).json('Internal server error')
   }
 })
 
