@@ -15,7 +15,7 @@ export default function EventDetails() {
     return <p>Something went wrong!</p>
   }
 
-  if (!events || isLoading) {
+  if (!event || isLoading) {
     return <p> Loading... </p>
   }
 

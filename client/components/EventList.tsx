@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { Event } from '../../models/event'
 import { getEventList } from '../apis/events'
+import { Link } from 'react-router-dom'
 
 export default function EventList() {
   const { data: events, isLoading, error } = useQuery(['events'], getEventList)
@@ -17,7 +18,7 @@ export default function EventList() {
     <div>
       {events.map((event: Event, index) => (
         <div key={index}>
-          <Link to={`/${id}`}>
+          <Link to={`/${event.id}`}>
             <h3>{event.name}</h3>
           </Link>
           <p>Location: {event.location}</p>
