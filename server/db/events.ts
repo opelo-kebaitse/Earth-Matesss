@@ -1,9 +1,21 @@
 import { ListEvent, SavedEvent } from '../../models/event.ts'
 import connection from './connection.ts'
 
-export async function getEventList(db = connection): Promise<ListEvent[]> {
-  return db('events').select('name', 'location', 'date', 'id')
+import { NewEvent } from '../../models/event.ts'
+
+export async function getEventList(db = connection) {
+  // return db('events').select('name', 'location', 'date')
+
+return db('events').select('*')
+
 }
+
+export function newEvent(newEventData: NewEvent) {
+  return connection('events')
+    .insert({ ...newEventData })
+    .returning(['id', 'name', 'location', 'date','description', 'added_by_user', 'photo'])
+
+
 
 export async function getEventDetails(
   id: number,
@@ -11,3 +23,4 @@ export async function getEventDetails(
 ): Promise<SavedEvent> {
   return db('events').where({ id }).select('*').first()
 }
+
