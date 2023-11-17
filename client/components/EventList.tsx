@@ -17,7 +17,9 @@ export default function EventList() {
     <div>
       {events.map((event: Event, index) => (
         <div key={index}>
-          <h3>{event.name}</h3>
+          <Link to={`/${id}`}>
+            <h3>{event.name}</h3>
+          </Link>
           <p>Location: {event.location}</p>
           <p>Date: {event.date}</p>
         </div>
