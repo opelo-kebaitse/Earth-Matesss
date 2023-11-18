@@ -11,7 +11,16 @@ body {
   color: #004a8f;
 }
 
-.nav-container {
+/* Styling for Header.tsx */
+.header-container {
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 50px;
+}
+
+.title-container {
   width: 100vw;
   padding: 0px 50px;
   display: flex; 
@@ -19,26 +28,29 @@ body {
   align-items: center;
 }
 
-/* left section of Header.tsx, create separate div element */
+.title-link {
+  text-decoration: none;
+  color: #426B1F;
+}
+
 .header-title {
   font-size: 3em;
   word-spacing: -1px;
   font-weight: 100;
 }
 
-.title-link {
-  text-decoration: none;
-  color: #426B1F;
+.button-container {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
 }
 
-/* This part of the Header.tsx will sit to the right of the page like in wire frame,
-create another div element */
 .button {
   margin-right: 20px;
   border: none;
   color: #ffffff;
   background-color: #426B1F;
-  padding: 8px 16px;
+  padding: 12px 22px;
   border-radius: 5px;
   font-weight: bold;
 }
@@ -49,22 +61,15 @@ create another div element */
   color: #426B1F;
 }
 
-.button-container {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-}
-
 .nav-buttons {
   display: flex;
-  align-items: end;
   margin-right: auto;
+  width: 100%;
 }
 
 .nav a {
   text-decoration: none;
   color: #000000;
-  margin-right: 20px;
 } 
 
 /* Leave this section as it is */
