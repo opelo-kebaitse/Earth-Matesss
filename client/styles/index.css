@@ -61,6 +61,30 @@ body {
   color: #426B1F;
 }
 
+/* Home.tsx styling */
+.event-container {
+  width: 100vw;
+  padding: 0px 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.crEve-button {
+  margin: 0 5px;
+  border: none;
+  color: #ffffff;
+  background-color: #426B1F;
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.crEve-button:hover {
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #426B1F;
+}
+
 .nav-buttons {
   display: flex;
   margin-right: auto;

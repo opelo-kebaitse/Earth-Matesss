@@ -10,6 +10,7 @@ function Header() {
     <header>
       <div className="header-container">
         <div className="title-container">
+          {/* Earth Mates Logo */}
           <div className="logo">
             <Link to="/" className="title-link">
               <h1 className="header-title">Earth Mates</h1>
@@ -18,6 +19,7 @@ function Header() {
           <div className="nav-container">
             <Nav />
           </div>
+          {/* Login button */}
           <div className="user-container">
             <IfAuthenticated>
               <p className="user.">{user?.nickname}</p>
