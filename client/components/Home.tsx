@@ -11,7 +11,7 @@ function Home() {
       </h2>
       <div className="event-container">
         <button className="crEve-button" onClick={() => navigate('/AddEvent')}>
-          <h1 className="crEve-button">Create Event</h1>
+          Create Event
         </button>
       </div>
       <EventList />
