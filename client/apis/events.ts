@@ -8,6 +8,12 @@ export async function getEventList(): Promise<ListEvent[]> {
   return res.body
 }
 
+//function to call the server route to add an event and send the event data to it, then sent that data back to the component function
+export async function addEvent(newEvent: NewEvent): Promise<Event> {
+  const res = await request.post(`${rootURL}/events`).send(newEvent)
+  return res.body
+}
+
 //clientside api call to get details for one event
 export async function getEventDetail(id: number): Promise<Event> {
   const res = await request.get(`${rootURL}/events/${id}`)
