@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import EventList from './EventList'
 
 function Home() {
-  // GET DB FUNCTION
   return (
     <>
       <h2 className="page-title">
