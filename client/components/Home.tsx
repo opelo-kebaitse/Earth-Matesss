@@ -1,15 +1,14 @@
-import EventList from "./EventList"
+import { Link } from 'react-router-dom'
+import EventList from './EventList'
 
 function Home() {
-  // GET DB FUNCTION
   return (
     <>
-    <h2 className="page-title">
-      Find like-minded people doing cool things for the <em>whenua</em> in your
-      hapori!
-    </h2>
-    
-    <EventList />
+      <h2 className="page-title">
+        Find like-minded people doing cool things for the whenua in your hapori!
+      </h2>
+
+      <EventList />
     </>
   )
 }

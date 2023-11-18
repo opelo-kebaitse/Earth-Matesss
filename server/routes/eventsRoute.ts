@@ -21,4 +21,22 @@ router.post('/', async (req, res) => {
   res.json(addedEvent) // Respond with the data of the newly added data in JSON format.
 })
 
+// route to get event list by id
+router.get('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+
+  if (!id) {
+    console.error('No valid id')
+    return res.status(404).send('Bad request')
+  }
+
+  try {
+    const event = await db.getEventDetails(id)
+    res.json(event)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json('Internal server error')
+  }
+})
+
 export default router
