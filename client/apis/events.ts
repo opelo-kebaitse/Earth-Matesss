@@ -20,6 +20,15 @@ export async function getEventDetail(id: number): Promise<Event> {
   return res.body
 }
 
+//clientside api call to edit an event
+interface EditEventFunction {
+  id: number,
+  event: NewEvent
+}
+export async function editEvent({id, updatedEvent}:EditEventFunction ):Promise<Event> {
+  const res = await request.patch(`${rootUrl}`)
+}
+
 // hardcoded function to show a page
 // export async function getEventDetail(id: number) {
 //   console.log(`tried to go to ${id} event`)

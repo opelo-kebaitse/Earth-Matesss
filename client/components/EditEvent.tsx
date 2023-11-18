@@ -1,18 +1,19 @@
 import { useState } from 'react'
 import { NewEvent } from '../../models/Event'
 import { useEvents } from '../hooks/event.ts'
+import { useParams, useNavigate } from 'react-router-dom'
 
 function EditEvent() {
   const id = Number(useParams())
-  
+  const navigate = useNavigate()
 
   const initialForm: NewEvent = {
-    name: event.name,
-    date: event.date,
-    location: event.location,
-    photo: event.photo,
-    description: event.description,
-    added_by_user: event.added_by_user,
+    name: '',
+    date: '',
+    location: '',
+    photo: 'images/placeholder.jpg',
+    description: '',
+    added_by_user: 'Auth0|123',
   }
   
   const events = useEvents()
@@ -24,9 +25,10 @@ function EditEvent() {
     setEdittedEvent({ ...event, [name]: value,})
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    events.edit.mutate(event)
+    events.edit.mutate({id, event})
+    navigate(`/${id}`)
   }
 
   return (

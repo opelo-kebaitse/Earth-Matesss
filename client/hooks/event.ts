@@ -8,8 +8,8 @@ export function useEvents() {
   })
   return {
     ...query,
-    add: useAddEvent()
-    edit: useEditEvent()
+    add: useAddEvent(),
+    edit: useEditEvent(),
   }
 }
 
