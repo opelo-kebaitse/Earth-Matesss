@@ -52,3 +52,4 @@ export default function EventDetails() {
 // //join to come in function for this card to display the users name from the users table
 // //and a join button to populate the third table to do the many to many joins
 // //add photo
+// Rich WAKE UP!!!!
