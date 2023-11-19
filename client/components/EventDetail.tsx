@@ -1,11 +1,14 @@
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { useNavigate, useParams } from 'react-router-dom'
+import { getEventDetail } from '../apis/events'
 import EditEvent from './EditEvent'
-import { useEvent } from '../hooks/useEvents'
+import { useEvents } from '../hooks/event'
 
 export default function EventDetails() {
   const { id } = useParams()
   const numId = Number(id)
+  const navigate = useNavigate()
 
   // State to manage whether to show the edit form
   const [isEditing, setIsEditing] = useState(false)
@@ -27,6 +30,11 @@ export default function EventDetails() {
     setIsEditing(true)
   }
 
+  const handleDelete = () => {
+    events.delete.mutate(numId)
+    navigate('/')
+  }
+
   if (error) {
     return <p>Something went wrong!</p>
   }
@@ -38,13 +46,16 @@ export default function EventDetails() {
   return (
     <div>
       {isEditing === false ? (
-        <div>
-          <h3>{data.name}</h3>
-          <p>Location: {data.location}</p>
-          <p>Date: {data.date}</p>
-          <p>Description: {data.description}</p>
-          <p>Organiser: {data.added_by_user}</p>
-          <button onClick={handleEditClick}>Edit</button>
+        <div className="evDet">
+          <div className="eventBox">
+            <h3>{event.name}</h3>
+            <p>Location: {event.location}</p>
+            <p>Date: {event.date}</p>
+            <p>Description: {event.description}</p>
+            <p>Organiser: {event.added_by_user}</p>
+            <button onClick={handleEditClick}>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
+          </div>
         </div>
       ) : (
         <EditEvent id={numId} initialForm={data} fn={stopEditing} />

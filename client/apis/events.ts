@@ -31,6 +31,12 @@ export async function editEvent(updatedEvent: Event): Promise<Event> {
   return res.body
 }
 
+//clientside api call to delete an event
+export async function deleteEvent(id: number) {
+  const res = await request.delete(`${rootURL}/events/${id}`)
+  return res.body
+}
+
 // hardcoded function to show a page
 // export async function getEventDetail(id: number) {
 //   console.log(`tried to go to ${id} event`)

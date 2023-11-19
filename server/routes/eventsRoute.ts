@@ -39,6 +39,7 @@ router.get('/:id', async (req, res) => {
   }
 })
 
+//function to update an event, it checks if there is an id, then trys to update, catching errors if they happen
 router.patch('/:id', async (req, res) => {
   const id = Number(req.params.id)
 
@@ -50,6 +51,24 @@ router.patch('/:id', async (req, res) => {
   try {
     const updatedEvent = await db.updateEvent(id, req.body)
     res.json(updatedEvent)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json('Internal server error')
+  }
+})
+
+//function to delete an event, checks id, trys and catches errors if they happen
+router.delete('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+
+  if (!id) {
+    console.error('No valid id')
+    return res.status(404).send('Bad request')
+  }
+
+  try {
+    const deletedEvent = await db.deleteEvent(id)
+    res.json(deletedEvent)
   } catch (error) {
     console.error(error)
     res.status(500).json('Internal server error')

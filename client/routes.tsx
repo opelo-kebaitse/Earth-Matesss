@@ -12,6 +12,5 @@ export const routes = createRoutesFromElements(
     <Route path="/:id" element={<EventDetail />} />
     <Route path="/:id/edit" element={<EditEvent />} />
     {/* <Route path="/:id/edit" element={<EditEvent2 />} /> */}
-
   </Route>
 )

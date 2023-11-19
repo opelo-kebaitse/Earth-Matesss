@@ -15,9 +15,10 @@ export default function EventList() {
   }
 
   return (
-    <div>
+    <div className="events-container">
       {events.map((event: ListEvent, index: number) => (
-        <div key={index}>
+        <div className="event-card" key={index}>
+          <div className="event-image"></div>
           <Link to={`/${event.id}`}>
             <h3>{event.name}</h3>
           </Link>
