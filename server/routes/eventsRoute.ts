@@ -39,4 +39,23 @@ router.get('/:id', async (req, res) => {
   }
 })
 
+
+
+router.patch('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+
+  if (!id) {
+    console.error('No valid id')
+    return res.status(404).send('Bad request')
+  }
+
+  try {
+    const updatedEvent = await db.updateEvent(id, req.body)
+    res.json(updatedEvent)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json('Internal server error')
+  }
+})
+
 export default router
