@@ -65,7 +65,7 @@ function AddEvent() {
           value={newEvent.description}
           onChange={handleChange}
         />
-        <button className="crEve-button" onClick={handleSubmit}>
+        <button className="post-event" onClick={handleSubmit}>
           Post event!
         </button>
       </form>

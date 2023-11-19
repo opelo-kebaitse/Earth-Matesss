@@ -153,3 +153,22 @@ body {
   flex-direction: column;
 }
 
+.post-event {
+  margin: 10px auto;
+  border: none;
+  width: 15%;
+  align-items: center;
+  color: #ffffff;
+  background-color: #426B1F;
+  padding: 12px 22px;
+  border-radius: 5px;
+  font-weight: lighter;
+  display: block;
+}
+
+.post-event:hover {
+  cursor: pointer;
+  background-color: rgb(247, 245, 242);
+  color: #426B1F;
+}
+
