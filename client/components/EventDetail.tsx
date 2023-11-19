@@ -52,8 +52,6 @@ export default function EventDetails() {
             <p>Date: {data.date}</p>
             <p>Description: {data.description}</p>
             <p>Organiser: {data.added_by_user}</p>
-            <button onClick={handleEditClick}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
             <button className="event-button" onClick={handleEditClick}>
               Edit
             </button>

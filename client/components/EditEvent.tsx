@@ -31,7 +31,7 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
 
   return (
     <>
-      <form className="edit">
+      <form className="form-group">
         <label htmlFor="name"> Name:</label>
         <input
           type="text"
@@ -41,7 +41,6 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
           onChange={handleChange}
           required
         />
-
         <label htmlFor="location"> Location:</label>
         <input
           type="text"
@@ -51,7 +50,6 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
           onChange={handleChange}
           required
         />
-
         <label htmlFor="date"> Date:</label>
         <input
           type="date"
@@ -61,7 +59,6 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
           onChange={handleChange}
           required
         />
-
         <label htmlFor="description"> Description:</label>
         <input
           type="text"
@@ -71,7 +68,6 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
           onChange={handleChange}
           required
         />
-
         <label htmlFor="photo"> Photo:</label>
         <input
           type="text"
@@ -81,7 +77,9 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
           onChange={handleChange}
           required
         />
-        <button onClick={handleSubmit}>Update Event!</button>
+        <button className="post-event" onClick={handleSubmit}>
+          Update Event!
+        </button>
       </form>
     </>
   )
