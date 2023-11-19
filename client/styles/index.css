@@ -134,6 +134,7 @@ body {
 .evDet {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .eventBox {
@@ -142,6 +143,45 @@ body {
   width: 80vw;
   background-color: rgb(247, 245, 242);
   border-radius: 5px;
+}
+
+.event-button {
+  margin: 10px;
+  border: none;
+  width: 8%;
+  color: #ffffff;
+  background-color: #426B1F;
+  padding: 12px 22px;
+  border-radius: 5px;
+  font-weight: lighter;
+  align-items: flex-end;
+}
+
+.event-button:hover {
+  cursor: pointer;
+  background-color: rgb(247, 245, 242);
+  color: #426B1F;
+}
+
+.edit-event {
+  padding: 20px;
+  margin: 20px;
+  background-color: rgb(247, 245, 242);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit {
+  margin: 10px auto;
+  border: none;
+  width: 90vw;
+  align-items: center;
+  color: #000000;
+  padding: 12px 22px;
+  border-radius: 5px;
+  font-weight: lighter;
+  display: flex;
 }
 
 /* AddEvent.tsx form */

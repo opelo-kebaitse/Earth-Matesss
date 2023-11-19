@@ -52,12 +52,18 @@ export default function EventDetails() {
             <p>Date: {event.date}</p>
             <p>Description: {event.description}</p>
             <p>Organiser: {event.added_by_user}</p>
-            <button onClick={handleEditClick}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+            <button className="event-button" onClick={handleEditClick}>
+              Edit
+            </button>
+            <button className="event-button" onClick={handleDelete}>
+              Delete
+            </button>
           </div>
         </div>
       ) : (
-        <EditEvent id={numId} initialForm={event} fn={stopEditing} />
+        <div className="edit-event">
+          <EditEvent id={numId} initialForm={event} fn={stopEditing} />
+        </div>
       )}
     </div>
   )

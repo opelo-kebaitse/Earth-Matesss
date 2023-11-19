@@ -13,8 +13,9 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
   const [formData, setFormData] = useState<Event>(initialForm)
   const events = useEvents()
 
-
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleSubmit = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault()
     events.edit.mutate(formData)
     fn()
@@ -30,7 +31,7 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
 
   return (
     <>
-      <form>
+      <form className="edit">
         <label htmlFor="name"> Name:</label>
         <input
           type="text"
@@ -80,13 +81,11 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
           onChange={handleChange}
           required
         />
-        <button onClick = {handleSubmit}>Update Event2</button>
-        
+        <button onClick={handleSubmit}>Update Event2</button>
       </form>
     </>
   )
 }
-
 
 export default EditEvent
 
