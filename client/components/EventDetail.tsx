@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
-import { getEventDetail } from '../apis/events'
 import EditEvent from './EditEvent'
+import { useEvent } from '../hooks/useEvents'
 
 export default function EventDetails() {
   const { id } = useParams()
@@ -11,11 +10,13 @@ export default function EventDetails() {
   // State to manage whether to show the edit form
   const [isEditing, setIsEditing] = useState(false)
 
-  const {
-    data: event,
-    isLoading,
-    error,
-  } = useQuery(['event', id], () => getEventDetail(numId))
+  // const {
+  //   data: event,
+  //   isLoading,
+  //   error,
+  // } = useQuery(['event', id], () => getEventDetail(numId))
+
+  const { data, isLoading, error } = useEvent(numId)
 
   const stopEditing = () => {
     setIsEditing(!isEditing)
@@ -30,7 +31,7 @@ export default function EventDetails() {
     return <p>Something went wrong!</p>
   }
 
-  if (!event || isLoading) {
+  if (!data || isLoading) {
     return <p>Loading...</p>
   }
 
@@ -38,15 +39,15 @@ export default function EventDetails() {
     <div>
       {isEditing === false ? (
         <div>
-          <h3>{event.name}</h3>
-          <p>Location: {event.location}</p>
-          <p>Date: {event.date}</p>
-          <p>Description: {event.description}</p>
-          <p>Organiser: {event.added_by_user}</p>
+          <h3>{data.name}</h3>
+          <p>Location: {data.location}</p>
+          <p>Date: {data.date}</p>
+          <p>Description: {data.description}</p>
+          <p>Organiser: {data.added_by_user}</p>
           <button onClick={handleEditClick}>Edit</button>
         </div>
       ) : (
-        <EditEvent id={numId} initialForm={event} fn={stopEditing} />
+        <EditEvent id={numId} initialForm={data} fn={stopEditing} />
       )}
     </div>
   )
