@@ -13,6 +13,7 @@ body {
 
 /* Styling for Header.tsx */
 .header-container {
+  background-color: #ffffff;
   display: flex;
   width: 100vw;
   justify-content: space-between;
@@ -146,6 +147,9 @@ body {
 .form-group {
   padding: 20px;
   margin: 20px;
+  background-color: rgb(247, 245, 242);
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
 }
+

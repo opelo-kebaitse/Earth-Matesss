@@ -35,18 +35,16 @@ export default function EventDetails() {
   }
 
   return (
-    <div>
-      {
-        <div className="eventBox">
-          <h3>{event.name}</h3>
-          <p>Photo to come</p>
-          <p>Location: {event.location}</p>
-          <p>Date: {event.date}</p>
-          <p>Description: {event.description}</p>
-          <p>Organiser: {event.added_by_user}</p>
-          <button></button>
-        </div>
-      }
+    <div className="evDet">
+      <div className="eventBox">
+        <h3>{event.name}</h3>
+        <p>Photo to come</p>
+        <p>Location: {event.location}</p>
+        <p>Date: {event.date}</p>
+        <p>Description: {event.description}</p>
+        <p>Organiser: {event.added_by_user}</p>
+        <button></button>
+      </div>
     </div>
   )
 }
