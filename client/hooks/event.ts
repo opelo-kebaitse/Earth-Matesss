@@ -43,3 +43,5 @@ export function useEditEvent() {
 export function useDeleteEvent() {
   return useEventMutation(clientApi.deleteEvent)
 }
+
+
