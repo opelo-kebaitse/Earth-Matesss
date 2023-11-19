@@ -31,3 +31,24 @@ export async function getEventDetails(
 ): Promise<Event> {
   return db('events').where({ id }).select('*').first()
 }
+
+export async function updateEvent(id: number, updatedEventData: Event) {
+  return connection('events')
+    .where({ id })
+    .update({ ...updatedEventData })
+    .returning([
+      'id',
+      'name',
+      'location',
+      'date',
+      'description',
+      'added_by_user',
+      'photo',
+    ])
+}
+
+//function to delete an event
+//I think this will need to delete the users_attending_as_well possibly
+export async function deleteEvent(id: number, db = connection) {
+  return db('events').where({ id }).del()
+}

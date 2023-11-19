@@ -1,5 +1,10 @@
 import * as clientApi from '../apis/events.ts'
-import { useQuery, MutationFunction, useMutation, useQueryClient } from '@tanstack/react-query'
+import {
+  useQuery,
+  MutationFunction,
+  useMutation,
+  useQueryClient,
+} from '@tanstack/react-query'
 
 export function useEvents() {
   const query = useQuery({
@@ -8,18 +13,21 @@ export function useEvents() {
   })
   return {
     ...query,
-    add: useAddEvent()
+    add: useAddEvent(),
+    edit: useEditEvent(),
+    delete: useDeleteEvent(),
   }
 }
 
-
-export function useEventMutation<TData= unknown, TVariables= unknown>(mutationFn: MutationFunction<TData,TVariables>) {
+export function useEventMutation<TData = unknown, TVariables = unknown>(
+  mutationFn: MutationFunction<TData, TVariables>
+) {
   const queryClient = useQueryClient()
 
   const mutation = useMutation({
     mutationFn,
     onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: ['events'] })
+      queryClient.invalidateQueries({ queryKey: ['events'] })
     },
   })
   return mutation
@@ -27,4 +35,11 @@ export function useEventMutation<TData= unknown, TVariables= unknown>(mutationFn
 
 export function useAddEvent() {
   return useEventMutation(clientApi.addEvent)
+}
+
+export function useEditEvent() {
+  return useEventMutation(clientApi.editEvent)
+}
+export function useDeleteEvent() {
+  return useEventMutation(clientApi.deleteEvent)
 }
