@@ -1,84 +1,93 @@
+import { Event } from '../../models/Event'
 import { useState } from 'react'
-import { NewEvent } from '../../models/Event'
-import { useEvents } from '../hooks/event.ts'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useEvents } from '../hooks/event'
 
-function EditEvent() {
-  const { id } = useParams()
-  const numId = Number(id)
-  const navigate = useNavigate()
-  
+type EditEventFunction = () => void
+interface EditEventProps {
+  id: number
+  initialForm: Event
+  fn: EditEventFunction
+}
 
-  const initialForm: Event = {
-    id: numId,
-    name: '',
-    date: '',
-    location: '',
-    photo: 'images/placeholder.jpg',
-    description: '',
-    added_by_user: 'Auth0|123',
-  }
-  
+function EditEvent({ id, initialForm, fn }: EditEventProps) {
+  const [formData, setFormData] = useState<Event>(initialForm)
   const events = useEvents()
 
-  const [event, setEdittedEvent] = useState(initialForm)
+
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+    events.edit.mutate(formData)
+    fn()
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setEdittedEvent({ ...event, [name]: value,})
-    console.log('event', event)
-  }
-
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault()
-    console.log('id', id, 'event', event)
-    events.edit.mutate(event)
-    navigate(`/${id}`)
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }))
   }
 
   return (
     <>
-      <h2>Edit your event</h2>
       <form>
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name"> Name:</label>
         <input
           type="text"
           name="name"
           id="name"
-          value={event.name}
+          value={formData.name}
           onChange={handleChange}
+          required
         />
-        <label htmlFor="date">Date:</label>
-        <input
-          type="text"
-          name="date"
-          id="date"
-          value={event.date}
-          onChange={handleChange}
-        />
-        <label htmlFor="location">Location:</label>
+
+        <label htmlFor="location"> Location:</label>
         <input
           type="text"
           name="location"
           id="location"
-          value={event.location}
+          value={formData.location}
           onChange={handleChange}
+          required
         />
-        <label htmlFor="description">Description:</label>
+
+        <label htmlFor="date"> Date:</label>
+        <input
+          type="date"
+          name="date"
+          id="date"
+          value={formData.date}
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="description"> Description:</label>
         <input
           type="text"
           name="description"
           id="description"
-          value={event.description}
+          value={formData.description}
           onChange={handleChange}
+          required
         />
-        <button onClick={handleSubmit}>Update event!</button>
+
+        <label htmlFor="photo"> Photo:</label>
+        <input
+          type="text"
+          name="photo"
+          id="photo"
+          value={formData.photo}
+          onChange={handleChange}
+          required
+        />
+        <button onClick = {handleSubmit}>Update Event2</button>
+        
       </form>
     </>
   )
 }
 
 
-//Need to add Auth0 here still
-
 export default EditEvent
+
+//Need to add Auth0 here still
