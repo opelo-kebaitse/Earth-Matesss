@@ -1,10 +1,14 @@
 import * as Path from 'node:path'
 
+import eventsRoute from './routes/eventsRoute'
 import express from 'express'
-
 
 const server = express()
 server.use(express.json())
+
+// Mount the routes at api endpoints
+
+server.use('/api/v1/events', eventsRoute)
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))
@@ -13,5 +17,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(Path.resolve('./dist/index.html'))
   })
 }
+
+
 
 export default server
