@@ -7,168 +7,53 @@ body {
   top: 0;
   left: 0;
   margin: 0;
-  font: 14px 'Newsreader', 'Philosopher', Helvetica, Arial, sans-serif;
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #004a8f;
 }
 
-/* Styling for Header.tsx */
-.header-container {
-  background-color: #ffffff;
-  display: flex;
+.nav-container {
+  background-color: #A2D2FF;
   width: 100vw;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 50px;
-}
-
-.title-container {
-  width: 100vw;
-  padding: 0px 50px;
+  height: 80px;
+  padding: 0px 20px;
   display: flex; 
   justify-content: space-between;
   align-items: center;
 }
 
-.title-link {
-  text-decoration: none;
-  color: #426B1F;
+.button {
+  margin-left: 20px;
+  border: none;
+  color: #004a8f;
+  background-color: #efd4ff;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
-.header-title {
-  font-size: 3em;
-  word-spacing: -1px;
-  font-weight: 100;
+.button:hover {
+  cursor: pointer;
+  background-color: #004a8f;
+  color: #efd4ff;
 }
 
 .button-container {
   display: flex;
   align-items: center;
-  margin-right: auto;
 }
 
-.button {
-  margin-right: 20px;
-  border: none;
-  color: #ffffff;
-  background-color: #426B1F;
-  padding: 12px 22px;
-  border-radius: 5px;
-  font-weight: lighter;
+.header-title {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-size: 1.5em;
 }
 
-.button:hover {
-  cursor: pointer;
-  background-color: #ffffff;
-  color: #426B1F;
-}
-
-/* Home.tsx styling */
-.event-container {
-  width: 100vw;
-  padding: 0px 50px;
-  display: flex;
-  justify-content: center;
-}
-
-.crEve-button {
-  margin: 20px;
-  border: none;
-  color: #ffffff;
-  background-color: #426B1F;
-  padding: 12px 22px;
-  border-radius: 5px;
-  font-weight: lighter;
-}
-
-.crEve-button:hover {
-  cursor: pointer;
-  background-color: #ffffff;
-  color: #426B1F;
-}
-
-.nav-buttons {
-  display: flex;
-  margin-right: auto;
-  width: 100%;
-}
-
-.nav a {
+.title-link {
   text-decoration: none;
-  color: #000000;
-} 
+  color: #004a8f;
+}
 
 .page-title {
-  margin: 60px 20px;
-  padding: 0 15%;
-  text-align: center;
-  color: black;
-  font-size: 4em;
-  line-height: 1.5;
-  word-spacing: -2.5px;
-  font-weight: 50;
+  margin-left: 20px;
 }
-
-/* EventsList.tsx */
-.events-container {
-  padding: 20px;
-  width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-.event-card {
-  padding: 0 20px;
-  margin: 20px;
-  width: 30%;
-  background-color: rgb(247, 245, 242);
-  border-radius: 5px;
-}
-
-.event-image {
-  padding: 30px; /* Change this after adding image */
-}
-
-/* EventDetail.tsx */
-.evDet {
-  display: flex;
-  justify-content: center;
-}
-
-.eventBox {
-  padding: 20px;
-  margin: 20px;
-  width: 80vw;
-  background-color: rgb(247, 245, 242);
-  border-radius: 5px;
-}
-
-/* AddEvent.tsx form */
-.form-group {
-  padding: 20px;
-  margin: 20px;
-  background-color: rgb(247, 245, 242);
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-}
-
-.post-event {
-  margin: 10px auto;
-  border: none;
-  width: 15%;
-  align-items: center;
-  color: #ffffff;
-  background-color: #426B1F;
-  padding: 12px 22px;
-  border-radius: 5px;
-  font-weight: lighter;
-  display: block;
-}
-
-.post-event:hover {
-  cursor: pointer;
-  background-color: rgb(247, 245, 242);
-  color: #426B1F;
-}
-
