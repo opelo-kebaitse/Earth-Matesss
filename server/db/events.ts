@@ -31,3 +31,17 @@ export async function getEventDetails(
 ): Promise<Event> {
   return db('events').where({ id }).select('*').first()
 }
+
+//funtion to update an event 
+export async function updateEvent(event: Event, db = connection):Promise<Event> {
+  console.log('dbevent', event)
+  return db('events').where('id', event.id).update({...event}).returning([
+    'id',
+    'name',
+    'location',
+    'date',
+    'description',
+    'added_by_user',
+    'photo',
+  ])
+}

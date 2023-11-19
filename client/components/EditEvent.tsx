@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NewEvent } from '../../models/Event'
-import { useEvents } from '../hooks/event.ts'
+import { useEvents } from '../hooks/useEvents.ts'
 import { useParams, useNavigate } from 'react-router-dom'
 
 function EditEvent() {
@@ -26,12 +26,10 @@ function EditEvent() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setEdittedEvent({ ...event, [name]: value,})
-    console.log('event', event)
   }
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    console.log('id', id, 'event', event)
     events.edit.mutate(event)
     navigate(`/${id}`)
   }
@@ -80,5 +78,6 @@ function EditEvent() {
 
 
 //Need to add Auth0 here still
+//Edit hooks so it invalidating the event query also
 
 export default EditEvent

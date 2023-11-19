@@ -39,4 +39,23 @@ router.get('/:id', async (req, res) => {
   }
 })
 
+//Patch route to update an Event. Receives updated data, and then sends to the db function, returning the updated db entry
+router.patch('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  const event = req.body
+
+  if (!id) {
+    console.error('No valid id')
+    return res.status(404).send('Bad request')
+  }
+
+  try {
+    const updatedEvent = await db.updateEvent(event)
+    res.json(updatedEvent)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json('Internal server error')
+  }
+})
+
 export default router
