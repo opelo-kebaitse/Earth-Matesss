@@ -8,7 +8,8 @@ export function useEvents() {
   })
   return {
     ...query,
-    add: useAddEvent()
+    add: useAddEvent(),
+    edit: useEditEvent(),
   }
 }
 
@@ -27,4 +28,8 @@ export function useEventMutation<TData= unknown, TVariables= unknown>(mutationFn
 
 export function useAddEvent() {
   return useEventMutation(clientApi.addEvent)
+}
+
+export function useEditEvent() {
+  return useEventMutation(clientApi.editEvent)
 }
