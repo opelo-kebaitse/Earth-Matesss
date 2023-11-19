@@ -16,3 +16,11 @@ export interface NewEvent {
   added_by_user: string
   photo: string
 }
+
+export interface ListEvent {
+  id: number
+  name: string
+  date: string
+  location: string
+  photo: string
+}
