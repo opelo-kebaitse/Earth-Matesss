@@ -22,11 +22,18 @@ export async function getEventDetail(id: number): Promise<Event> {
 
 //clientside api call to edit an event
 
-export async function editEvent(updatedEvent: Event ):Promise<Event> {
+export async function editEvent(updatedEvent: Event): Promise<Event> {
   console.log('updatedEvent', updatedEvent)
   console.log('rootURL', rootURL, updatedEvent.id)
-  const res = await request.patch(`${rootURL}/events/${updatedEvent.id}`)
-  .send(updatedEvent)
+  const res = await request
+    .patch(`${rootURL}/events/${updatedEvent.id}`)
+    .send(updatedEvent)
+  return res.body
+}
+
+//clientside api call to delete an event
+export async function deleteEvent(id: number) {
+  const res = await request.delete(`${rootURL}/events/${id}`)
   return res.body
 }
 

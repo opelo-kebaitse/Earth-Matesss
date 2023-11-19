@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 import EventList from './EventList'
-
 function Home() {
   const navigate = useNavigate()
 
