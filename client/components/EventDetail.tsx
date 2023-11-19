@@ -45,14 +45,16 @@ export default function EventDetails() {
   return (
     <div>
       {isEditing === false ? (
-        <div>
-          <h3>{event.name}</h3>
-          <p>Location: {event.location}</p>
-          <p>Date: {event.date}</p>
-          <p>Description: {event.description}</p>
-          <p>Organiser: {event.added_by_user}</p>
-          <button onClick={handleEditClick}>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
+        <div className="evDet">
+          <div className="eventBox">
+            <h3>{event.name}</h3>
+            <p>Location: {event.location}</p>
+            <p>Date: {event.date}</p>
+            <p>Description: {event.description}</p>
+            <p>Organiser: {event.added_by_user}</p>
+            <button onClick={handleEditClick}>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
+          </div>
         </div>
       ) : (
         <EditEvent id={numId} initialForm={event} fn={stopEditing} />

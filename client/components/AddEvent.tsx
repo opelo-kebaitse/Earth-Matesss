@@ -32,7 +32,7 @@ function AddEvent() {
   return (
     <>
       <h2>Create event</h2>
-      <form>
+      <form className="form-group">
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -65,7 +65,9 @@ function AddEvent() {
           value={newEvent.description}
           onChange={handleChange}
         />
-        <button onClick={handleSubmit}>Post event!</button>
+        <button className="post-event" onClick={handleSubmit}>
+          Post event!
+        </button>
       </form>
     </>
   )

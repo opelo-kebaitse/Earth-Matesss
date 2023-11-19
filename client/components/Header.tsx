@@ -33,9 +33,6 @@ function Header() {
               </button>
             </IfNotAuthenticated>
           </div>
-          <Link to="/" className="title-link">
-            <h1 className="header-title">Earth Mates</h1>
-          </Link>
         </div>
       </div>
     </header>
