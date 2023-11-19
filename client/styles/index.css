@@ -127,3 +127,9 @@ body {
 .event-image {
   padding: 30px;
 }
+
+/* EventDetail.tsx */
+.eventBox {
+  padding: 20px;
+  margin: 20px;
+}
