@@ -14,6 +14,7 @@ export function useEvents() {
   return {
     ...query,
     add: useAddEvent(),
+    delete: useDeleteEvent(),
   }
 }
 
@@ -33,6 +34,10 @@ export function useEventsMutation<TData = unknown, TVariables = unknown>(
 
 export function useAddEvent() {
   return useEventsMutation(clientApi.addEvent)
+}
+
+export function useDeleteEvent() {
+  return useEventsMutation(clientApi.deleteEvent)
 }
 
 export function useEvent(id: number) {
