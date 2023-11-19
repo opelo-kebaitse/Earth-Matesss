@@ -1,6 +1,6 @@
 import { Event } from '../../models/Event'
 import { useState } from 'react'
-import { useEvents } from '../hooks/event'
+import { useEvent } from '../hooks/useEvents'
 
 type EditEventFunction = () => void
 interface EditEventProps {
@@ -11,13 +11,13 @@ interface EditEventProps {
 
 function EditEvent({ id, initialForm, fn }: EditEventProps) {
   const [formData, setFormData] = useState<Event>(initialForm)
-  const events = useEvents()
+  const event = useEvent(id)
 
   const handleSubmit = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault()
-    events.edit.mutate(formData)
+    event.edit.mutate(formData)
     fn()
   }
 
@@ -81,7 +81,7 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
           onChange={handleChange}
           required
         />
-        <button onClick={handleSubmit}>Update Event2</button>
+        <button onClick={handleSubmit}>Update Event!</button>
       </form>
     </>
   )

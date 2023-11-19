@@ -1,9 +1,7 @@
 import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getEventDetail } from '../apis/events'
 import EditEvent from './EditEvent'
-import { useEvents } from '../hooks/event'
+import { useEvents, useEvent } from '../hooks/useEvents.ts'
 
 export default function EventDetails() {
   const { id } = useParams()
@@ -13,11 +11,13 @@ export default function EventDetails() {
   // State to manage whether to show the edit form
   const [isEditing, setIsEditing] = useState(false)
 
-  const {
-    data: event,
-    isLoading,
-    error,
-  } = useQuery(['event', id], () => getEventDetail(numId))
+  // const {
+  //   data: event,
+  //   isLoading,
+  //   error,
+  // } = useQuery(['event', id], () => getEventDetail(numId))
+
+  const { data, isLoading, error } = useEvent(numId)
   const events = useEvents()
 
   const stopEditing = () => {
@@ -38,7 +38,7 @@ export default function EventDetails() {
     return <p>Something went wrong!</p>
   }
 
-  if (!event || isLoading) {
+  if (!data || isLoading) {
     return <p>Loading...</p>
   }
 
@@ -47,11 +47,13 @@ export default function EventDetails() {
       {isEditing === false ? (
         <div className="evDet">
           <div className="eventBox">
-            <h3>{event.name}</h3>
-            <p>Location: {event.location}</p>
-            <p>Date: {event.date}</p>
-            <p>Description: {event.description}</p>
-            <p>Organiser: {event.added_by_user}</p>
+            <h3>{data.name}</h3>
+            <p>Location: {data.location}</p>
+            <p>Date: {data.date}</p>
+            <p>Description: {data.description}</p>
+            <p>Organiser: {data.added_by_user}</p>
+            <button onClick={handleEditClick}>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
             <button className="event-button" onClick={handleEditClick}>
               Edit
             </button>
@@ -61,9 +63,7 @@ export default function EventDetails() {
           </div>
         </div>
       ) : (
-        <div className="edit-event">
-          <EditEvent id={numId} initialForm={event} fn={stopEditing} />
-        </div>
+        <EditEvent id={numId} initialForm={data} fn={stopEditing} />
       )}
     </div>
   )

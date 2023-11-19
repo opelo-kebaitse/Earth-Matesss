@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NewEvent } from '../../models/Event'
-import { useEvents } from '../hooks/event.ts'
+import { useEvents } from '../hooks/useEvents.ts'
 import { useNavigate } from 'react-router-dom'
 
 function AddEvent() {

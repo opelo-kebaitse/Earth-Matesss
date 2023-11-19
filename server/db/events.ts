@@ -51,6 +51,4 @@ export async function updateEvent(id: number, updatedEventData: Event) {
 //I think this will need to delete the users_attending_as_well possibly
 export async function deleteEvent(id: number, db = connection) {
   return db('events').where({ id }).del()
-
 }
-
