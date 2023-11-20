@@ -43,8 +43,8 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-//function to update an event, it checks if there is an id, then trys to update, catching errors if they happen
-router.patch('/:id', async (req, res) => {
+//function to update an event, it checks if there is an id, then tries to update, catching errors if they happen
+router.patch('/:id', async (req: JwtRequest, res) => {
   const id = Number(req.params.id)
 
   if (!id) {
@@ -62,7 +62,7 @@ router.patch('/:id', async (req, res) => {
 })
 
 //function to delete an event, checks id, trys and catches errors if they happen
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req: JwtRequest, res) => {
   const id = Number(req.params.id)
 
   if (!id) {
