@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import EditEvent from './EditEvent'
 import { useEvents, useEvent } from '../hooks/useEvents.ts'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export default function EventDetails() {
   const { id } = useParams()
@@ -11,6 +12,12 @@ export default function EventDetails() {
   // State to manage whether to show the edit form
   const [isEditing, setIsEditing] = useState(false)
 
+  //get user and token
+  const { getAccessTokenSilently, user } = useAuth0()
+
+  //create a state for if user can edit/delete
+  const [isContributor, setIsContributor] = useState(false)
+
   // const {
   //   data: event,
   //   isLoading,
@@ -19,6 +26,12 @@ export default function EventDetails() {
 
   const { data, isLoading, error } = useEvent(numId)
   const events = useEvents()
+
+  useEffect(() => {
+    if (user?.email === data?.added_by_user) {
+      setIsContributor(true)
+    }
+  }, [user, data])
 
   const stopEditing = () => {
     setIsEditing(!isEditing)
@@ -34,6 +47,12 @@ export default function EventDetails() {
     navigate('/')
   }
 
+  const handleJoin = () => {
+    console.log(
+      `user with ${user?.email} wants to join this lets write a function for that!`
+    )
+  }
+
   if (error) {
     return <p>Something went wrong!</p>
   }
@@ -44,7 +63,19 @@ export default function EventDetails() {
 
   return (
     <div>
-      {isEditing === false ? (
+      {isContributor === false ? (
+        <div className="evDet">
+          <div className="eventBox">
+            <h3>{data.name}</h3>
+            <p>Location: {data.location}</p>
+            <p>Date: {data.date}</p>
+            <p>Description: {data.description}</p>
+            <p>Organiser: {data.added_by_user}</p>
+            <button onClick={handleJoin}>Join</button>
+          </div>
+        </div>
+      ) : null}
+      {isEditing === false && isContributor === true ? (
         <div className="evDet">
           <div className="eventBox">
             <h3>{data.name}</h3>
@@ -56,9 +87,10 @@ export default function EventDetails() {
             <button onClick={handleDelete}>Delete</button>
           </div>
         </div>
-      ) : (
+      ) : null}
+      {isEditing === true && isContributor === true ? (
         <EditEvent id={numId} initialForm={data} fn={stopEditing} />
-      )}
+      ) : null}
     </div>
   )
 }
