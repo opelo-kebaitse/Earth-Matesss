@@ -81,10 +81,6 @@ const token: string = await getAccessTokenSilently()
           value={newEvent.description}
           onChange={handleChange}
         />
-        {/* <input
-          type="hidden"
-          name="added_by_user"
-          value={user?.sub} /> */}
         <button className="post-event" onClick={handleSubmit}>
           Post event!
         </button>
