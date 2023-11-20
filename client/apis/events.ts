@@ -9,7 +9,15 @@ export async function getEventList(): Promise<Event[]> {
 }
 
 //function to call the server route to add an event and send the event data to it, then sent that data back to the component function
-export async function addEvent(newEvent: NewEvent): Promise<Event> {
+type AddEventParams = {
+  newEvent: NewEvent
+  token: string
+}
+export async function addEvent({
+  newEvent,
+  token,
+}: AddEventParams): Promise<Event> {
+  // console.log('api', newEvent )
   const res = await request.post(`${rootURL}/events`).send(newEvent)
   return res.body
 }
@@ -20,20 +28,35 @@ export async function getEventDetail(id: number): Promise<Event> {
   return res.body
 }
 
-//clientside api call to edit an event
+//type for edit event
+type editEventParams = {
+  updatedEvent: Event
+  token: string
+}
 
-export async function editEvent(updatedEvent: Event): Promise<Event> {
-  console.log('updatedEvent', updatedEvent)
-  console.log('rootURL', rootURL, updatedEvent.id)
+//clientside api call to edit an event
+export async function editEvent({
+  updatedEvent,
+  token,
+}: editEventParams): Promise<Event> {
   const res = await request
     .patch(`${rootURL}/events/${updatedEvent.id}`)
+    .set('Authorization', `Bearer ${token}`)
     .send(updatedEvent)
   return res.body
 }
 
+//type for delete event
+type deleteEventParams = {
+  numId: number
+  token: string
+}
+
 //clientside api call to delete an event
-export async function deleteEvent(id: number) {
-  const res = await request.delete(`${rootURL}/events/${id}`)
+export async function deleteEvent({ numId, token }: deleteEventParams) {
+  const res = await request
+    .delete(`${rootURL}/events/${numId}`)
+    .set('Authorization', `Bearer ${token}`)
   return res.body
 }
 

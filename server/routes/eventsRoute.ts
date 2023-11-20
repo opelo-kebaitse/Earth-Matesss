@@ -2,6 +2,8 @@ import { Router } from 'express'
 import * as db from '../db/events.ts'
 import { newEvent } from '../db/events.ts'
 
+import checkJwt, { JwtRequest } from '../auth0.ts'
+
 const router = Router()
 
 // route to get events list
@@ -15,9 +17,11 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', async (req: JwtRequest, res) => {
   const newestEvent = req.body // Retrieve the new  data from the request body.
-  const addedEvent = await newEvent(newestEvent) // Use the newUrl function to add the new url to the database and await the promise it returns.
+  // console.log(req.body)
+  const addedEvent = await newEvent(newestEvent)
+  // Use the new function to add the new url to the database and await the promise it returns.
   res.json(addedEvent) // Respond with the data of the newly added data in JSON format.
 })
 
@@ -39,8 +43,8 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-//function to update an event, it checks if there is an id, then trys to update, catching errors if they happen
-router.patch('/:id', async (req, res) => {
+//function to update an event, it checks if there is an id, then tries to update, catching errors if they happen
+router.patch('/:id', async (req: JwtRequest, res) => {
   const id = Number(req.params.id)
 
   if (!id) {
@@ -58,7 +62,7 @@ router.patch('/:id', async (req, res) => {
 })
 
 //function to delete an event, checks id, trys and catches errors if they happen
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req: JwtRequest, res) => {
   const id = Number(req.params.id)
 
   if (!id) {
