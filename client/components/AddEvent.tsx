@@ -10,7 +10,7 @@ function AddEvent() {
     location: '',
     photo: 'images/placeholder.jpg',
     description: '',
-    added_by_user: 'Auth0|123',
+    added_by_user: 'auth0|102',
   }
 
   const events = useEvents()
