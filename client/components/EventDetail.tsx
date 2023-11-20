@@ -1,16 +1,16 @@
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import EventDetailsAthenticated from './EventDetailAuthenticated'
-import EventDetailsNotAthenticated from './EventDetailNotAuthenticated'
+import EventDetailsAuthenticated from './EventDetailAuthenticated'
+import EventDetailsNotAuthenticated from './EventDetailNotAuthenticated'
 
 export default function EventDetail() {
   return (
     <>
       <IfAuthenticated>
-        <EventDetailsAthenticated />
+        <EventDetailsAuthenticated />
       </IfAuthenticated>
 
       <IfNotAuthenticated>
-        <EventDetailsNotAthenticated />
+        <EventDetailsNotAuthenticated />
       </IfNotAuthenticated>
     </>
   )
