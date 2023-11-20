@@ -8,7 +8,7 @@ export async function seed(knex) {
     {
       name: 'Mark',
       user_email: 'mark@gmail.com',
-      auth0Id: 'auth0|103',
+      auth0Id: 'auth0|652cb119071b925318906207',
     },
     {
       name: 'Laura',

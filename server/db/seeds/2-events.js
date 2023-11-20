@@ -27,7 +27,7 @@ export async function seed(knex) {
       date: '2023-10-15',
       description:
         'River restoration in Avon River. Help us make the river so clean, even the fish will be queuing for a swim!',
-      added_by_user: 'auth0|103',
+      added_by_user: 'auth0|652cb119071b925318906207',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -77,7 +77,7 @@ export async function seed(knex) {
       date: '2023-05-20',
       description:
         'Community gardening in The Octagon. Get down and dirty with plants in the heart of Dunedin!',
-      added_by_user: 'auth0|103',
+      added_by_user: 'auth0|652cb119071b925318906207',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -127,7 +127,7 @@ export async function seed(knex) {
       date: '2022-12-05',
       description:
         'Recycling drive at The Square. Turning trash into treasure, one bottle at a time.',
-      added_by_user: 'auth0|103',
+      added_by_user: 'auth0|652cb119071b925318906207',
       photo: '/images/placeholder.jpg',
     },
     {
