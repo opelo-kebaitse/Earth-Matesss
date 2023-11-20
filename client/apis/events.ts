@@ -40,7 +40,7 @@ export async function editEvent({
 }: editEventParams): Promise<Event> {
   const res = await request
     .patch(`${rootURL}/events/${updatedEvent.id}`)
-    .set('Authorization', `Bearer ${token}`)
+
     .send(updatedEvent)
   return res.body
 }
@@ -53,7 +53,9 @@ type deleteEventParams = {
 
 //clientside api call to delete an event
 export async function deleteEvent({ numId, token }: deleteEventParams) {
-  const res = await request.delete(`${rootURL}/events/${numId}`)
+  const res = await request
+    .delete(`${rootURL}/events/${numId}`)
+    .set('Authorization', `Bearer ${token}`)
   return res.body
 }
 
