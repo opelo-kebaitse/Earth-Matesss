@@ -40,7 +40,7 @@ export async function editEvent({
 }: editEventParams): Promise<Event> {
   const res = await request
     .patch(`${rootURL}/events/${updatedEvent.id}`)
-
+    .set('Authorization', `Bearer ${token}`)
     .send(updatedEvent)
   return res.body
 }
