@@ -1,29 +1,29 @@
 export async function seed(knex) {
   await knex('users').insert([
     {
-      name: 'Opelo',
-      user_email: 'opelo@gmail.com',
       auth0Id: 'auth0|102',
+      name: 'Opelo',
+      email: 'opelo@gmail.com',
     },
     {
-      name: 'Mark',
-      user_email: 'mark@gmail.com',
       auth0Id: 'auth0|652cb119071b925318906207',
+      name: 'Mark',
+      email: 'mark@gmail.com',
     },
     {
+      auth0Id: 'auth0|655b15bea044d9589caa3368',
       name: 'Laura',
-      user_email: 'laura@gmail.com',
-      auth0Id: 'auth0|101',
+      email: 'lionheartnz85@gmail.com',
     },
     {
-      name: 'Rich',
-      user_email: 'rich@gmail.com',
       auth0Id: 'auth0|104',
+      name: 'Rich',
+      email: 'rich@gmail.com',
     },
     {
-      name: 'Hope',
-      user_email: 'hope@gmail.com',
       auth0Id: 'auth0|105',
+      name: 'Hope',
+      email: 'hsgoldsack@gmail.com',
     },
   ])
 }
