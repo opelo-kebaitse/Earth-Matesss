@@ -4,11 +4,11 @@
  */
 export async function seed(knex) {
   await knex('users_attending_events').insert([
-    { event_id: 2, user: 'hsgoldsack@gmail.com' },
-    { event_id: 3, user: 'hsgoldsack@gmail.com' },
-    { event_id: 2, user: 'mark@gmail.com' },
-    { event_id: 4, user: 'opelo@gmail.com' },
-    { event_id: 5, user: 'lionheartnz85@gmail.com' },
-    { event_id: 5, user: 'lionheartnz85@gmail.com' },
+    { event_id: 2, user: 'auth0|102' },
+    { event_id: 3, user: 'auth0|102' },
+    { event_id: 2, user: 'auth0|104' },
+    { event_id: 4, user: 'auth0|652cb119071b925318906207' },
+    { event_id: 5, user: 'auth0|652cb119071b925318906207' },
+    { event_id: 5, user: 'auth0|104' },
   ])
 }

@@ -7,7 +7,7 @@ export async function seed(knex) {
       date: '2023-12-05',
       description:
         'Beach clean-up at Mission Bay. Bring your own bucket and spade - it’s like building sandcastles, but for grown-ups!',
-      added_by_user: 'hsgoldsack@gmail.com',
+      added_by_user: 'auth0|101',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -17,7 +17,7 @@ export async function seed(knex) {
       date: '2023-11-20',
       description:
         'Tree planting at Mount Victoria. Get ready to dig deep and plant trees - it’s like hide and seek with saplings!',
-      added_by_user: 'hsgoldsack@gmail.com',
+      added_by_user: 'auth0|102',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -27,7 +27,7 @@ export async function seed(knex) {
       date: '2023-10-15',
       description:
         'River restoration in Avon River. Help us make the river so clean, even the fish will be queuing for a swim!',
-      added_by_user: 'opelo@gmail.com',
+      added_by_user: 'auth0|652cb119071b925318906207',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -37,7 +37,7 @@ export async function seed(knex) {
       date: '2023-09-10',
       description:
         'Trail clean-up in Ben Lomond Track. Tidy trails for tidy minds. And who knows, you might find some lost treasure!',
-      added_by_user: 'hsgoldsack@gmail.com',
+      added_by_user: 'auth0|104',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -47,7 +47,7 @@ export async function seed(knex) {
       date: '2023-08-05',
       description:
         'Wildlife habitat conservation in Whakarewarewa Forest. It’s like setting up a five-star hotel for birds and bugs!',
-      added_by_user: 'opelo@gmail.com',
+      added_by_user: 'auth0|105',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -57,7 +57,7 @@ export async function seed(knex) {
       date: '2023-07-25',
       description:
         'Litter collection around Lake Taupo. We’re fishing for trash, not trout!',
-      added_by_user: 'opelo@gmail.com',
+      added_by_user: 'auth0|102',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -67,7 +67,7 @@ export async function seed(knex) {
       date: '2023-06-15',
       description:
         'Beach clean-up at Tahunanui Beach. Perfect your tan while tidying the sand!',
-      added_by_user: 'rich@gmail.com',
+      added_by_user: 'auth0|102',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -77,7 +77,7 @@ export async function seed(knex) {
       date: '2023-05-20',
       description:
         'Community gardening in The Octagon. Get down and dirty with plants in the heart of Dunedin!',
-      added_by_user: 'hsgoldsack@gmail.com',
+      added_by_user: 'auth0|652cb119071b925318906207',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -87,7 +87,7 @@ export async function seed(knex) {
       date: '2023-04-10',
       description:
         'Restoring native plants in Hamilton Gardens. Be a plant superhero - capes optional!',
-      added_by_user: 'rich@gmail.com',
+      added_by_user: 'auth0|104',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -97,7 +97,7 @@ export async function seed(knex) {
       date: '2023-03-30',
       description:
         'Marine life protection at Mount Maunganui. Dive into action and help our underwater neighbours!',
-      added_by_user: 'lionheartnz85@gmail.com',
+      added_by_user: 'auth0|105',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -107,7 +107,7 @@ export async function seed(knex) {
       date: '2023-02-20',
       description:
         'Eco-friendly waste management workshop. Learn how to trash-talk... eco-style!',
-      added_by_user: 'rich@gmail.com',
+      added_by_user: 'auth0|101',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -117,7 +117,7 @@ export async function seed(knex) {
       date: '2023-01-15',
       description:
         'Sustainable living seminar at Marine Parade. Go green or go home!',
-      added_by_user: 'lionheartnz85@gmail.com',
+      added_by_user: 'auth0|102',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -127,7 +127,7 @@ export async function seed(knex) {
       date: '2022-12-05',
       description:
         'Recycling drive at The Square. Turning trash into treasure, one bottle at a time.',
-      added_by_user: 'lionheartnz85@gmail.com',
+      added_by_user: 'auth0|652cb119071b925318906207',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -137,7 +137,7 @@ export async function seed(knex) {
       date: '2022-11-20',
       description:
         'Coastal cleanup at Fitzroy Beach. Surfs up! But first, lets pick up some rubbish.',
-      added_by_user: 'hsgoldsack@gmail.com',
+      added_by_user: 'auth0|104',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -147,7 +147,7 @@ export async function seed(knex) {
       date: '2022-10-10',
       description:
         'Native tree planting at Titirangi Reserve. Plant a tree, make a bird happy.',
-      added_by_user: 'hsgoldsack@gmail.com',
+      added_by_user: 'auth0|105',
       photo: '/images/placeholder.jpg',
     },
   ])
