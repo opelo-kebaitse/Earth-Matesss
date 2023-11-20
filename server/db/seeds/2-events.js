@@ -7,7 +7,7 @@ export async function seed(knex) {
       date: '2023-12-05',
       description:
         'Beach clean-up at Mission Bay. Bring your own bucket and spade - it’s like building sandcastles, but for grown-ups!',
-      added_by_user: 'auth0|101',
+      added_by_user: 'auth0|655b15bea044d9589caa3368',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -117,7 +117,7 @@ export async function seed(knex) {
       date: '2023-01-15',
       description:
         'Sustainable living seminar at Marine Parade. Go green or go home!',
-      added_by_user: 'auth0|102',
+      added_by_user: 'auth0|655b15bea044d9589caa3368',
       photo: '/images/placeholder.jpg',
     },
     {

@@ -5,14 +5,11 @@ import { useNavigate } from 'react-router-dom'
 
 import { useAuth0 } from '@auth0/auth0-react'
 
-
-
 function AddEvent() {
-
   // Destructured getAccessTokenSilently
-  const {getAccessTokenSilently, user} = useAuth0()
-// console.log(user?.sub)
-  const userId  = user?.sub
+  const { getAccessTokenSilently, user } = useAuth0()
+  console.log(user?.sub)
+  const userId = user?.sub
 
   const initialForm: NewEvent = {
     name: '',
@@ -20,7 +17,7 @@ function AddEvent() {
     location: '',
     photo: 'images/placeholder.jpg',
     description: '',
-    added_by_user: userId as string
+    added_by_user: userId as string,
   }
 
   const events = useEvents()
@@ -33,15 +30,16 @@ function AddEvent() {
     setNewEvent({ ...newEvent, [name]: value })
   }
 
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleSubmit = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault()
 
+    // call getAccessTokenSilently to retrieve the access token
+    const token: string = await getAccessTokenSilently()
 
-// call getAccessTokenSilently to retrieve the access token
-const token: string = await getAccessTokenSilently()
-
-// pass the token as a second parameter of the add function 
-    events.add.mutate({newEvent, token})
+    // pass the token as a second parameter of the add function
+    events.add.mutate({ newEvent, token })
     navigate('/')
   }
 
