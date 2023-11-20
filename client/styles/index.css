@@ -119,15 +119,27 @@ body {
 }
 
 .event-card {
+  display: flex;
+  flex-direction: column;
   padding: 0 20px;
   margin: 20px;
   width: 30%;
+  height: 300px;
   background-color: rgb(247, 245, 242);
   border-radius: 5px;
 }
 
 .event-image {
-  padding: 30px; /* Change this after adding image */
+  /* width: 100px; */
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.event-details {
+  margin-top: auto;
+  padding: 5px;
+  border-radius: 0 0 5px 5px;
 }
 
 /* EventDetail.tsx */
