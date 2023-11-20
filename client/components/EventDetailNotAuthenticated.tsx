@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 
 import { useEvent } from '../hooks/useEvents.ts'
 
-export default function EventDetailsNotAthenticated() {
+export default function EventDetailsNotAuthenticated() {
   const { id } = useParams()
   const numId = Number(id)
   const { data, isLoading, error } = useEvent(numId)
