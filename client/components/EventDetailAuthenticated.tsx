@@ -29,7 +29,7 @@ export default function EventDetailsAuthenticated() {
   const events = useEvents()
 
   useEffect(() => {
-    if (user?.email === data?.added_by_user) {
+    if (user?.sub === data?.added_by_user) {
       setIsContributor(true)
     }
   }, [user, data])
