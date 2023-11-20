@@ -7,7 +7,7 @@ export async function seed(knex) {
       description:
         'Beach clean-up at Mission Bay. Bring your own bucket and spade - it’s like building sandcastles, but for grown-ups!',
       added_by_user: 'auth0|101',
-      photo: 'mission_bay_cleanup.jpg',
+      photo: '/images/placeholder.jpg',
     },
     {
       name: 'Tree planting at Mount Victoria',
@@ -16,7 +16,7 @@ export async function seed(knex) {
       description:
         'Tree planting at Mount Victoria. Get ready to dig deep and plant trees - it’s like hide and seek with saplings!',
       added_by_user: 'auth0|102',
-      photo: 'mount_victoria_trees.jpg',
+      photo: '/images/placeholder.jpg',
     },
     {
       name: 'River restoration in Avon River',
@@ -25,7 +25,7 @@ export async function seed(knex) {
       description:
         'River restoration in Avon River. Help us make the river so clean, even the fish will be queuing for a swim!',
       added_by_user: 'auth0|103',
-      photo: 'avon_river_restoration.jpg',
+      photo: '/images/placeholder.jpg',
     },
     {
       name: 'Trail clean-up in Ben Lomond Track',
@@ -34,7 +34,7 @@ export async function seed(knex) {
       description:
         'Trail clean-up in Ben Lomond Track. Tidy trails for tidy minds. And who knows, you might find some lost treasure!',
       added_by_user: 'auth0|104',
-      photo: 'ben_lomond_cleanup.jpg',
+      photo: '/images/placeholder.jpg',
     },
     {
       name: 'Wildlife habitat conservation in Whakarewarewa Forest',
@@ -43,7 +43,7 @@ export async function seed(knex) {
       description:
         'Wildlife habitat conservation in Whakarewarewa Forest. It’s like setting up a five-star hotel for birds and bugs!',
       added_by_user: 'auth0|105',
-      photo: 'whakarewarewa_conserv.jpg',
+      photo: '/images/placeholder.jpg',
     },
     {
       name: 'Litter collection around Lake Taupo',
@@ -52,7 +52,7 @@ export async function seed(knex) {
       description:
         'Litter collection around Lake Taupo. We’re fishing for trash, not trout!',
       added_by_user: 'auth0|101',
-      photo: 'taupo_lake_cleanup.jpg',
+      photo: '/images/placeholder.jpg',
     },
     {
       name: 'Beach clean-up at Tahunanui Beach',
@@ -61,7 +61,7 @@ export async function seed(knex) {
       description:
         'Beach clean-up at Tahunanui Beach. Perfect your tan while tidying the sand!',
       added_by_user: 'auth0|102',
-      photo: 'tahunanui_beach_cleanup.jpg',
+      photo: '/images/placeholder.jpg',
     },
     {
       name: 'Community gardening in The Octagon',
@@ -70,7 +70,7 @@ export async function seed(knex) {
       description:
         'Community gardening in The Octagon. Get down and dirty with plants in the heart of Dunedin!',
       added_by_user: 'auth0|103',
-      photo: 'octagon_gardening.jpg',
+      photo: '/images/placeholder.jpg',
     },
     {
       name: 'Restoring native plants in Hamilton Gardens',
@@ -79,7 +79,7 @@ export async function seed(knex) {
       description:
         'Restoring native plants in Hamilton Gardens. Be a plant superhero - capes optional!',
       added_by_user: 'auth0|104',
-      photo: 'hamilton_gardens_restoration.jpg',
+      photo: '/images/placeholder.jpg',
     },
     {
       name: 'Marine life protection at Mount Maunganui',
@@ -88,7 +88,7 @@ export async function seed(knex) {
       description:
         'Marine life protection at Mount Maunganui. Dive into action and help our underwater neighbours!',
       added_by_user: 'auth0|105',
-      photo: 'mount_maunganui_marine.jpg',
+      photo: '/images/placeholder.jpg',
     },
     {
       name: 'Eco-friendly waste management workshop',
@@ -97,7 +97,7 @@ export async function seed(knex) {
       description:
         'Eco-friendly waste management workshop. Learn how to trash-talk... eco-style!',
       added_by_user: 'auth0|101',
-      photo: 'invercargill_waste_workshop.jpg',
+      photo: '/images/placeholder.jpg',
     },
     {
       name: 'Sustainable living seminar at Marine Parade',
@@ -106,7 +106,7 @@ export async function seed(knex) {
       description:
         'Sustainable living seminar at Marine Parade. Go green or go home!',
       added_by_user: 'auth0|102',
-      photo: 'marine_parade_seminar.jpg',
+      photo: '/images/placeholder.jpg',
     },
     {
       name: 'Recycling drive at The Square',
@@ -115,7 +115,7 @@ export async function seed(knex) {
       description:
         'Recycling drive at The Square. Turning trash into treasure, one bottle at a time.',
       added_by_user: 'auth0|103',
-      photo: 'palmerston_recycling.jpg',
+      photo: '/images/placeholder.jpg',
     },
     {
       name: 'Coastal cleanup at Fitzroy Beach',
@@ -124,7 +124,7 @@ export async function seed(knex) {
       description:
         'Coastal cleanup at Fitzroy Beach. Surfs up! But first, lets pick up some rubbish.',
       added_by_user: 'auth0|104',
-      photo: 'fitzroy_beach_cleanup.jpg',
+      photo: '/images/placeholder.jpg',
     },
     {
       name: 'Native tree planting at Titirangi Reserve',
@@ -133,7 +133,7 @@ export async function seed(knex) {
       description:
         'Native tree planting at Titirangi Reserve. Plant a tree, make a bird happy.',
       added_by_user: 'auth0|105',
-      photo: 'titirangi_reserve_trees.jpg',
+      photo: '/images/placeholder.jpg',
     },
   ])
 }
