@@ -1,8 +1,8 @@
 export async function up(knex) {
   await knex.schema.createTable('users', (table) => {
-    table.integer('id').primary()
+    table.integer('id')
     table.string('name')
-    table.string('user_email')
+    table.string('email').primary()
   })
 }
 
