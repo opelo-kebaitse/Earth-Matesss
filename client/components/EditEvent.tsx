@@ -1,23 +1,27 @@
 import { Event } from '../../models/Event'
 import { useState } from 'react'
 import { useEvent } from '../hooks/useEvents'
+import { useAuth0 } from '@auth0/auth0-react'
 
 type EditEventFunction = () => void
 interface EditEventProps {
   id: number
-  initialForm: Event
+  data: Event
   fn: EditEventFunction
 }
 
-function EditEvent({ id, initialForm, fn }: EditEventProps) {
-  const [formData, setFormData] = useState<Event>(initialForm)
+function EditEvent({ id, data, fn }: EditEventProps) {
+  const [formData, setFormData] = useState<Event>(data)
   const event = useEvent(id)
+  const { getAccessTokenSilently } = useAuth0()
 
   const handleSubmit = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault()
-    event.edit.mutate(formData)
+    const token = await getAccessTokenSilently()
+    const updatedEvent = formData
+    event.edit.mutate({ updatedEvent, token })
     fn()
   }
 
@@ -31,7 +35,7 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
 
   return (
     <>
-      <form>
+      <form className="form-group">
         <label htmlFor="name"> Name:</label>
         <input
           type="text"
@@ -41,7 +45,6 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
           onChange={handleChange}
           required
         />
-
         <label htmlFor="location"> Location:</label>
         <input
           type="text"
@@ -51,7 +54,6 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
           onChange={handleChange}
           required
         />
-
         <label htmlFor="date"> Date:</label>
         <input
           type="date"
@@ -61,7 +63,6 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
           onChange={handleChange}
           required
         />
-
         <label htmlFor="description"> Description:</label>
         <input
           type="text"
@@ -71,7 +72,6 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
           onChange={handleChange}
           required
         />
-
         <label htmlFor="photo"> Photo:</label>
         <input
           type="text"
@@ -81,7 +81,9 @@ function EditEvent({ id, initialForm, fn }: EditEventProps) {
           onChange={handleChange}
           required
         />
-        <button onClick={handleSubmit}>Update Event!</button>
+        <button className="post-event" onClick={handleSubmit}>
+          Update Event!
+        </button>
       </form>
     </>
   )

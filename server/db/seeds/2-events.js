@@ -7,7 +7,7 @@ export async function seed(knex) {
       date: '2023-12-05',
       description:
         'Beach clean-up at Mission Bay. Bring your own bucket and spade - it’s like building sandcastles, but for grown-ups!',
-      added_by_user: 'auth0|101',
+      added_by_user: 'auth0|655b15bea044d9589caa3368',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -27,7 +27,7 @@ export async function seed(knex) {
       date: '2023-10-15',
       description:
         'River restoration in Avon River. Help us make the river so clean, even the fish will be queuing for a swim!',
-      added_by_user: 'auth0|103',
+      added_by_user: 'auth0|652cb119071b925318906207',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -57,7 +57,7 @@ export async function seed(knex) {
       date: '2023-07-25',
       description:
         'Litter collection around Lake Taupo. We’re fishing for trash, not trout!',
-      added_by_user: 'auth0|101',
+      added_by_user: 'auth0|102',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -77,7 +77,7 @@ export async function seed(knex) {
       date: '2023-05-20',
       description:
         'Community gardening in The Octagon. Get down and dirty with plants in the heart of Dunedin!',
-      added_by_user: 'auth0|103',
+      added_by_user: 'auth0|652cb119071b925318906207',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -107,7 +107,7 @@ export async function seed(knex) {
       date: '2023-02-20',
       description:
         'Eco-friendly waste management workshop. Learn how to trash-talk... eco-style!',
-      added_by_user: 'auth0|101',
+      added_by_user: 'auth0|655b15bea044d9589caa3368',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -117,7 +117,7 @@ export async function seed(knex) {
       date: '2023-01-15',
       description:
         'Sustainable living seminar at Marine Parade. Go green or go home!',
-      added_by_user: 'auth0|102',
+      added_by_user: 'auth0|655b15bea044d9589caa3368',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -127,7 +127,7 @@ export async function seed(knex) {
       date: '2022-12-05',
       description:
         'Recycling drive at The Square. Turning trash into treasure, one bottle at a time.',
-      added_by_user: 'auth0|103',
+      added_by_user: 'auth0|652cb119071b925318906207',
       photo: '/images/placeholder.jpg',
     },
     {
