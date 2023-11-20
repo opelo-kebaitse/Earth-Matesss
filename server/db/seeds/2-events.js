@@ -107,7 +107,7 @@ export async function seed(knex) {
       date: '2023-02-20',
       description:
         'Eco-friendly waste management workshop. Learn how to trash-talk... eco-style!',
-      added_by_user: 'auth0|101',
+      added_by_user: 'auth0|655b15bea044d9589caa3368',
       photo: '/images/placeholder.jpg',
     },
     {
