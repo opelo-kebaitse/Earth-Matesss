@@ -18,7 +18,8 @@ export default function EventList() {
     <div className="events-container">
       {events.map((event: ListEvent, index: number) => (
         <div className="event-card" key={index}>
-          <div className="event-image"></div>
+          {/* Display the event image */}
+          <div className="event-image" style={{ backgroundImage: `url(${event.photo})` }}></div>
           <Link to={`/${event.id}`}>
             <h3>{event.name}</h3>
           </Link>
