@@ -17,6 +17,7 @@ export async function addEvent({
   newEvent,
   token,
 }: AddEventParams): Promise<Event> {
+  // console.log('api', newEvent )
   const res = await request.post(`${rootURL}/events`).send(newEvent)
   return res.body
 }

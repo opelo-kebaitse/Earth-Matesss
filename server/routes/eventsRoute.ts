@@ -18,8 +18,8 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req: JwtRequest, res) => {
-  const newestEvent = req.body.newEvent // Retrieve the new  data from the request body.
-  // console.log(newestEvent)
+  const newestEvent = req.body // Retrieve the new  data from the request body.
+  // console.log(req.body)
   const addedEvent = await newEvent(newestEvent)
   // Use the new function to add the new url to the database and await the promise it returns.
   res.json(addedEvent) // Respond with the data of the newly added data in JSON format.
