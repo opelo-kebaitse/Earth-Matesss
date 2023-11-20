@@ -5,9 +5,9 @@
 
 export async function up(knex) {
   await knex.schema.createTable('users_attending_events', (table) => {
-    table.increments('id').primary()
+    table.integer('id').primary()
     table.integer('event_id').references('events.id')
-    table.string('user').references('users.auth0Id')
+    table.integer('user').references('users.id')
   })
 }
 

@@ -5,7 +5,7 @@ export async function up(knex) {
     table.string('location')
     table.string('date')
     table.string('description')
-    table.string('added_by_user').references('users.auth0Id')
+    table.string('added_by_user').references('users.id')
     table.string('photo')
   })
 }
