@@ -70,7 +70,7 @@ export default function EventDetailsAuthenticated() {
           <div className="eventBox">
             <h3>{data.eventName}</h3>
             <p>Location: {data.location}</p>
-            <p>Date: {new Date(data.date).toISOString()}</p>
+            <p>Date: {data.date}</p>
             <p>Description: {data.description}</p>
             <p>Organiser: {data.userName}</p>
             <button onClick={handleJoin}>Join</button>
@@ -82,7 +82,7 @@ export default function EventDetailsAuthenticated() {
           <div className="eventBox">
             <h3>{data.eventName}</h3>
             <p>Location: {data.location}</p>
-            <p>Date: {new Date(data.date).toISOString()}</p>
+            <p>Date: {data.date}</p>
             <p>Description: {data.description}</p>
             <p>Organiser: {data.userName}</p>
             <button onClick={handleEditClick}>Edit</button>

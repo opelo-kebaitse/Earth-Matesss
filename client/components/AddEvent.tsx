@@ -34,18 +34,17 @@ function AddEvent() {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault()
-    const timestampDate = new Date(newEvent.date).getTime()
-    console.log(timestampDate)
-    const addEvent = { name: newEvent.name,
-    location: newEvent.location,
-    date: timestampDate,
-    description: newEvent.description,
-    added_by_user: newEvent.added_by_user,
-    photo: newEvent.photo,
-  }
-    console.log(addEvent)
+   
+  //   const addEvent = { name: newEvent.name,
+  //   location: newEvent.location,
+  //   date: timestampDate,
+  //   description: newEvent.description,
+  //   added_by_user: newEvent.added_by_user,
+  //   photo: newEvent.photo,
+  // }
+  //   console.log(addEvent)
     
-    console.log('AddNewEventComponent', addEvent)
+    // console.log('AddNewEventComponent', addEvent)
     // call getAccessTokenSilently to retrieve the access token
     const token: string = await getAccessTokenSilently()
 

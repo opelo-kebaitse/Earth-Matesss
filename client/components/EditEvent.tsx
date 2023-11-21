@@ -24,7 +24,7 @@ function EditEvent({ id, data, fn }: EditEventProps) {
       id,
       name: formData.eventName,
       location: formData.location,
-      date: new Date(formData.date).getTime(),
+      date: formData.date,
       description: formData.description,
       added_by_user: formData.auth0Id,
       photo: formData.photo,
@@ -45,11 +45,11 @@ function EditEvent({ id, data, fn }: EditEventProps) {
   return (
     <>
       <form className="form-group">
-        <label htmlFor="name"> Name:</label>
+        <label htmlFor="eventName"> Name:</label>
         <input
           type="text"
-          name="name"
-          id="name"
+          name="eventName"
+          id="eventName"
           value={formData.eventName}
           onChange={handleChange}
           required
