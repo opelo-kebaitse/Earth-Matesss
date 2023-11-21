@@ -28,6 +28,8 @@ export async function addEvent({
   return res.body
 }
 
+
+
 //clientside api call to get details for one event
 export async function getEventDetail(id: number): Promise<DisplayEvent> {
   const res = await request.get(`${rootURL}/events/${id}`)

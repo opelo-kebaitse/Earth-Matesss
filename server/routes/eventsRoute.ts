@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import * as db from '../db/events.ts'
-import { newEvent } from '../db/events.ts'
+import { newEvent, newJoin } from '../db/events.ts'
 
 import checkJwt, { JwtRequest } from '../auth0.ts'
 
@@ -23,6 +23,14 @@ router.post('/', async (req: JwtRequest, res) => {
   const addedEvent = await newEvent(newestEvent)
   // Use the new function to add the new url to the database and await the promise it returns.
   res.json(addedEvent) // Respond with the data of the newly added data in JSON format.
+})
+
+router.post('/', async (req: JwtRequest, res) => {
+  const newestJoin = req.body // WHere should we be retrieving that data, we have the console.logs but this is TBC!!!!!
+  // console.log(req.body)
+  const addedJoin = await newJoin(newestJoin)
+  // Use the new function to add the new url to the database and await the promise it returns.
+  res.json(addedJoin) // Respond with the data of the newly added data in JSON format.
 })
 
 // route to get event list by id
@@ -79,5 +87,8 @@ router.delete('/:id', async (req: JwtRequest, res) => {
     res.status(500).json('Internal server error')
   }
 })
+
+
+
 
 export default router

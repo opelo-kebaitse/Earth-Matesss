@@ -25,8 +25,12 @@ export default function EventDetailsAuthenticated() {
   //   error,
   // } = useQuery(['event', id], () => getEventDetail(numId))
 
+
+
   const { data, isLoading, error } = useEvent(numId)
   const events = useEvents()
+
+
 
   useEffect(() => {
     if (user?.sub === data?.auth0Id) {
@@ -51,8 +55,11 @@ export default function EventDetailsAuthenticated() {
 
   const handleJoin = () => {
     console.log(
-      `user with ${user?.email} wants to join this lets write a function for that!`
-    )
+      `Event ID = ${numId} `,
+      `Auth = ${data?.auth0Id} `
+      
+
+    ) //
   }
 
   if (error) {

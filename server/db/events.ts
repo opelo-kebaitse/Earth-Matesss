@@ -1,6 +1,6 @@
 import connection from './connection.ts'
 
-import { NewEvent, Event, DisplayEvent } from '../../models/Event.ts'
+import { NewEvent, Event, DisplayEvent, NewJoin } from '../../models/Event.ts'
 
 //function to get the details we need for the list of events
 export async function getEventList(db = connection) {
@@ -26,6 +26,16 @@ export function newEvent(newEventData: NewEvent) {
       'description',
       'added_by_user',
       'photo',
+    ])
+}
+
+// function to add a new join
+export function newJoin(newJoinData: NewJoin) {
+  return connection('users_attending_events')
+    .insert({ ...newJoinData })
+    .returning([
+      'event_id',
+      'user' 
     ])
 }
 

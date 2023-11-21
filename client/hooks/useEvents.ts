@@ -36,6 +36,7 @@ export function useAddEvent() {
   return useEventsMutation(clientApi.addEvent)
 }
 
+
 export function useDeleteEvent() {
   return useEventsMutation(clientApi.deleteEvent)
 }
