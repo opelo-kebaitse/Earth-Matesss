@@ -8,7 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 function AddEvent() {
   // Destructured getAccessTokenSilently
   const { getAccessTokenSilently, user } = useAuth0()
-  // console.log(user?.sub)
+  console.log(user?.sub)
   const userId = user?.sub
 
   const initialForm: NewEvent = {
@@ -34,16 +34,16 @@ function AddEvent() {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault()
-   
-  //   const addEvent = { name: newEvent.name,
-  //   location: newEvent.location,
-  //   date: timestampDate,
-  //   description: newEvent.description,
-  //   added_by_user: newEvent.added_by_user,
-  //   photo: newEvent.photo,
-  // }
-  //   console.log(addEvent)
-    
+
+    //   const addEvent = { name: newEvent.name,
+    //   location: newEvent.location,
+    //   date: timestampDate,
+    //   description: newEvent.description,
+    //   added_by_user: newEvent.added_by_user,
+    //   photo: newEvent.photo,
+    // }
+    //   console.log(addEvent)
+
     // console.log('AddNewEventComponent', addEvent)
     // call getAccessTokenSilently to retrieve the access token
     const token: string = await getAccessTokenSilently()

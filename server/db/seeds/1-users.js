@@ -16,7 +16,7 @@ export async function seed(knex) {
       email: 'lionheartnz85@gmail.com',
     },
     {
-      auth0Id: 'auth0|104',
+      auth0Id: 'google-oauth2|110018297537843173032',
       name: 'Rich',
       email: 'rich@gmail.com',
     },
