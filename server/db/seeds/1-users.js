@@ -1,9 +1,9 @@
 export async function seed(knex) {
   await knex('users').insert([
     {
-      auth0Id: 'auth0|102',
+      auth0Id: 'google-oauth2|113314505680548891591',
       name: 'Opelo',
-      email: 'opelo@gmail.com',
+      email: 'opelopatricia1@gmail.com',
     },
     {
       auth0Id: 'auth0|652cb119071b925318906207',

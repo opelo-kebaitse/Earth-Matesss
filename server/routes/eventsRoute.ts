@@ -35,6 +35,7 @@ router.get('/:id', async (req, res) => {
   }
 
   try {
+    const id = Number(req.params.id)
     const event = await db.getEventDetails(id)
     res.json(event)
   } catch (error) {
