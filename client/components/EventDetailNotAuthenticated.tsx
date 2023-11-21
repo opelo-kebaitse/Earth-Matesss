@@ -21,7 +21,7 @@ export default function EventDetailsNotAuthenticated() {
         <div className="eventBox">
           <h3>{data.eventName}</h3>
           <p>Location: {data.location}</p>
-          <p>Date: {data.date}</p>
+          <p>Date: {new Date(data.date).toString()}</p>
           <p>Description: {data.description}</p>
           <p>Organiser: {data.userName}</p>
         </div>
@@ -30,7 +30,5 @@ export default function EventDetailsNotAuthenticated() {
   )
 }
 
-// //join to come in function for this card to display the users name from the users table
-// //and a join button to populate the third table to do the many to many joins
-// //add photo
-// refactor!!!
+
+//filter events list to display info 

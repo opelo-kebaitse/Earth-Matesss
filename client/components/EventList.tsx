@@ -1,10 +1,8 @@
-import { useQuery } from '@tanstack/react-query'
-import { ListEvent } from '../../models/Event.ts'
-import { getEventList } from '../apis/events'
+import { useEvents } from '../hooks/useEvents.ts'
 import { Link } from 'react-router-dom'
 
 export default function EventList() {
-  const { data: events, isLoading, error } = useQuery(['events'], getEventList)
+  const { data: events, isLoading, error } = useEvents()
 
   if (error) {
     return <p>Something went wrong!</p>
@@ -16,7 +14,7 @@ export default function EventList() {
 
   return (
     <div className="events-container">
-      {events.map((event: ListEvent, index: number) => (
+      {events.map((event, index: number) => (
         <div className="event-card" key={index}>
           {/* Display the event image */}
           <div
