@@ -28,3 +28,13 @@ export interface DisplayEvent {
   photo: string
   auth0Id: string
 }
+
+export interface PublicDisplayEvent {
+  id: number
+  eventName: string
+  location: string
+  date: string
+  description: string
+  userName: string
+  photo: string
+}

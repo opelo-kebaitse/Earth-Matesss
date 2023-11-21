@@ -1,4 +1,4 @@
-import { Event } from '../../models/Event'
+import { DisplayEvent } from '../../models/Event'
 import { useState } from 'react'
 import { useEvent } from '../hooks/useEvents'
 import { useAuth0 } from '@auth0/auth0-react'
@@ -6,13 +6,14 @@ import { useAuth0 } from '@auth0/auth0-react'
 type EditEventFunction = () => void
 interface EditEventProps {
   id: number
-  data: Event
+  data: DisplayEvent
   fn: EditEventFunction
 }
 
 function EditEvent({ id, data, fn }: EditEventProps) {
-  const [formData, setFormData] = useState<Event>(data)
+  const [formData, setFormData] = useState<DisplayEvent>(data)
   const event = useEvent(id)
+  console.log(id)
   const { getAccessTokenSilently } = useAuth0()
 
   const handleSubmit = async (
@@ -20,7 +21,16 @@ function EditEvent({ id, data, fn }: EditEventProps) {
   ) => {
     e.preventDefault()
     const token = await getAccessTokenSilently()
-    const updatedEvent = formData
+    const updatedEvent = {
+      id,
+      name: formData.eventName,
+      location: formData.location,
+      date: formData.date,
+      description: formData.description,
+      added_by_user: formData.auth0Id,
+      photo: formData.photo,
+    }
+    console.log(updatedEvent)
     event.edit.mutate({ updatedEvent, token })
     fn()
   }
@@ -41,7 +51,7 @@ function EditEvent({ id, data, fn }: EditEventProps) {
           type="text"
           name="name"
           id="name"
-          value={formData.name}
+          value={formData.eventName}
           onChange={handleChange}
           required
         />
@@ -91,4 +101,4 @@ function EditEvent({ id, data, fn }: EditEventProps) {
 
 export default EditEvent
 
-//Need to add Auth0 here still
+//errors and cant edit due to new namings from the new call 

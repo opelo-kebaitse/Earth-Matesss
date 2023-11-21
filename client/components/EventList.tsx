@@ -1,5 +1,4 @@
 import { useEvents } from '../hooks/useEvents.ts'
-import { ListEvent } from '../../models/Event.ts'
 import { Link } from 'react-router-dom'
 
 export default function EventList() {
@@ -15,7 +14,7 @@ export default function EventList() {
 
   return (
     <div className="events-container">
-      {events.map((event: ListEvent, index: number) => (
+      {events.map((event, index: number) => (
         <div className="event-card" key={index}>
           {/* Display the event image */}
           <div

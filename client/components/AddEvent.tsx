@@ -8,7 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 function AddEvent() {
   // Destructured getAccessTokenSilently
   const { getAccessTokenSilently, user } = useAuth0()
-  console.log(user?.sub)
+  // console.log(user?.sub)
   const userId = user?.sub
 
   const initialForm: NewEvent = {
