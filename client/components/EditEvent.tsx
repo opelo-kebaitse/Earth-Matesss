@@ -13,7 +13,6 @@ interface EditEventProps {
 function EditEvent({ id, data, fn }: EditEventProps) {
   const [formData, setFormData] = useState<DisplayEvent>(data)
   const event = useEvent(id)
-  console.log(id)
   const { getAccessTokenSilently } = useAuth0()
 
   const handleSubmit = async (
@@ -25,7 +24,7 @@ function EditEvent({ id, data, fn }: EditEventProps) {
       id,
       name: formData.eventName,
       location: formData.location,
-      date: formData.date,
+      date: new Date(formData.date).getTime(),
       description: formData.description,
       added_by_user: formData.auth0Id,
       photo: formData.photo,

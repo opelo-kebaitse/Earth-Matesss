@@ -22,8 +22,9 @@ export async function addEvent({
   newEvent,
   token,
 }: AddEventParams): Promise<Event> {
-  // console.log('api', newEvent )
+  console.log('api', newEvent )
   const res = await request.post(`${rootURL}/events`).send(newEvent)
+  console.log('res.bodyAdd', res.body)
   return res.body
 }
 
@@ -44,10 +45,12 @@ export async function editEvent({
   updatedEvent,
   token,
 }: editEventParams): Promise<Event> {
+  console.log('updatedEvent', updatedEvent)
   const res = await request
     .patch(`${rootURL}/events/${updatedEvent.id}`)
     .set('Authorization', `Bearer ${token}`)
     .send(updatedEvent)
+    console.log('res.body', res.body)
   return res.body
 }
 

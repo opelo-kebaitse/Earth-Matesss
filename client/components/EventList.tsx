@@ -26,7 +26,7 @@ export default function EventList() {
               <h3>{event.name}</h3>
             </Link>
             <p>Location: {event.location}</p>
-            <p>Date: {event.date}</p>
+            <p>Date: {new Date(event.date).toISOString()}</p>
           </div>
         </div>
       ))}

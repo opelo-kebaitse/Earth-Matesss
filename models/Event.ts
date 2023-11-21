@@ -2,7 +2,7 @@ export interface Event {
   id: number
   name: string
   location: string
-  date: string
+  date: number
   description: string
   added_by_user: string
   photo: string
@@ -11,7 +11,7 @@ export interface Event {
 export interface NewEvent {
   name: string
   location: string
-  date: string
+  date: number 
   description: string
   added_by_user: string
   photo: string
@@ -21,7 +21,7 @@ export interface DisplayEvent {
   id: number
   eventName: string
   location: string
-  date: string
+  date: number
   description: string
   userName: string
   email: string
@@ -33,7 +33,7 @@ export interface PublicDisplayEvent {
   id: number
   eventName: string
   location: string
-  date: string
+  date: number
   description: string
   userName: string
   photo: string
