@@ -17,7 +17,7 @@ export async function seed(knex) {
       date: '2023-11-20',
       description:
         'Tree planting at Mount Victoria. Get ready to dig deep and plant trees - it’s like hide and seek with saplings!',
-      added_by_user: 'auth0|102',
+      added_by_user: 'google-oauth2|113314505680548891591',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -57,7 +57,7 @@ export async function seed(knex) {
       date: '2023-07-25',
       description:
         'Litter collection around Lake Taupo. We’re fishing for trash, not trout!',
-      added_by_user: 'auth0|102',
+      added_by_user: 'google-oauth2|113314505680548891591',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -67,7 +67,7 @@ export async function seed(knex) {
       date: '2023-06-15',
       description:
         'Beach clean-up at Tahunanui Beach. Perfect your tan while tidying the sand!',
-      added_by_user: 'auth0|102',
+      added_by_user: 'google-oauth2|113314505680548891591',
       photo: '/images/placeholder.jpg',
     },
     {
