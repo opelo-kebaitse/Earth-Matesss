@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { Event } from '../../models/event'
+import { ListEvent } from '../../models/Event.ts'
 import { getEventList } from '../apis/events'
 import { Link } from 'react-router-dom'
 
@@ -15,14 +15,21 @@ export default function EventList() {
   }
 
   return (
-    <div>
-      {events.map((event: Event, index) => (
-        <div key={index}>
-          <Link to={`/${event.id}`}>
-            <h3>{event.name}</h3>
-          </Link>
-          <p>Location: {event.location}</p>
-          <p>Date: {event.date}</p>
+    <div className="events-container">
+      {events.map((event: ListEvent, index: number) => (
+        <div className="event-card" key={index}>
+          {/* Display the event image */}
+          <div
+            className="event-image"
+            style={{ backgroundImage: `url(${event.photo})` }}
+          ></div>
+          <div className="event-details">
+            <Link to={`/${event.id}`}>
+              <h3>{event.name}</h3>
+            </Link>
+            <p>Location: {event.location}</p>
+            <p>Date: {event.date}</p>
+          </div>
         </div>
       ))}
     </div>
