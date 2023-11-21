@@ -29,7 +29,7 @@ export default function EventDetailsAuthenticated() {
   const events = useEvents()
 
   useEffect(() => {
-    if (user?.sub === data?.added_by_user) {
+    if (user?.sub === data?.auth0Id) {
       setIsContributor(true)
     }
   }, [user, data])
@@ -68,11 +68,11 @@ export default function EventDetailsAuthenticated() {
       {isContributor === false ? (
         <div className="evDet">
           <div className="eventBox">
-            <h3>{data.name}</h3>
+            <h3>{data.eventName}</h3>
             <p>Location: {data.location}</p>
             <p>Date: {data.date}</p>
             <p>Description: {data.description}</p>
-            <p>Organiser: {data.added_by_user}</p>
+            <p>Organiser: {data.userName}</p>
             <button onClick={handleJoin}>Join</button>
           </div>
         </div>
@@ -80,11 +80,11 @@ export default function EventDetailsAuthenticated() {
       {isEditing === false && isContributor === true ? (
         <div className="evDet">
           <div className="eventBox">
-            <h3>{data.name}</h3>
+            <h3>{data.eventName}</h3>
             <p>Location: {data.location}</p>
             <p>Date: {data.date}</p>
             <p>Description: {data.description}</p>
-            <p>Organiser: {data.added_by_user}</p>
+            <p>Organiser: {data.userName}</p>
             <button onClick={handleEditClick}>Edit</button>
             <button onClick={handleDelete}>Delete</button>
           </div>

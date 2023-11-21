@@ -1,6 +1,6 @@
 import connection from './connection.ts'
 
-import { NewEvent, Event } from '../../models/Event.ts'
+import { NewEvent, Event, DisplayEvent } from '../../models/Event.ts'
 
 //function to get the details we need for the list of events
 export async function getEventList(db = connection) {
@@ -28,8 +28,14 @@ export function newEvent(newEventData: NewEvent) {
 export async function getEventDetails(
   id: number,
   db = connection
-): Promise<Event> {
-  return db('events').where({ id }).select('*').first()
+): Promise<DisplayEvent> {
+  return db('events').join('users', 'events.added_by_user', 'users.auth0Id').where({ id }).select('events.name as eventName',
+  'events.location',
+  'events.date',
+  'events.description',
+  'users.name as userName',
+  'users.email',
+  'events.photo', 'users.auth0Id').first()
 }
 
 export async function updateEvent(id: number, updatedEventData: Event) {

@@ -17,10 +17,14 @@ export interface NewEvent {
   photo: string
 }
 
-export interface ListEvent {
+export interface DisplayEvent {
   id: number
-  name: string
-  date: string
+  eventName: string
   location: string
+  date: string
+  description: string
+  userName: string
+  email: string
   photo: string
+  auth0Id: string
 }

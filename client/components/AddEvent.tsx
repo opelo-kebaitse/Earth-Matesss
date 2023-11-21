@@ -57,7 +57,7 @@ function AddEvent() {
         />
         <label htmlFor="date">Date:</label>
         <input
-          type="text"
+          type="date"
           name="date"
           id="date"
           value={newEvent.date}
