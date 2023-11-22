@@ -17,7 +17,7 @@ export function useUser() {
       const token = await getAccessTokenSilently()
       return clientApi.getUserDetail(token)
 }, 
-enabled: !!user })
+  enabled: !!user })
   return {
     ...query,
     
