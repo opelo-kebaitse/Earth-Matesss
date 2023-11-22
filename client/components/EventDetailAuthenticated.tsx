@@ -53,14 +53,23 @@ export default function EventDetailsAuthenticated() {
     navigate('/')
   }
 
-  const handleJoin = () => {
-    console.log(
-      `Event ID = ${numId} `,
-      `Auth = ${data?.auth0Id} `
-      
 
-    ) //
+  // JOIN - HANDLE JOIN FUNCTION 
+
+  const handleJoin = async () => {
+    // console.log( `Event ID = ${numId} `, `Auth = ${data?.auth0Id} `)
+    
+    if(user === undefined) {
+      return console.log('no data to make join')
+    }
+    const newJoin = { event_id: numId, user: user.sub }
+    
+    const token = await getAccessTokenSilently()
+    const newestJoin = events.join.mutate({newJoin, token })
+    
+    // navigate('/my-events')
   }
+
 
   if (error) {
     return <p>Something went wrong!</p>
