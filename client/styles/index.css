@@ -11,6 +11,11 @@ body {
   color: #004a8f;
 }
 
+.h2 {
+  padding: 10px;
+  margin: 10px;
+}
+
 /* Styling for Header.tsx */
 .header-container {
   background-color: #ffffff;

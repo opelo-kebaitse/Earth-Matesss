@@ -4,7 +4,7 @@ import { useUser } from '../hooks/useUser.ts'
 import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
-  const {user} = useAuth0()
+  const { user } = useAuth0()
   const userDB = useUser()
   const navigate = useNavigate()
   const initialFormData = {
@@ -13,7 +13,7 @@ export default function Register() {
   }
 
   const [formData, setFormData] = useState(initialFormData)
-    
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
@@ -21,16 +21,14 @@ export default function Register() {
 
   const handleRegister = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    setFormData({...formData, 'email': user.email})
+    setFormData({ ...formData, email: user.email })
     console.log('formData', formData)
   }
-  
-  
 
   return (
     <>
       <h2>Welcome to EarthMates</h2>
-      <form>
+      <form className="form-group">
         <label htmlFor="firstName"> First Name:</label>
         <input
           id="firstName"
