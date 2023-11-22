@@ -124,9 +124,10 @@ body {
   padding: 0 20px;
   margin: 20px;
   width: 30%;
-  height: 300px;
+  /* height: 300px; */
   background-color: rgb(247, 245, 242);
   border-radius: 5px;
+  text-decoration: none;
 }
 
 .event-image {
@@ -141,7 +142,11 @@ body {
   margin-top: auto;
   padding: 5px;
   border-radius: 0 0 5px 5px;
+  text-decoration: none;
+  color: black;
 }
+
+
 
 /* EventDetail.tsx */
 .evDet {
