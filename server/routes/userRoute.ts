@@ -11,7 +11,7 @@ router.get('/', checkJwt, async (req: JwtRequest, res) => {
  try {
    const auth0Id = req.auth.sub
    const userDetail = await db.getUserDetail(auth0Id)
-   res.json(userDetail)
+   res.json({userDetail})
  }catch (error){
     console.error(error) 
     res.status(500).send('Something went wrong')

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useUser } from '../hooks/useUser.ts'
 import { useNavigate } from 'react-router-dom'
@@ -11,8 +11,12 @@ export default function Register() {
     firstName: '',
     email: '',
   }
-
+  console.log(user)
   const [formData, setFormData] = useState(initialFormData)
+  
+  useEffect(()=> {
+    if (userDB.data) navigate('/')
+  }, [userDB.data, navigate])
     
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -24,7 +28,15 @@ export default function Register() {
     setFormData({...formData, 'email': user.email})
     console.log('formData', formData)
   }
+  // to do: 
+  // mutation that adds user --> use add from useEvents
+  // write api function in apis/users
+  // write the post call in routes to call db function 
+  // write a db function 
+
+  // also we need to run lint and fix the errors and warnings before code review
   
+ 
   
 
   return (
