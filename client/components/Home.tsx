@@ -19,7 +19,9 @@ function Home() {
         </button>
         </IfAuthenticated>
         <IfNotAuthenticated>
-          <button className ="button" onClick={() => loginWithRedirect(redirectUri: `${window.location.origin}/register`)}>
+          <button className ="button" onClick={() => loginWithRedirect({
+      redirectUri: `${window.location.origin}/register`,
+    })}>
           Log in to create or join an event!
           </button>
 
