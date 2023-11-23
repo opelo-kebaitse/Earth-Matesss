@@ -19,18 +19,23 @@ A Boilerplate is already set up for you with everything you will need to get sta
 ### MVP
 
 As a non-registered user:
-
+<!-- Am I supposed to be logged in do this? When I click Regiter in the main page, and try and fill out the First Name, I can't. So IF the idea is I can't register unless I'm logged in, then I'd set a conditional so that the Register button can only be seen after log in.  
+Additionally, why do I need to register once I'm logged in? The interface is just confusing.
+-->
 * I want to register for the App under my name
 * I want to browse a list of all the events posted by other users
 * I want to click into an event and view the details
+<!-- Looks like the two points below are not yet implemented? -->
 * I want to sort the places by date
 * Filter events by location
 
 As a registered user:
+<!-- I don't see a listing of my events-->
 * I want to save reviews to the 'myevents' component so I can remember my events too!
 * I want to view my joined events in the 'myevents' component
 * Be able to post about an event
-* Be able to register or join an event
+<!-- I THINK I'm able to join an event, but I get no feedback after clicking join -->
+* Be able to register or join an event 
 * As a user I want to save my event and view them on the 'myevents'
 
 ### Stretch

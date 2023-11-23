@@ -2,6 +2,7 @@ import connection from './connection.ts'
 
 import { NewEvent, Event, DisplayEvent, NewJoin } from '../../models/Event.ts'
 
+// REMOVE ALL COMMENTED OUT CODE
 //function to get the details we need for the list of events
 export async function getEventList(db = connection) {
   // return db('events').select('name', 'location', 'date', 'id, 'photo')
@@ -29,9 +30,7 @@ export function newEvent(newEventData: NewEvent) {
     ])
 }
 
-
 // --------------- Join DB FUNCTIONS
-
 // function to add a new join
 export function newJoin(newJoinData: NewJoin) {
   // console.log(`db join`, newJoin)
@@ -43,8 +42,6 @@ export function newJoin(newJoinData: NewJoin) {
     ])
 }
 
-
-
 export async function userIsAttending(
   user: string,
   db = connection
@@ -53,7 +50,6 @@ export async function userIsAttending(
   .where({user})
   .select('*')
   }
-
 
 //function to get details of a single event
 export async function getEventDetails(
