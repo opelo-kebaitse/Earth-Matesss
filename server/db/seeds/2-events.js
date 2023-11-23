@@ -37,7 +37,7 @@ export async function seed(knex) {
       date: '2023-09-10',
       description:
         'Trail clean-up in Ben Lomond Track. Tidy trails for tidy minds. And who knows, you might find some lost treasure!',
-      added_by_user: 'auth0|104',
+      added_by_user: 'google-oauth2|110018297537843173032',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -87,7 +87,7 @@ export async function seed(knex) {
       date: '2023-04-10',
       description:
         'Restoring native plants in Hamilton Gardens. Be a plant superhero - capes optional!',
-      added_by_user: 'auth0|104',
+      added_by_user: 'google-oauth2|110018297537843173032',
       photo: '/images/placeholder.jpg',
     },
     {
@@ -137,7 +137,7 @@ export async function seed(knex) {
       date: '2022-11-20',
       description:
         'Coastal cleanup at Fitzroy Beach. Surfs up! But first, lets pick up some rubbish.',
-      added_by_user: 'auth0|104',
+      added_by_user: 'google-oauth2|110018297537843173032',
       photo: '/images/placeholder.jpg',
     },
     {

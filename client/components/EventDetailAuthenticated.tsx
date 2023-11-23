@@ -89,7 +89,9 @@ export default function EventDetailsAuthenticated() {
             <p>Date: {data.date}</p>
             <p>Description: {data.description}</p>
             <p>Organiser: {data.userName}</p>
-            <button onClick={handleJoin}>Join</button>
+            <button className="join-button" onClick={handleJoin}>
+              Join
+            </button>
           </div>
         </div>
       ) : null}
@@ -101,8 +103,12 @@ export default function EventDetailsAuthenticated() {
             <p>Date: {data.date}</p>
             <p>Description: {data.description}</p>
             <p>Organiser: {data.userName}</p>
-            <button onClick={handleEditClick}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+            <button className="join-button" onClick={handleEditClick}>
+              Edit
+            </button>
+            <button className="join-button" onClick={handleDelete}>
+              Delete
+            </button>
           </div>
         </div>
       ) : null}
@@ -112,7 +118,5 @@ export default function EventDetailsAuthenticated() {
     </div>
   )
 }
-
-
 
 // refactor!!!

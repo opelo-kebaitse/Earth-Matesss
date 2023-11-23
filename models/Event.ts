@@ -29,12 +29,6 @@ export interface DisplayEvent {
   auth0Id: string
 }
 
-export interface NewJoin {
-  event_id: number
-  user: string
-}
-
-
 export interface PublicDisplayEvent {
   id: number
   eventName: string
@@ -44,3 +38,16 @@ export interface PublicDisplayEvent {
   userName: string
   photo: string
 }
+
+export interface NewJoin {
+  event_id: number
+  user: string
+}
+
+export interface NewUser {
+  auth0Id: string
+  name: string
+  email: string
+}
+
+

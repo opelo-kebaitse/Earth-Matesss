@@ -28,7 +28,9 @@ function Header() {
               </button>
             </IfAuthenticated>
             <IfNotAuthenticated>
-              <button className="button" onClick={() => loginWithRedirect()}>
+              <button className="button" onClick={() => loginWithRedirect({
+      redirectUri: `${window.location.origin}/register`,
+    })}>
                 Login
               </button>
             </IfNotAuthenticated>
