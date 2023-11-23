@@ -8,7 +8,6 @@ import {
 } from '@tanstack/react-query'
 
 
-
 export function useUser() {
   const { user, getAccessTokenSilently } = useAuth0()
   const query = useQuery({
@@ -20,6 +19,24 @@ export function useUser() {
   enabled: !!user })
   return {
     ...query,
-    
+    add: useAddUser()
   }
+}
+
+export function useUsersMutation<TData = unknown, TVariables = unknown>(
+  mutationFn: MutationFunction<TData, TVariables>
+) {
+  const queryClient = useQueryClient()
+
+  const mutation = useMutation({
+    mutationFn,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['user'] })
+    },
+  })
+  return mutation
+}
+
+export function useAddUser() {
+  return useUsersMutation(clientApi.addNewUser)
 }
