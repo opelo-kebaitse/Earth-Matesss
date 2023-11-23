@@ -1,8 +1,8 @@
 import { Router } from 'express'
 import * as db from '../db/events.ts'
-import { newEvent, newJoin } from '../db/events.ts'
+import { newJoin } from '../db/events.ts'
 
-import checkJwt, { JwtRequest } from '../auth0.ts'
+import { JwtRequest } from '../auth0.ts'
 
 const router = Router()
 

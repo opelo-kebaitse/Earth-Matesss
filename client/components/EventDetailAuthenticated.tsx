@@ -65,7 +65,7 @@ export default function EventDetailsAuthenticated() {
     const newJoin = { event_id: numId, user: user.sub }
     
     const token = await getAccessTokenSilently()
-    const newestJoin = events.join.mutate({newJoin, token })
+    events.join.mutate({newJoin, token })
     
     // navigate('/my-events')
   }

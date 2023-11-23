@@ -3,7 +3,6 @@ import {
   Event,
   NewEvent,
   DisplayEvent,
-  PublicDisplayEvent,
   NewJoin,
 } from '../../models/Event.ts'
 
