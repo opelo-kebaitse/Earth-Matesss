@@ -20,16 +20,16 @@ body {
 .header-container {
   background-color: #ffffff;
   display: flex;
-  width: 100vw;
+  width: 100%;
   justify-content: flex-end;
   align-items: center;
-  padding: 0px 50px;
+  padding: 0px 5%; /* Adjusted padding for smaller screens */
 }
 
 .title-container {
   background-color: #ffffff;
-  width: 100vw;
-  padding: 0px 50px;
+  width: 100%;
+  padding: 0px 5%; /* Adjusted padding for smaller screens */
   display: flex; 
   justify-content: space-between;
   align-items: center;
@@ -42,7 +42,7 @@ body {
 
 .header-title {
   padding: 5px;
-  font-size: 3em;
+  font-size: 2em; /* Adjusted font size for smaller screens */
   word-spacing: -1px;
   font-weight: 100;
 }
@@ -51,7 +51,6 @@ body {
   cursor: pointer;
 }
 
-
 .button-container {
   display: flex;
   align-items: center;
@@ -59,43 +58,30 @@ body {
 }
 
 .button {
-  margin-right: 20px;
+  margin-right: 10px; /* Reduced margin for smaller screens */
   border: none;
   color: #ffffff;
   background-color: #426B1F;
-  padding: 12px 22px;
+  padding: 10px 15px; /* Adjusted padding for smaller screens */
   border-radius: 5px;
   font-weight: lighter;
 }
 
-.button:hover {
-  cursor: pointer;
-  background-color: #ffffff;
-  color: #426B1F;
-}
-
 /* Home.tsx styling */
 .event-container {
-  width: 100vw;
-  padding: 0px 50px;
+  width: 100%;
+  padding: 0px 5%; /* Adjusted padding for smaller screens */
   display: flex;
   justify-content: center;
 }
 
 .crEve-button {
-  margin: 20px;
+  margin: 10px;
   border: none;
   color: #ffffff;
   background-color: #426B1F;
-  padding: 12px 22px;
+  padding: 10px 15px; /* Adjusted padding for smaller screens */
   border-radius: 5px;
-  font-weight: lighter;
-}
-
-.crEve-button:hover {
-  cursor: pointer;
-  background-color: #ffffff;
-  color: #426B1F;
 }
 
 /* Nav.tsx */
@@ -111,19 +97,12 @@ body {
   padding: 10px;
 }
 
-.nav a:hover {
-  cursor: pointer;
-  background-color: rgb(247, 245, 242);
-  color: #426B1F;
-  border-radius: 5px;
-}
-
 .page-title {
-  margin: 60px 20px;
-  padding: 0 15%;
+  margin: 20px 10px; /* Adjusted margin for smaller screens */
+  padding: 0 5%; /* Adjusted padding for smaller screens */
   text-align: center;
   color: black;
-  font-size: 4em;
+  font-size: 2.5em; /* Adjusted font size for smaller screens */
   line-height: 1.5;
   word-spacing: -2.5px;
   font-weight: 50;
@@ -131,8 +110,8 @@ body {
 
 /* EventsList.tsx */
 .events-container {
-  padding: 20px;
-  width: 100vw;
+  padding: 10px; /* Adjusted padding for smaller screens */
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -141,9 +120,9 @@ body {
 .event-card {
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
-  margin: 20px;
-  width: 30%;
+  padding: 0 10px; /* Adjusted padding for smaller screens */
+  margin: 10px;
+  width: 100%; /* Full width for smaller screens */
   max-width: 450px;
   background-color: rgb(247, 245, 242);
   border-radius: 5px;
@@ -156,9 +135,8 @@ body {
 }
 
 .event-image {
-  /* width: 100px; */
-  height: 200px;
-  background-size: contain;
+  height: 150px; /* Adjusted height for smaller screens */
+  background-size: cover; /* Improved background image sizing */
   background-position: center;
   background-repeat: no-repeat;  
 }
@@ -169,8 +147,6 @@ body {
   color: black;
 }
 
-
-
 /* EventDetail.tsx */
 .evDet {
   display: flex;
@@ -179,9 +155,9 @@ body {
 }
 
 .eventBox {
-  padding: 20px;
-  margin: 20px;
-  width: 80vw;
+  padding: 10px; /* Adjusted padding for smaller screens */
+  margin: 10px;
+  width: 90%; /* Adjusted width for smaller screens */
   background-color: rgb(247, 245, 242);
   border-radius: 5px;
 }
@@ -189,25 +165,19 @@ body {
 .event-button {
   margin: 10px;
   border: none;
-  width: 8%;
+  width: 20%; /* Adjusted width for smaller screens */
   color: #ffffff;
   background-color: #426B1F;
-  padding: 12px 22px;
+  padding: 10px 15px; /* Adjusted padding for smaller screens */
   border-radius: 5px;
   font-weight: lighter;
   align-items: flex-end;
 }
 
-.event-button:hover {
-  cursor: pointer;
-  background-color: rgb(247, 245, 242);
-  color: #426B1F;
-}
-
 /* AddEvent.tsx form */
 .form-group {
-  padding: 20px;
-  margin: 20px;
+  padding: 10px; /* Adjusted padding for smaller screens */
+  margin: 10px;
   background-color: rgb(247, 245, 242);
   border-radius: 5px;
   display: flex;
@@ -217,26 +187,20 @@ body {
 .post-event {
   margin: 10px auto;
   border: none;
-  width: 15%;
+  width: 30%; /* Adjusted width for smaller screens */
   align-items: center;
   color: #ffffff;
   background-color: #426B1F;
-  padding: 12px 22px;
+  padding: 10px 15px; /* Adjusted padding for smaller screens */
   border-radius: 5px;
   font-weight: lighter;
   display: block;
 }
 
-.post-event:hover {
-  cursor: pointer;
-  background-color: rgb(247, 245, 242);
-  color: #426B1F;
-}
-
 /* EditEvent.tsx */
 .edit-event {
-  padding: 20px;
-  margin: 20px;
+  padding: 10px; /* Adjusted padding for smaller screens */
+  margin: 10px;
   background-color: rgb(247, 245, 242);
   border-radius: 5px;
   display: flex;
@@ -247,17 +211,11 @@ body {
 .join-button {
   margin: 10px;
   border: none;
-  width: 10%;
+  width: 25%; /* Adjusted width for smaller screens */
   align-items: center;
   color: #ffffff;
   background-color: #426B1F;
-  padding: 12px 22px;
+  padding: 10px 15px; /* Adjusted padding for smaller screens */
   border-radius: 5px;
   font-weight: lighter;
-}
-
-.join-button:hover {
-  cursor: pointer;
-  background-color: rgb(247, 245, 242);
-  color: #426B1F;
 }
