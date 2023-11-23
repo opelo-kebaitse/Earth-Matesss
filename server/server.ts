@@ -9,7 +9,6 @@ const server = express()
 server.use(express.json())
 
 // Mount the routes at api endpoints
-
 server.use('/api/v1/events', eventsRoute)
 server.use('/api/v1/users', userRoute)
 server.use('/api/v1/joins', joinRoute)

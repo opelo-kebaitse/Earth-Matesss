@@ -4,10 +4,11 @@ import { newEvent } from '../db/events.ts'
 
 import { JwtRequest } from '../auth0.ts'
 
+// Remove console.logs  
+
 const router = Router()
 
 // route to get events list /api/v1/events
-
 router.get('/', async (req, res) => {
   try {
     const events = await db.getEventList()
