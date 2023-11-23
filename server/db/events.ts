@@ -3,6 +3,10 @@ import connection from './connection.ts'
 import { NewEvent, Event, DisplayEvent, NewJoin } from '../../models/Event.ts'
 
 // REMOVE ALL COMMENTED OUT CODE
+// Consistent database connection usage: The file uses both db (passed as a parameter with a default value of connection) and connection directly. 
+// It would be better to consistently use the db parameter to make it easier to test these functions by passing in a mock or alternative database connection.
+// Async syntax should only be used when using await. Knex returns promises by default so it is not necessary to specify async
+
 //function to get the details we need for the list of events
 export async function getEventList(db = connection) {
   // return db('events').select('name', 'location', 'date', 'id, 'photo')
@@ -87,6 +91,9 @@ export async function updateEvent(id: number, updatedEventData: Event) {
     ])
 }
 
+// This needs some work. In this case, async await is probably appropriate since you need
+// one operation to finish first. And as noted, you should delete the users_attending_event entry as part
+// of this operation
 //function to delete an event
 //I think this will need to delete the users_attending_as_well possibly
 export async function deleteEvent(id: number, db = connection) {
