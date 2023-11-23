@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { useAuth0 } from '@auth0/auth0-react'
 
+// As usual, remove console.logs, unneeded comments, and unused code.
 function AddEvent() {
   // Destructured getAccessTokenSilently
   const { getAccessTokenSilently, user } = useAuth0()
@@ -56,6 +57,9 @@ function AddEvent() {
   return (
     <>
       <h2>Create event</h2>
+      {/* Use Form Submission: Instead of handling the form submission on the button's onClick event, 
+      consider using the form's onSubmit event. This is more semantically correct and will handle form submissions via the enter key as well.
+     */}
       <form className="form-group">
         <label htmlFor="name">Name:</label>
         <input

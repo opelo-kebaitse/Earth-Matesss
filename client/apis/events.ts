@@ -6,8 +6,13 @@ import {
   NewJoin,
 } from '../../models/Event.ts'
 
+// remove console.logs
+// consider moving your type definitions to your models folder, or at least group them together. 
+// Is there any duplication here with your types and what you have in models?
 const rootURL = '/api/v1'
 
+// Use of Template Literals: When constructing URLs, you're sometimes adding strings and sometimes using template literals. 
+// Choose one method for consistency.
 export async function getEventList(): Promise<Event[]> {
   const res = await request.get(rootURL + '/events')
   return res.body
@@ -71,6 +76,8 @@ export async function deleteEvent({ numId, token }: deleteEventParams) {
   return res.body
 }
 
+// Remove unused code
+
 // hardcoded function to show a page
 // export async function getEventDetail(id: number) {
 //   console.log(`tried to go to ${id} event`)
@@ -86,6 +93,7 @@ export async function deleteEvent({ numId, token }: deleteEventParams) {
 //   return eventDetails
 // }
 
+// Yes to the below.
 // ----------- JOIN API FUNCTIONS ---pull out in refactor to put in separate file
 
 type JoinEventParams = {

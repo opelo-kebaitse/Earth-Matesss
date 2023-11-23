@@ -15,6 +15,8 @@ export default function EventList() {
   return (
     <div className="events-container">
       {events.map((event, index: number) => (
+        // Unique Keys for List Items: Using the index as a key in the list is not recommended, especially if the list can change. 
+        // It's better to use a unique identifier from the event, like event.id.
         <div className="event-card" key={index}>
           {/* Display the event image */}
           <Link to={`/${event.id}`} className="event-details"><div

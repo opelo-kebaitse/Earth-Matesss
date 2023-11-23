@@ -1,8 +1,9 @@
 import request from 'superagent'
 import { NewUser } from '../../models/Event'
 
-const rootURL = '/api/v1/users'
+// console logs be gone. unneeded comments too
 
+const rootURL = '/api/v1/users'
 
 export async function getUserDetail(token: string) {
   const res = await request.get(rootURL).set('Authorization', `Bearer ${token}`)
