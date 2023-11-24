@@ -10,8 +10,7 @@ export async function getUserDetail(auth0Id:string, db = connection) {
 
 // function to add a new User
 export function newUser(newUserData: NewUser) {
-  // Remove console.logs once debugging is done.
-  console.log('newUse DB receives:', newUserData)
+
   return connection('users')
     .insert({ ...newUserData })
     .returning([

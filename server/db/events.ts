@@ -37,7 +37,6 @@ export function newEvent(newEventData: NewEvent) {
 // --------------- Join DB FUNCTIONS
 // function to add a new join
 export function newJoin(newJoinData: NewJoin) {
-  // console.log(`db join`, newJoin)
   return connection('users_attending_events')
     .insert({ ...newJoinData })
     .returning([

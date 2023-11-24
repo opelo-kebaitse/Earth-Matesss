@@ -29,7 +29,6 @@ function EditEvent({ id, data, fn }: EditEventProps) {
       added_by_user: formData.auth0Id,
       photo: formData.photo,
     }
-    console.log(updatedEvent)
     event.edit.mutate({ updatedEvent, token })
     fn()
   }

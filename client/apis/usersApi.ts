@@ -17,7 +17,6 @@ type AddUserParams = {
 // Post route to add a user api/v1/users
 //receive info and send to backend the return 
 export async function addNewUser({formData, token}:AddUserParams) {
-  console.log("client Api:", formData)
   const res = await request.post(rootURL).set('Authorization', `Bearer ${token}`).send(formData)
   return res.body
 }

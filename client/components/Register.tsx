@@ -12,7 +12,7 @@ export default function Register() {
     email: '',
     auth0Id: '',
   }
-  console.log(user)
+
   const [formData, setFormData] = useState(initialFormData)
 
   useEffect(() => {

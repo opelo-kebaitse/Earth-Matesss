@@ -6,7 +6,7 @@ import {
   NewJoin,
 } from '../../models/Event.ts'
 
-// remove console.logs
+
 // consider moving your type definitions to your models folder, or at least group them together. 
 // Is there any duplication here with your types and what you have in models?
 const rootURL = '/api/v1'
@@ -27,12 +27,10 @@ export async function addEvent({
   newEvent,
   token,
 }: AddEventParams): Promise<Event> {
-  console.log('api', newEvent)
   const res = await request
     .post(`${rootURL}/events`)
     .set('Authorization', `Bearer ${token}`)
     .send(newEvent)
-  console.log('res.bodyAdd', res.body)
   return res.body
 }
 
@@ -53,12 +51,10 @@ export async function editEvent({
   updatedEvent,
   token,
 }: editEventParams): Promise<Event> {
-  console.log('updatedEvent', updatedEvent)
   const res = await request
     .patch(`${rootURL}/events/${updatedEvent.id}`)
     .set('Authorization', `Bearer ${token}`)
     .send(updatedEvent)
-  console.log('res.body', res.body)
   return res.body
 }
 
@@ -76,22 +72,7 @@ export async function deleteEvent({ numId, token }: deleteEventParams) {
   return res.body
 }
 
-// Remove unused code
 
-// hardcoded function to show a page
-// export async function getEventDetail(id: number) {
-//   console.log(`tried to go to ${id} event`)
-//   const eventDetails = {
-//     name: 'Beach clean-up at Mission Bay',
-//     location: 'Auckland',
-//     date: '2023-12-05',
-//     description:
-//       'Beach clean-up at Mission Bay. Bring your own bucket and spade - it’s like building sandcastles, but for grown-ups!',
-//     added_by_user: 'auth0|101',
-//     photo: 'mission_bay_cleanup.jpg',
-//   }
-//   return eventDetails
-// }
 
 // Yes to the below.
 // ----------- JOIN API FUNCTIONS ---pull out in refactor to put in separate file
@@ -104,11 +85,9 @@ export async function joinEvent({
   newJoin,
   token,
 }: JoinEventParams): Promise<NewJoin> {
-  // console.log(`newJoin`, newJoin)
   const res = await request
     .post(`${rootURL}/joins`)
     .set('Authorization', `Bearer ${token}`)
     .send(newJoin)
-    // console.log('api return', res.body)
   return res.body
 }

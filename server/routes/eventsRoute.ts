@@ -4,8 +4,6 @@ import { newEvent } from '../db/events.ts'
 
 import { JwtRequest } from '../auth0.ts'
 
-// Remove console.logs  
-
 const router = Router()
 
 // route to get events list /api/v1/events
@@ -22,7 +20,6 @@ router.get('/', async (req, res) => {
 // post route /api/v1/events
 router.post('/', async (req: JwtRequest, res) => {
   const newestEvent = req.body // Retrieve the new  data from the request body.
-  // console.log(req.body)
   const addedEvent = await newEvent(newestEvent)
   // Use the new function to add the new url to the database and await the promise it returns.
   res.json(addedEvent) // Respond with the data of the newly added data in JSON format.

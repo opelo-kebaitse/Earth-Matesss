@@ -57,7 +57,6 @@ export default function EventDetailsAuthenticated() {
   // JOIN - HANDLE JOIN FUNCTION 
 
   const handleJoin = async () => {
-    // console.log( `Event ID = ${numId} `, `Auth = ${data?.auth0Id} `)
     
     if(user === undefined) {
       return console.log('no data to make join')
