@@ -26,8 +26,18 @@ export async function addEvent({
   const res = await request
     .post(`${rootURL}/events`)
     .set('Authorization', `Bearer ${token}`)
-    .send(newEvent)
+    .send(newEvent) 
   console.log('res.bodyAdd', res.body)
+  if (Array.isArray(res.body)) {
+    const first = res.body[0]
+  
+  const newJoin = {
+    event_id: first.id,
+    user: first.added_by_user,
+    is_creator: true
+  }
+  await joinEvent({newJoin, token})
+}
   return res.body
 }
 

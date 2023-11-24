@@ -39,7 +39,8 @@ export function newJoin(newJoinData: NewJoin) {
     .insert({ ...newJoinData })
     .returning([
       'event_id',
-      'user' 
+      'user', 
+      'is_creator'
     ])
 }
 

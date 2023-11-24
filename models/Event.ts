@@ -42,6 +42,7 @@ export interface PublicDisplayEvent {
 export interface NewJoin {
   event_id: number
   user: string
+  is_creator: boolean
 }
 
 export interface NewUser {
