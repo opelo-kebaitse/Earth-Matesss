@@ -2,24 +2,16 @@ import connection from './connection.ts'
 
 import { NewEvent, Event, DisplayEvent, NewJoin } from '../../models/Event.ts'
 
-// REMOVE ALL COMMENTED OUT CODE
+
 // Consistent database connection usage: The file uses both db (passed as a parameter with a default value of connection) and connection directly. 
 // It would be better to consistently use the db parameter to make it easier to test these functions by passing in a mock or alternative database connection.
 // Async syntax should only be used when using await. Knex returns promises by default so it is not necessary to specify async
 
-//function to get the details we need for the list of events
 export async function getEventList(db = connection) {
-  // return db('events').select('name', 'location', 'date', 'id, 'photo')
-  // const currentDate = new Date().getTime()
-
-  // return db('events').where('date', '>', currentDate).select('*').orderby('date')
   return db('events')
-    // .where('date', '>=', currentDate)
-    .select('*')
-    // .orderBy('date')
+    .select('*') 
 }
 
-//function to add a new event
 export function newEvent(newEventData: NewEvent) {
   return connection('events')
     .insert({ ...newEventData })
@@ -34,8 +26,6 @@ export function newEvent(newEventData: NewEvent) {
     ])
 }
 
-// --------------- Join DB FUNCTIONS
-// function to add a new join
 export function newJoin(newJoinData: NewJoin) {
   return connection('users_attending_events')
     .insert({ ...newJoinData })
@@ -54,7 +44,7 @@ export async function userIsAttending(
   .select('*')
   }
 
-//function to get details of a single event
+
 export async function getEventDetails(
   id: number,
   db = connection

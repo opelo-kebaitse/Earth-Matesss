@@ -6,7 +6,7 @@ import { JwtRequest } from '../auth0.ts'
 
 const router = Router()
 
-// route to get events list /api/v1/events
+// get events route /api/v1/events
 router.get('/', async (req, res) => {
   try {
     const events = await db.getEventList()
@@ -19,13 +19,12 @@ router.get('/', async (req, res) => {
 
 // post route /api/v1/events
 router.post('/', async (req: JwtRequest, res) => {
-  const newestEvent = req.body // Retrieve the new  data from the request body.
+  const newestEvent = req.body 
   const addedEvent = await newEvent(newestEvent)
-  // Use the new function to add the new url to the database and await the promise it returns.
-  res.json(addedEvent) // Respond with the data of the newly added data in JSON format.
+  res.json(addedEvent) 
 })
 
-// route to get event list by id
+// get events by id route
 router.get('/:id', async (req, res) => {
   const id = Number(req.params.id)
 
@@ -44,7 +43,7 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-//function to update an event, it checks if there is an id, then tries to update, catching errors if they happen
+// update an event route
 router.patch('/:id', async (req: JwtRequest, res) => {
   const id = Number(req.params.id)
 
@@ -62,7 +61,7 @@ router.patch('/:id', async (req: JwtRequest, res) => {
   }
 })
 
-//function to delete an event, checks id, trys and catches errors if they happen
+// delete an event route
 router.delete('/:id', async (req: JwtRequest, res) => {
   const id = Number(req.params.id)
 
@@ -79,8 +78,5 @@ router.delete('/:id', async (req: JwtRequest, res) => {
     res.status(500).json('Internal server error')
   }
 })
-
-
-
 
 export default router

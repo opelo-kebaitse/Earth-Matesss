@@ -6,8 +6,6 @@ const router = Router()
 
 //Get route for /api/v1/users
 router.get('/', checkJwt, async (req: JwtRequest, res) => {
-
-// router.get('/', async (req, res) => {
   try {
     const auth0Id = req.auth.sub
     const userDetail = await db.getUserDetail(auth0Id)
@@ -20,10 +18,9 @@ router.get('/', checkJwt, async (req: JwtRequest, res) => {
 
 // post route /api/v1/users
 router.post('/', async (req: JwtRequest, res) => {
-  const newestUser = req.body // Retrieve the new  data from the request body.
+  const newestUser = req.body
   const addedUser = await db.newUser(newestUser)
-  // Use the new function to add the new url to the database and await the promise it returns.
-  res.json(addedUser) // Respond with the data of the newly added data in JSON format.
+  res.json(addedUser) 
 })
 
 export default router

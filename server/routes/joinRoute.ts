@@ -18,9 +18,7 @@ router.post('/', async (req: JwtRequest, res) => {
         return res.status(403).send("User already attending event")
     }
     const addedJoin = await newJoin(newestJoin)
-    // Use the new function to add the new join to the database and await the promise it returns.
-    res.json(addedJoin) // Respond with the data of the newly added data in JSON format.
+    res.json(addedJoin) 
   })
-  
   
   export default router

@@ -8,9 +8,7 @@ export async function getUserDetail(auth0Id:string, db = connection) {
 }
 
 
-// function to add a new User
 export function newUser(newUserData: NewUser) {
-
   return connection('users')
     .insert({ ...newUserData })
     .returning([
