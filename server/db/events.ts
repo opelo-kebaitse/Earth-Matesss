@@ -3,19 +3,34 @@ import connection from './connection.ts'
 import { NewEvent, Event, DisplayEvent, NewJoin } from '../../models/Event.ts'
 
 //function to get the details we need for the list of events
-export async function getEventList(db = connection) {
-  // return db('events').select('name', 'location', 'date', 'id, 'photo')
-  // const currentDate = new Date().getTime()
+// export function getEventList(db = connection) {
+//   // const currentDate = new Date().getTime()
 
-  // return db('events').where('date', '>', currentDate).select('*').orderby('date')
-  return db('events')
-    // .where('date', '>=', currentDate)
-    .select('*')
-    // .orderBy('date')
+//   return db('events')
+ 
+// //     .select('*')
+//  // }
+
+
+//function to get details for event lists and public display
+export function getEventList( db = connection) {
+  return connection ('events')
+    .join('users', 'events.added_by_user', 'users.auth0Id')
+    .select(
+      'events.id'
+      'events.name as eventName',
+      'events.location',
+      'events.date',
+      'events.description',
+      'users.name as userName',
+'events.photo',
+    )
+    .first()
 }
 
+
 //function to add a new event
-export function newEvent(newEventData: NewEvent) {
+export function newEvent(newEventData: NewEvent, db= connection) {
   return connection('events')
     .insert({ ...newEventData })
     .returning([
@@ -33,7 +48,7 @@ export function newEvent(newEventData: NewEvent) {
 // --------------- Join DB FUNCTIONS
 
 // function to add a new join
-export function newJoin(newJoinData: NewJoin) {
+export function newJoin(newJoinData: NewJoin, db= connection) {
   // console.log(`db join`, newJoin)
   return connection('users_attending_events')
     .insert({ ...newJoinData })
@@ -76,7 +91,7 @@ export async function getEventDetails(
     .first()
 }
 
-export async function updateEvent(id: number, updatedEventData: Event) {
+export async function updateEvent(id: number, updatedEventData: Event, db= connection) {
   return connection('events')
     .where({ id })
     .update({ ...updatedEventData })
