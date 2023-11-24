@@ -62,7 +62,7 @@ export default function EventDetailsAuthenticated() {
     if(user === undefined) {
       return console.log('no data to make join')
     }
-    const newJoin = { event_id: numId, user: user.sub }
+    const newJoin = { event_id: numId, user: user.sub, is_creator: false }
     
     const token = await getAccessTokenSilently()
     events.join.mutate({newJoin, token })
