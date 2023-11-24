@@ -12,8 +12,8 @@ export async function getEventList(db = connection) {
     .select('*') 
 }
 
-export function newEvent(newEventData: NewEvent) {
-  return connection('events')
+export function newEvent(newEventData: NewEvent, db = connection) {
+  return db('events')
     .insert({ ...newEventData })
     .returning([
       'id',
@@ -26,13 +26,10 @@ export function newEvent(newEventData: NewEvent) {
     ])
 }
 
-export function newJoin(newJoinData: NewJoin) {
-  return connection('users_attending_events')
+export function newJoin(newJoinData: NewJoin, db = connection) {
+  return db('users_attending_events')
     .insert({ ...newJoinData })
-    .returning([
-      'event_id',
-      'user' 
-    ])
+    .returning(['event_id', 'user'])
 }
 
 export async function userIsAttending(
@@ -65,8 +62,12 @@ export async function getEventDetails(
     .first()
 }
 
-export async function updateEvent(id: number, updatedEventData: Event) {
-  return connection('events')
+export async function updateEvent(
+  id: number,
+  updatedEventData: Event,
+  db = connection
+) {
+  return db('events')
     .where({ id })
     .update({ ...updatedEventData })
     .returning([

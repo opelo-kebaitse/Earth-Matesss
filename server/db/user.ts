@@ -8,8 +8,8 @@ export async function getUserDetail(auth0Id:string, db = connection) {
 }
 
 
-export function newUser(newUserData: NewUser) {
-  return connection('users')
+export function newUser(newUserData: NewUser, db = connection) {
+  return db('users')
     .insert({ ...newUserData })
     .returning([
       'auth0Id',
