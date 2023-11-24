@@ -22,7 +22,13 @@ router.get('/', async (req, res) => {
 router.post('/', async (req: JwtRequest, res) => {
   const newestEvent = req.body // Retrieve the new  data from the request body.
   // console.log(req.body)
-  const addedEvent = await newEvent(newestEvent)
+  const addedEvent = await db.newEvent(newestEvent)
+  const newJoin = {
+    event_id: addedEvent[0].id,
+    user: addedEvent[0].added_by_user,
+    is_creator: true
+  }
+  await db.newJoin(newJoin)
   // Use the new function to add the new url to the database and await the promise it returns.
   res.json(addedEvent) // Respond with the data of the newly added data in JSON format.
 })
