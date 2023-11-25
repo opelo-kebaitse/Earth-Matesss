@@ -1,25 +1,14 @@
 function Nav() {
   return (
     <nav className="nav-buttons">
-      <div>
-        <a href="find-events" className="nav">
-          Find Events
-        </a>
+      <div className="nav">
+        <a href="/">Home</a>
       </div>
-      <div>
-        <a href="blog" className="nav">
-          Blog
-        </a>
+      <div className="nav">
+        <a href="/my-events">My Events</a>
       </div>
-      <div>
-        <a href="my-events" className="nav">
-          My Events
-        </a>
-      </div>
-      <div>
-        <a href="my-profile" className="nav">
-          My Profile
-        </a>
+      <div className="nav">
+        <a href="/my-profile">My Profile</a>
       </div>
     </nav>
   )

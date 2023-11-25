@@ -25,8 +25,12 @@ export default function EventDetailsAuthenticated() {
   //   error,
   // } = useQuery(['event', id], () => getEventDetail(numId))
 
+
+
   const { data, isLoading, error } = useEvent(numId)
   const events = useEvents()
+
+
 
   useEffect(() => {
     if (user?.sub === data?.auth0Id) {
@@ -49,11 +53,23 @@ export default function EventDetailsAuthenticated() {
     navigate('/')
   }
 
-  const handleJoin = () => {
-    console.log(
-      `user with ${user?.email} wants to join this lets write a function for that!`
-    )
+
+  // JOIN - HANDLE JOIN FUNCTION 
+
+  const handleJoin = async () => {
+    // console.log( `Event ID = ${numId} `, `Auth = ${data?.auth0Id} `)
+    
+    if(user === undefined) {
+      return console.log('no data to make join')
+    }
+    const newJoin = { event_id: numId, user: user.sub }
+    
+    const token = await getAccessTokenSilently()
+    events.join.mutate({newJoin, token })
+    
+    // navigate('/my-events')
   }
+
 
   if (error) {
     return <p>Something went wrong!</p>
@@ -73,7 +89,9 @@ export default function EventDetailsAuthenticated() {
             <p>Date: {data.date}</p>
             <p>Description: {data.description}</p>
             <p>Organiser: {data.userName}</p>
-            <button onClick={handleJoin}>Join</button>
+            <button className="join-button" onClick={handleJoin}>
+              Join
+            </button>
           </div>
         </div>
       ) : null}
@@ -85,8 +103,12 @@ export default function EventDetailsAuthenticated() {
             <p>Date: {data.date}</p>
             <p>Description: {data.description}</p>
             <p>Organiser: {data.userName}</p>
-            <button onClick={handleEditClick}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+            <button className="join-button" onClick={handleEditClick}>
+              Edit
+            </button>
+            <button className="join-button" onClick={handleDelete}>
+              Delete
+            </button>
           </div>
         </div>
       ) : null}
@@ -96,7 +118,5 @@ export default function EventDetailsAuthenticated() {
     </div>
   )
 }
-
-
 
 // refactor!!!

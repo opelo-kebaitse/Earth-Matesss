@@ -2,11 +2,11 @@ import { Router } from 'express'
 import * as db from '../db/events.ts'
 import { newEvent } from '../db/events.ts'
 
-import checkJwt, { JwtRequest } from '../auth0.ts'
+import { JwtRequest } from '../auth0.ts'
 
 const router = Router()
 
-// route to get events list
+// route to get events list /api/v1/events
 
 router.get('/', async (req, res) => {
   try {
@@ -17,6 +17,8 @@ router.get('/', async (req, res) => {
   }
 })
 
+
+// post route /api/v1/events
 router.post('/', async (req: JwtRequest, res) => {
   const newestEvent = req.body // Retrieve the new  data from the request body.
   // console.log(req.body)
@@ -79,5 +81,8 @@ router.delete('/:id', async (req: JwtRequest, res) => {
     res.status(500).json('Internal server error')
   }
 })
+
+
+
 
 export default router

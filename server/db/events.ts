@@ -1,6 +1,6 @@
 import connection from './connection.ts'
 
-import { NewEvent, Event, DisplayEvent } from '../../models/Event.ts'
+import { NewEvent, Event, DisplayEvent, NewJoin } from '../../models/Event.ts'
 
 //function to get the details we need for the list of events
 export async function getEventList(db = connection) {
@@ -29,6 +29,32 @@ export function newEvent(newEventData: NewEvent) {
       'photo',
     ])
 }
+
+
+// --------------- Join DB FUNCTIONS
+
+// function to add a new join
+export function newJoin(newJoinData: NewJoin) {
+  // console.log(`db join`, newJoin)
+  return connection('users_attending_events')
+    .insert({ ...newJoinData })
+    .returning([
+      'event_id',
+      'user' 
+    ])
+}
+
+
+
+export async function userIsAttending(
+  user: string,
+  db = connection
+){
+  return db('users_attending_events')
+  .where({user})
+  .select('*')
+  }
+
 
 //function to get details of a single event
 export async function getEventDetails(

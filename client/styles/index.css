@@ -11,17 +11,23 @@ body {
   color: #004a8f;
 }
 
+.h2 {
+  padding: 10px;
+  margin: 10px;
+}
+
 /* Styling for Header.tsx */
 .header-container {
   background-color: #ffffff;
   display: flex;
   width: 100vw;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 0px 50px;
 }
 
 .title-container {
+  background-color: #ffffff;
   width: 100vw;
   padding: 0px 50px;
   display: flex; 
@@ -35,10 +41,16 @@ body {
 }
 
 .header-title {
+  padding: 5px;
   font-size: 3em;
   word-spacing: -1px;
   font-weight: 100;
 }
+
+.header-title:hover {
+  cursor: pointer;
+}
+
 
 .button-container {
   display: flex;
@@ -96,7 +108,15 @@ body {
 .nav a {
   text-decoration: none;
   color: #000000;
-} 
+  padding: 10px;
+}
+
+.nav a:hover {
+  cursor: pointer;
+  background-color: rgb(247, 245, 242);
+  color: #426B1F;
+  border-radius: 5px;
+}
 
 .page-title {
   margin: 60px 20px;
@@ -124,8 +144,14 @@ body {
   padding: 0 20px;
   margin: 20px;
   width: 30%;
-  height: 300px;
+  max-width: 450px;
   background-color: rgb(247, 245, 242);
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.event-card:hover {
+  cursor: pointer;
   border-radius: 5px;
 }
 
@@ -138,10 +164,12 @@ body {
 }
 
 .event-details {
-  margin-top: auto;
-  padding: 5px;
   border-radius: 0 0 5px 5px;
+  text-decoration: none;
+  color: black;
 }
+
+
 
 /* EventDetail.tsx */
 .evDet {
@@ -213,4 +241,23 @@ body {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+}
+
+/* EventDetailAuthenticated.tsx */
+.join-button {
+  margin: 10px;
+  border: none;
+  width: 10%;
+  align-items: center;
+  color: #ffffff;
+  background-color: #426B1F;
+  padding: 12px 22px;
+  border-radius: 5px;
+  font-weight: lighter;
+}
+
+.join-button:hover {
+  cursor: pointer;
+  background-color: rgb(247, 245, 242);
+  color: #426B1F;
 }

@@ -8,6 +8,7 @@ export async function up(knex) {
     table.integer('id').primary()
     table.integer('event_id').references('events.id')
     table.string('user').references('users.auth0Id')
+    table.boolean('is_creator')
   })
 }
 
