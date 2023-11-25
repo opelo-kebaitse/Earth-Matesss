@@ -1,6 +1,12 @@
 import { Router } from 'express'
-import * as db from '../db/events.ts'
-import { newEvent } from '../db/events.ts'
+
+import {
+  newEvent,
+  getEventList,
+  getEventDetails,
+  updateEvent,
+  deleteEvent,
+} from '../db/events.ts'
 
 import { JwtRequest } from '../auth0.ts'
 
@@ -9,7 +15,7 @@ const router = Router()
 // get events route /api/v1/events
 router.get('/', async (req, res) => {
   try {
-    const events = await db.getEventList()
+    const events = await getEventList()
     res.json(events)
   } catch (error) {
     res.status(500).json('Internal server error')
@@ -35,7 +41,7 @@ router.get('/:id', async (req, res) => {
 
   try {
     const id = Number(req.params.id)
-    const event = await db.getEventDetails(id)
+    const event = await getEventDetails(id)
     res.json(event)
   } catch (error) {
     console.error(error)
@@ -53,7 +59,7 @@ router.patch('/:id', async (req: JwtRequest, res) => {
   }
 
   try {
-    const updatedEvent = await db.updateEvent(id, req.body)
+    const updatedEvent = await updateEvent(id, req.body)
     res.json(updatedEvent)
   } catch (error) {
     console.error(error)
@@ -71,7 +77,7 @@ router.delete('/:id', async (req: JwtRequest, res) => {
   }
 
   try {
-    const deletedEvent = await db.deleteEvent(id)
+    const deletedEvent = await deleteEvent(id)
     res.json(deletedEvent)
   } catch (error) {
     console.error(error)
