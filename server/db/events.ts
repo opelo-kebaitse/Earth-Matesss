@@ -5,15 +5,13 @@ import { NewEvent, Event, DisplayEvent } from '../../models/Event.ts'
 //function to get the details we need for the list of events
 export function getEventList(db = connection) {
   // return db('events').select('name', 'location', 'date', 'id, 'photo')
-  // const currentDate = new Date().getTime()
+  const currentDate = new Date().toISOString()
 
   // return db('events').where('date', '>', currentDate).select('*').orderby('date')
-  return (
-    db('events')
-      // .where('date', '>=', currentDate)
-      .select('*')
-  )
-  // .orderBy('date')
+  return db('events')
+    .where('date', '>=', currentDate)
+    .select('*')
+    .orderBy('date')
 }
 
 //function to add a new event
