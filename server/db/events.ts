@@ -3,11 +3,7 @@ import connection from './connection.ts'
 import { NewEvent, Event, DisplayEvent, NewJoinEvent } from '../../models/Event.ts'
 
 
-// Consistent database connection usage: The file uses both db (passed as a parameter with a default value of connection) and connection directly. 
-// It would be better to consistently use the db parameter to make it easier to test these functions by passing in a mock or alternative database connection.
-// Async syntax should only be used when using await. Knex returns promises by default so it is not necessary to specify async
-
-export async function getEventList(db = connection) {
+export function getEventList(db = connection) {
   return db('events')
     .select('*') 
 }
@@ -32,7 +28,7 @@ export function newJoin(newJoinData: NewJoinEvent, db = connection) {
     .returning(['event_id', 'user'])
 }
 
-export async function userIsAttending(
+export function userIsAttending(
   user: string,
   db = connection
 ){
@@ -42,7 +38,7 @@ export async function userIsAttending(
   }
 
 
-export async function getEventDetails(
+export function getEventDetails(
   id: number,
   db = connection
 ): Promise<DisplayEvent> {
@@ -62,7 +58,7 @@ export async function getEventDetails(
     .first()
 }
 
-export async function updateEvent(
+export function updateEvent(
   id: number,
   updatedEventData: Event,
   db = connection
