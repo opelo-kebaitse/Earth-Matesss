@@ -10,7 +10,7 @@ const rootURL = '/api/v1'
 // Use of Template Literals: When constructing URLs, you're sometimes adding strings and sometimes using template literals. 
 // Choose one method for consistency.
 export async function getEventList(): Promise<Event[]> {
-  const res = await request.get(rootURL + '/events')
+  const res = await request.get(`${rootURL}/events`)
   return res.body
 }
 

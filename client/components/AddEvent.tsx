@@ -45,9 +45,6 @@ function AddEvent() {
   return (
     <>
       <h2>Create event</h2>
-      {/* Use Form Submission: Instead of handling the form submission on the button's onClick event, 
-      consider using the form's onSubmit event. This is more semantically correct and will handle form submissions via the enter key as well.
-     */}
       <form onSubmit={handleSubmit} className="form-group">
         <label htmlFor="name">Name:</label>
         <input
@@ -92,7 +89,6 @@ function AddEvent() {
 //Would like to change the navigation to go to the individual event page, but need to work out how to give it the correct id
 //have just set this up to start with using the fields we have not the ones on the image as have realised on our wire frame it says time but we don't have that elsewhere
 //Also we talked about a drop down of suburbs, think this may have become stretch aye?
-//For date do we want a date picker?
-//Need to add Auth0 here still
+
 
 export default AddEvent
