@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import * as db from '../db/events.ts'
 import { newEvent } from '../db/events.ts'
+import { addNewJoin } from '../db/joins.ts'
 
 import { JwtRequest } from '../auth0.ts'
 
@@ -17,18 +18,17 @@ router.get('/', async (req, res) => {
   }
 })
 
-
 // post route /api/v1/events
 router.post('/', async (req: JwtRequest, res) => {
   const newestEvent = req.body // Retrieve the new  data from the request body.
   // console.log(req.body)
-  const addedEvent = await db.newEvent(newestEvent)
+  const addedEvent = await newEvent(newestEvent)
   const newJoin = {
     event_id: addedEvent[0].id,
     user: addedEvent[0].added_by_user,
-    is_creator: true
+    is_creator: true,
   }
-  await db.newJoin(newJoin)
+  await addNewJoin(newJoin)
   // Use the new function to add the new url to the database and await the promise it returns.
   res.json(addedEvent) // Respond with the data of the newly added data in JSON format.
 })
@@ -87,8 +87,5 @@ router.delete('/:id', async (req: JwtRequest, res) => {
     res.status(500).json('Internal server error')
   }
 })
-
-
-
 
 export default router

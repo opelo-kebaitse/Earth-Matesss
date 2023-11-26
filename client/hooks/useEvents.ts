@@ -1,4 +1,4 @@
-import * as clientApi from '../apis/events.ts'
+import * as clientApi from '../apis/eventsApi.ts'
 import {
   useQuery,
   MutationFunction,
@@ -15,16 +15,15 @@ export function useEvents() {
     ...query,
     add: useAddEvent(),
     delete: useDeleteEvent(),
-    join: useJoinEvent() ////// ????????????????????
+    // join: useJoinEvent(), ////// ????????????????????
   }
 }
 
+// // -- JOIN HOOK FUNCTINOS
 
-// -- JOIN HOOK FUNCTINOS 
-
-export function useJoinEvent() {
-  return useEventsMutation(clientApi.joinEvent);
-}
+// export function useJoinEvent() {
+//   return useEventsMutation(clientApi.joinEvent)
+// }
 
 export function useEventsMutation<TData = unknown, TVariables = unknown>(
   mutationFn: MutationFunction<TData, TVariables>
@@ -44,7 +43,6 @@ export function useAddEvent() {
   return useEventsMutation(clientApi.addEvent)
 }
 
-
 export function useDeleteEvent() {
   return useEventsMutation(clientApi.deleteEvent)
 }
@@ -59,7 +57,6 @@ export function useEvent(id: number) {
     edit: useEditEvent(id),
   }
 }
-
 
 export function useEventMutation<TData = unknown, TVariables = unknown>(
   mutationFn: MutationFunction<TData, TVariables>,
@@ -79,5 +76,3 @@ export function useEventMutation<TData = unknown, TVariables = unknown>(
 export function useEditEvent(id: number) {
   return useEventMutation(clientApi.editEvent, id)
 }
-
-
