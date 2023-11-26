@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import EditEvent from './EditEvent'
 import { useEvents, useEvent } from '../hooks/useEvents.ts'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useJoin } from '../hooks/useJoins.ts'
 
 export default function EventDetailsAuthenticated() {
   const { id } = useParams()
@@ -19,18 +20,9 @@ export default function EventDetailsAuthenticated() {
   //create a state for if user can edit/delete
   const [isContributor, setIsContributor] = useState(false)
 
-  // const {
-  //   data: event,
-  //   isLoading,
-  //   error,
-  // } = useQuery(['event', id], () => getEventDetail(numId))
-
-
-
   const { data, isLoading, error } = useEvent(numId)
   const events = useEvents()
-
-
+  const joins = useJoin()
 
   useEffect(() => {
     if (user?.sub === data?.auth0Id) {
@@ -53,23 +45,21 @@ export default function EventDetailsAuthenticated() {
     navigate('/')
   }
 
-
-  // JOIN - HANDLE JOIN FUNCTION 
+  // JOIN - HANDLE JOIN FUNCTION
 
   const handleJoin = async () => {
     // console.log( `Event ID = ${numId} `, `Auth = ${data?.auth0Id} `)
-    
-    if(user === undefined) {
+
+    if (user === undefined) {
       return console.log('no data to make join')
     }
-    const newJoin = { event_id: numId, user: user.sub }
-    
+    const newJoin = { event_id: numId, is_creator: false }
+
     const token = await getAccessTokenSilently()
-    events.join.mutate({newJoin, token })
-    
+    joins.add.mutate({ newJoin, token })
+
     // navigate('/my-events')
   }
-
 
   if (error) {
     return <p>Something went wrong!</p>
