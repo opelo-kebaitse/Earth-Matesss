@@ -1,14 +1,10 @@
 import request from 'superagent'
 import {
   Event,
-  NewEvent,
   DisplayEvent,
-  NewJoinEvent,
+  NewJoinEvent,AddEventParams, EditEventParams, DeleteEventParams, JoinEventParams
 } from '../../models/Event.ts'
 
-
-// consider moving your type definitions to your models folder, or at least group them together. 
-// Is there any duplication here with your types and what you have in models?
 const rootURL = '/api/v1'
 
 // Use of Template Literals: When constructing URLs, you're sometimes adding strings and sometimes using template literals. 
@@ -16,12 +12,6 @@ const rootURL = '/api/v1'
 export async function getEventList(): Promise<Event[]> {
   const res = await request.get(rootURL + '/events')
   return res.body
-}
-
-//function to call the server route to add an event and send the event data to it, then sent that data back to the component function
-type AddEventParams = {
-  newEvent: NewEvent
-  token: string
 }
 
 
@@ -42,17 +32,12 @@ export async function getEventDetail(id: number): Promise<DisplayEvent> {
   return res.body
 }
 
-//type for edit event
-type editEventParams = {
-  updatedEvent: Event
-  token: string
-}
 
 //clientside api call to edit an event
 export async function editEvent({
   updatedEvent,
   token,
-}: editEventParams): Promise<Event> {
+}: EditEventParams): Promise<Event> {
   const res = await request
     .patch(`${rootURL}/events/${updatedEvent.id}`)
     .set('Authorization', `Bearer ${token}`)
@@ -60,14 +45,9 @@ export async function editEvent({
   return res.body
 }
 
-//type for delete event
-type deleteEventParams = {
-  numId: number
-  token: string
-}
 
 //clientside api call to delete an event
-export async function deleteEvent({ numId, token }: deleteEventParams) {
+export async function deleteEvent({ numId, token }: DeleteEventParams) {
   const res = await request
     .delete(`${rootURL}/events/${numId}`)
     .set('Authorization', `Bearer ${token}`)
@@ -75,14 +55,10 @@ export async function deleteEvent({ numId, token }: deleteEventParams) {
 }
 
 
-
 // Yes to the below.
 // ----------- JOIN API FUNCTIONS ---pull out in refactor to put in separate file
 
-type JoinEventParams = {
-  newJoin: NewJoinEvent
-  token: string
-}
+
 export async function joinEvent({
   newJoin,
   token,

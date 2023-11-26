@@ -26,7 +26,7 @@ export interface DisplayEvent extends PublicDisplayEvent{
   auth0Id: string
 }
 
-// A more descriptive name would be nice
+
 export interface NewJoinEvent {
   event_id: number
   user: string
@@ -39,3 +39,28 @@ export interface NewUser {
 }
 
 
+//type for add event
+export interface AddEventParams {
+  newEvent: NewEvent
+  token: string
+}
+
+
+//type for edit event
+export interface EditEventParams {
+  updatedEvent: Event
+  token: string
+}
+
+
+//type for delete event
+export interface DeleteEventParams {
+  numId: number
+  token: string
+}
+
+// type for join
+export interface JoinEventParams {
+  newJoin: NewJoinEvent
+  token: string
+}
