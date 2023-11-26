@@ -4,6 +4,7 @@ import EditEvent from './EditEvent'
 import { useEvents, useEvent } from '../hooks/useEvents.ts'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useJoin } from '../hooks/useJoins.ts'
+import { NewJoinEvent } from '../../models/Event.ts'
 
 export default function EventDetailsAuthenticated() {
   const { id } = useParams()
@@ -48,9 +49,8 @@ export default function EventDetailsAuthenticated() {
   // JOIN - HANDLE JOIN FUNCTION
 
   const handleJoin = async () => {
-    // console.log( `Event ID = ${numId} `, `Auth = ${data?.auth0Id} `)
-
-    if (user === undefined) {
+    
+    if(user === undefined) {
       return console.log('no data to make join')
     }
     const newJoin = { event_id: numId, is_creator: false }

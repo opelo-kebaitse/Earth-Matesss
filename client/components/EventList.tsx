@@ -22,9 +22,7 @@ export default function EventList() {
             style={{ backgroundImage: `url(${event.photo})` }}
           ></div>
           <div className="event-details">
-            
               <h3>{event.name}</h3>
-            
             <p>Location: {event.location}</p>
             <p>Date: {event.date}</p>
           </div></Link>

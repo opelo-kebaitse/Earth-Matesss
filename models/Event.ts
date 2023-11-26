@@ -1,13 +1,3 @@
-export interface Event {
-  id: number
-  name: string
-  location: string
-  date: string
-  description: string
-  added_by_user: string
-  photo: string
-}
-
 export interface NewEvent {
   name: string
   location: string
@@ -17,16 +7,8 @@ export interface NewEvent {
   photo: string
 }
 
-export interface DisplayEvent {
+export interface Event extends NewEvent{
   id: number
-  eventName: string
-  location: string
-  date: number
-  description: string
-  userName: string
-  email: string
-  photo: string
-  auth0Id: string
 }
 
 export interface PublicDisplayEvent {
@@ -39,7 +21,13 @@ export interface PublicDisplayEvent {
   photo: string
 }
 
-export interface NewJoin {
+export interface DisplayEvent extends PublicDisplayEvent{
+  email: string
+  auth0Id: string
+}
+
+
+export interface NewJoinEvent {
   event_id: number
   is_creator: boolean
 }
@@ -48,4 +36,31 @@ export interface NewUser {
   auth0Id: string
   name: string
   email: string
+}
+
+
+//type for add event
+export interface AddEventParams {
+  newEvent: NewEvent
+  token: string
+}
+
+
+//type for edit event
+export interface EditEventParams {
+  updatedEvent: Event
+  token: string
+}
+
+
+//type for delete event
+export interface DeleteEventParams {
+  numId: number
+  token: string
+}
+
+// type for join
+export interface JoinEventParams {
+  newJoin: NewJoinEvent
+  token: string
 }

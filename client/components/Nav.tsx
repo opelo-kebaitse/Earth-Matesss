@@ -1,3 +1,7 @@
+// Remove unused code
+// Consider a more user friendly way to desginate log in vs. register. Once the user is 
+// Once the user is registered, they shouldn't need to see the register button anymore.
+
 function Nav() {
   return (
     <nav className="nav-buttons">

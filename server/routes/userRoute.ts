@@ -1,7 +1,7 @@
 import { Router } from 'express'
 
 import checkJwt, { JwtRequest } from '../auth0.ts'
-import * as db from '../db/user.ts'
+import { getUserDetail, newUser } from '../db/user.ts'
 const router = Router()
 
 //Get route for /api/v1/users
@@ -24,11 +24,9 @@ router.get('/', checkJwt, async (req: JwtRequest, res) => {
 
 // post route /api/v1/users
 router.post('/', async (req: JwtRequest, res) => {
-  const newestUser = req.body // Retrieve the new  data from the request body.
-  console.log('newestUser route receives:', newestUser)
-  const addedUser = await db.newUser(newestUser)
-  // Use the new function to add the new url to the database and await the promise it returns.
-  res.json(addedUser) // Respond with the data of the newly added data in JSON format.
+  const newestUser = req.body
+  const addedUser = await newUser(newestUser)
+  res.json(addedUser) 
 })
 
 export default router
