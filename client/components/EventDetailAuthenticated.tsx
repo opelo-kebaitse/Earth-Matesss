@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import EditEvent from './EditEvent'
 import { useEvents, useEvent } from '../hooks/useEvents.ts'
 import { useAuth0 } from '@auth0/auth0-react'
+import { NewJoinEvent } from '../../models/Event.ts'
 
 export default function EventDetailsAuthenticated() {
   const { id } = useParams()
@@ -61,7 +62,7 @@ export default function EventDetailsAuthenticated() {
     if(user === undefined) {
       return console.log('no data to make join')
     }
-    const newJoin = { event_id: numId, user: user.sub }
+    const newJoin: NewJoinEvent = { event_id: numId, user: user.sub }
     
     const token = await getAccessTokenSilently()
     events.join.mutate({newJoin, token })

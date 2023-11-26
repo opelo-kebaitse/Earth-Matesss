@@ -1,3 +1,13 @@
+export interface Event {
+  id: number
+  name: string
+  location: string
+  date: number
+  description: string
+  added_by_user: string
+  photo: string
+}
+
 export interface NewEvent {
   name: string
   location: string
@@ -7,8 +17,16 @@ export interface NewEvent {
   photo: string
 }
 
-export interface Event extends NewEvent{
+export interface DisplayEvent {
   id: number
+  eventName: string
+  location: string
+  date: number
+  description: string
+  userName: string
+  email: string
+  photo: string
+  auth0Id: string
 }
 
 export interface PublicDisplayEvent {
@@ -21,13 +39,7 @@ export interface PublicDisplayEvent {
   photo: string
 }
 
-export interface DisplayEvent extends PublicDisplayEvent{
-  email: string
-  auth0Id: string
-}
-
-// A more descriptive name would be nice
-export interface NewJoinEvent {
+export interface NewJoin {
   event_id: number
   user: string
 }

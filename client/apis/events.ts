@@ -3,7 +3,7 @@ import {
   Event,
   NewEvent,
   DisplayEvent,
-  NewJoin,
+  NewJoinEvent,
 } from '../../models/Event.ts'
 
 
@@ -23,6 +23,8 @@ type AddEventParams = {
   newEvent: NewEvent
   token: string
 }
+
+
 export async function addEvent({
   newEvent,
   token,
@@ -78,13 +80,13 @@ export async function deleteEvent({ numId, token }: deleteEventParams) {
 // ----------- JOIN API FUNCTIONS ---pull out in refactor to put in separate file
 
 type JoinEventParams = {
-  newJoin: NewJoin
+  newJoin: NewJoinEvent
   token: string
 }
 export async function joinEvent({
   newJoin,
   token,
-}: JoinEventParams): Promise<NewJoin> {
+}: JoinEventParams): Promise<NewJoinEvent> {
   const res = await request
     .post(`${rootURL}/joins`)
     .set('Authorization', `Bearer ${token}`)

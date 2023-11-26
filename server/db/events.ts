@@ -1,6 +1,6 @@
 import connection from './connection.ts'
 
-import { NewEvent, Event, DisplayEvent, NewJoin } from '../../models/Event.ts'
+import { NewEvent, Event, DisplayEvent, NewJoinEvent } from '../../models/Event.ts'
 
 
 // Consistent database connection usage: The file uses both db (passed as a parameter with a default value of connection) and connection directly. 
@@ -26,7 +26,7 @@ export function newEvent(newEventData: NewEvent, db = connection) {
     ])
 }
 
-export function newJoin(newJoinData: NewJoin, db = connection) {
+export function newJoin(newJoinData: NewJoinEvent, db = connection) {
   return db('users_attending_events')
     .insert({ ...newJoinData })
     .returning(['event_id', 'user'])
