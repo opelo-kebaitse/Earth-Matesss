@@ -7,7 +7,6 @@ export function getEventList(db = connection) {
   // return db('events').select('name', 'location', 'date', 'id, 'photo')
   const currentDate = new Date().toISOString()
 
-export function getEventList(db = connection) {
   return db('events')
     .where('date', '>=', currentDate)
     .select('*')
@@ -34,15 +33,9 @@ export function newJoin(newJoinData: NewJoinEvent, db = connection) {
     .returning(['event_id', 'user'])
 }
 
-export function userIsAttending(
-  user: string,
-  db = connection
-){
-  return db('users_attending_events')
-  .where({user})
-  .select('*')
-  }
-
+export function userIsAttending(user: string, db = connection) {
+  return db('users_attending_events').where({ user }).select('*')
+}
 
 export function getEventDetails(
   id: number,
