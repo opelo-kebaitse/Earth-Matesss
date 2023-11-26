@@ -35,21 +35,12 @@ function AddEvent() {
   ) => {
     e.preventDefault()
 
-    //   const addEvent = { name: newEvent.name,
-    //   location: newEvent.location,
-    //   date: timestampDate,
-    //   description: newEvent.description,
-    //   added_by_user: newEvent.added_by_user,
-    //   photo: newEvent.photo,
-    // }
-    //   console.log(addEvent)
-
-    // console.log('AddNewEventComponent', addEvent)
     // call getAccessTokenSilently to retrieve the access token
     const token: string = await getAccessTokenSilently()
 
     // pass the token as a second parameter of the add function
-    events.add.mutate({ newEvent, token })
+    const eventDetail = await events.add.mutate({ newEvent, token })
+    console.log('event post add', eventDetail)
     navigate('/')
   }
 

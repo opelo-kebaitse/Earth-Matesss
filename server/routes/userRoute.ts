@@ -6,12 +6,14 @@ const router = Router()
 
 //Get route for /api/v1/users
 router.get('/', checkJwt, async (req: JwtRequest, res) => {
+  const auth0Id = req.auth?.sub
+  if (!auth0Id) {
+    return
+  }
 
-// router.get('/', async (req, res) => {
   try {
-    const auth0Id = req.auth.sub
     // console.log(checkJwt)
-      // const auth0Id = 'auth0|652cb119071b92531890627'
+    // const auth0Id = 'auth0|652cb119071b92531890627'
     const userDetail = await db.getUserDetail(auth0Id)
     res.json({ userDetail })
   } catch (error) {
