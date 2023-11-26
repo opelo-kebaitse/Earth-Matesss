@@ -14,7 +14,7 @@ router.get('/', checkJwt, async (req: JwtRequest, res) => {
   try {
     // console.log(checkJwt)
     // const auth0Id = 'auth0|652cb119071b92531890627'
-    const userDetail = await db.getUserDetail(auth0Id)
+    const userDetail = await getUserDetail(auth0Id)
     res.json({ userDetail })
   } catch (error) {
     console.error(error)
@@ -26,7 +26,7 @@ router.get('/', checkJwt, async (req: JwtRequest, res) => {
 router.post('/', async (req: JwtRequest, res) => {
   const newestUser = req.body
   const addedUser = await newUser(newestUser)
-  res.json(addedUser) 
+  res.json(addedUser)
 })
 
 export default router
