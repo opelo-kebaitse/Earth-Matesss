@@ -1,11 +1,17 @@
 import connection from './connection.ts'
 
-import { NewEvent, Event, DisplayEvent, NewJoinEvent } from '../../models/Event.ts'
+import { NewEvent, Event, DisplayEvent } from '../../models/Event.ts'
 
+//function to get the details we need for the list of events
+export function getEventList(db = connection) {
+  // return db('events').select('name', 'location', 'date', 'id, 'photo')
+  const currentDate = new Date().toISOString()
 
 export function getEventList(db = connection) {
   return db('events')
-    .select('*') 
+    .where('date', '>=', currentDate)
+    .select('*')
+    .orderBy('date')
 }
 
 export function newEvent(newEventData: NewEvent, db = connection) {

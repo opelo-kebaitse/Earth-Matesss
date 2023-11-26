@@ -7,6 +7,7 @@ import {
   updateEvent,
   deleteEvent,
 } from '../db/events.ts'
+import { addNewJoin } from '../db/joins.ts'
 
 import { JwtRequest } from '../auth0.ts'
 
@@ -22,12 +23,18 @@ router.get('/', async (req, res) => {
   }
 })
 
-
 // post route /api/v1/events
 router.post('/', async (req: JwtRequest, res) => {
   const newestEvent = req.body 
   const addedEvent = await newEvent(newestEvent)
-  res.json(addedEvent) 
+  const newJoin = {
+    event_id: addedEvent[0].id,
+    user: addedEvent[0].added_by_user,
+    is_creator: true,
+  }
+  await addNewJoin(newJoin)
+  // Use the new function to add the new url to the database and await the promise it returns.
+  res.json(addedEvent) // Respond with the data of the newly added data in JSON format.
 })
 
 // get events by id route

@@ -38,7 +38,8 @@ function AddEvent() {
     const token: string = await getAccessTokenSilently()
 
     // pass the token as a second parameter of the add function
-    events.add.mutate({ newEvent, token })
+    const eventDetail = await events.add.mutate({ newEvent, token })
+    console.log('event post add', eventDetail)
     navigate('/')
   }
 

@@ -1,7 +1,7 @@
 export interface NewEvent {
   name: string
   location: string
-  date: number 
+  date: number
   description: string
   added_by_user: string
   photo: string
@@ -29,7 +29,7 @@ export interface DisplayEvent extends PublicDisplayEvent{
 
 export interface NewJoinEvent {
   event_id: number
-  user: string
+  is_creator: boolean
 }
 
 export interface NewUser {

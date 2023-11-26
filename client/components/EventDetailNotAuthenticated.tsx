@@ -21,7 +21,7 @@ export default function EventDetailsNotAuthenticated() {
         <div className="eventBox">
           <h3>{data.eventName}</h3>
           <p>Location: {data.location}</p>
-          <p>Date: {new Date(data.date).toString()}</p>
+          <p>Date: {data.date}</p>
           <p>Description: {data.description}</p>
           <p>Organiser: {data.userName}</p>
         </div>
