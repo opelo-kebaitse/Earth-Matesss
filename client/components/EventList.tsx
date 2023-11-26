@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function EventList() {
   const { data: events, isLoading, error } = useEvents()
-
+  
   if (error) {
     return <p>Something went wrong!</p>
   }
@@ -14,7 +14,7 @@ export default function EventList() {
 
   return (
     <div className="events-container">
-      {events.map((event, index: number) => (
+      {(events.length === 0) ? <p>No upcoming events</p> : events.map((event, index: number) => (
         <div className="event-card" key={index}>
           {/* Display the event image */}
           <Link to={`/${event.id}`} className="event-details"><div
