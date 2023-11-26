@@ -16,7 +16,7 @@ function EditEvent({ id, data, fn }: EditEventProps) {
   const { getAccessTokenSilently } = useAuth0()
 
   const handleSubmit = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    e: React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault()
     const token = await getAccessTokenSilently()
@@ -43,7 +43,7 @@ function EditEvent({ id, data, fn }: EditEventProps) {
 
   return (
     <>
-      <form className="form-group">
+      <form className="form-group" onSubmit={handleSubmit}>
         <label htmlFor="eventName"> Name:</label>
         <input
           type="text"
@@ -89,7 +89,7 @@ function EditEvent({ id, data, fn }: EditEventProps) {
           onChange={handleChange}
           required
         />
-        <button className="post-event" onClick={handleSubmit}>
+        <button type="submit" className="post-event">
           Update Event!
         </button>
       </form>

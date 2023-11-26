@@ -30,7 +30,7 @@ function AddEvent() {
   }
 
   const handleSubmit = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    e: React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault()
 
@@ -48,7 +48,7 @@ function AddEvent() {
       {/* Use Form Submission: Instead of handling the form submission on the button's onClick event, 
       consider using the form's onSubmit event. This is more semantically correct and will handle form submissions via the enter key as well.
      */}
-      <form className="form-group">
+      <form onSubmit={handleSubmit} className="form-group">
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -81,7 +81,7 @@ function AddEvent() {
           value={newEvent.description}
           onChange={handleChange}
         />
-        <button className="post-event" onClick={handleSubmit}>
+        <button type="submit" className="post-event">
           Post event!
         </button>
       </form>
