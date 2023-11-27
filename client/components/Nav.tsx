@@ -10,7 +10,7 @@ function Nav() {
         <Link to="/my-Events">My Events</Link>
       </div>
       <div className="nav">
-        <Link to="/my-profile">My Profile</Link>
+        <Link to="/about">About</Link>
       </div>
     </nav>
   )
