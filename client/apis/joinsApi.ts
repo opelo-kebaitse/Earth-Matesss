@@ -1,25 +1,29 @@
 import request from 'superagent'
 import { JoinEventParams } from '../../models/Event'
+import { logError } from './utils'
 
 const rootURL = '/api/v1/joins'
 
-//this needs something done with the error (maybe a utils to handle errors? )
+
 export async function getJoins(token: string) {
-  try {
-    const res = await request
+
+    return request
       .get(`${rootURL}`)
       .set('Authorization', `Bearer ${token}`)
-    return res.body
-  } catch (error) {
-    console.error(error)
-  }
-}
+      .then ((res) =>res.body)
+      .catch (logError)
+ }
+
 
 export async function joinEvent({ newJoin, token }: JoinEventParams) {
-  const res = await request
-    .post(`${rootURL}`)
+ 
+  return request
+  .post(`${rootURL}`)
     .set('Authorization', `Bearer ${token}`)
     .send(newJoin)
-
-  return res.body
+    .then ((res) =>res.body)
+    .catch (logError)
 }
+
+
+

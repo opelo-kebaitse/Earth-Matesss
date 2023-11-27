@@ -10,9 +10,10 @@ import { logError } from './utils.ts'
 const rootURL = '/api/v1'
 
 export async function getEventList(): Promise<Event[]> {
- await request.get(rootURL + '/events')
- .then((res) => res.body)
- .catch(logError)
+  return request
+    .get(rootURL + '/events')
+    .then((res) => res.body)
+    .catch(logError)
 }
 
 //function to call the server route to add an event and send the event data to it, then sent that data back to the component function
@@ -21,7 +22,7 @@ export async function addEvent({
   newEvent,
   token,
 }: AddEventParams): Promise<Event> {
-  await request
+ return request
     .post(`${rootURL}/events`)
     .set('Authorization', `Bearer ${token}`)
     .send(newEvent)
@@ -31,31 +32,27 @@ export async function addEvent({
 
 //clientside api call to get details for one event
 export async function getEventDetail(id: number) {
-  try {
-    const res = await request.get(`${rootURL}/events/${id}`)
-    return res.body
-  } catch (error) {
-    logError(error)
-  }
+  return request
+    .get(`${rootURL}/events/${id}`)
+    .then((res) => res.body)
+    .catch(logError)
 }
 
 //clientside api call to edit an event
 export async function editEvent({ updatedEvent, token }: EditEventParams) {
-  try {
-    const res = await request
-      .patch(`${rootURL}/events/${updatedEvent.id}`)
+ 
+  return request
+  .patch(`${rootURL}/events/${updatedEvent.id}`)
       .set('Authorization', `Bearer ${token}`)
       .send(updatedEvent)
-    return res.body
-  } catch (error) {
-    logError(error)
-  }
+      .then((res) => res.body)
+      .catch(logError)
 }
-
 //clientside api call to delete an event
 export async function deleteEvent({ numId, token }: DeleteEventParams) {
-  const res = await request
+  return request
     .delete(`${rootURL}/events/${numId}`)
     .set('Authorization', `Bearer ${token}`)
-  return res.body
+    .then((res) => res.body)
+    .catch(logError)
 }
