@@ -10,7 +10,7 @@ function Home() {
   return (
     <>
       <h2 className="page-title">
-        Find like-minded people doing cool things for the whenua in your hapori!
+        Find cool ways to help the whenua in your hapori!
       </h2>
       <div className="event-container">
         <IfAuthenticated>

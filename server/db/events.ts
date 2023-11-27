@@ -45,6 +45,7 @@ export function getEventDetails(
     .join('users', 'events.added_by_user', 'users.auth0Id')
     .where({ id })
     .select(
+      'events.id',
       'events.name as eventName',
       'events.location',
       'events.date',
