@@ -31,7 +31,7 @@ export function useJoinMutation<TData = unknown, TVariables = unknown>(
   const mutation = useMutation({
     mutationFn,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['joins'] })
+      queryClient.invalidateQueries({ queryKey: ['join'] })
     },
   })
   return mutation

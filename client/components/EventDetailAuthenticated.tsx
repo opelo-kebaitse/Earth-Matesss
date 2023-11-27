@@ -30,41 +30,27 @@ export default function EventDetailsAuthenticated() {
   const joins = useJoin()
 
   // console.log('joins info for user:', joins.data)
-  console.log('eventId', data.id)
-
-  // const thisEvent = joins.data.find((join) => join.event_id === data.id)
-  // console.log(thisEvent)
-
-  // useEffect(() => {
-    
-  //   if (thisEvent?.is_creator === true) {
-  //     setIsContributor(true)
-  //   }
-  //   if (thisEvent?.is_creator === false) {
-  //     setIsJoined(true)
-  //   }
-  // }, [user, joins.data, data.id])
-
-  // const stopEditing = () => {
-  //   setIsEditing(!isEditing)
-  // }
-
-  
+  console.log('eventId', data?.id)
 
   useEffect(() => {
 
     const fetchData = async () => {
-      const thisEvent = await joins.data.find((join) => join.event_id === data.id)
-      console.log('this event', thisEvent)
+      if(joins.data) {      
+      const thisEvent = await joins.data.find((join) => join.event_id === data?.id)
+      console.log('if undefined then not joined yet', thisEvent)
       if (thisEvent?.is_creator === true) {
         setIsContributor(true)
       }
       if (thisEvent?.is_creator === false) {
         setIsJoined(true)
+        console.log('this should be now joined', isJoined)
       }
+    } else { 
+      console.log('we want data')
     }
+  }
     fetchData()
-  }, [data.id, joins.data ])
+  }, [data?.id, joins.data, isJoined ])
 
 
   // Function to handle the "Edit" button click and show the form
