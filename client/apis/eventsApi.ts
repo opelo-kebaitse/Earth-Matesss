@@ -1,10 +1,5 @@
 import request from 'superagent'
-import {
-  Event,
-  NewEvent,
-  DisplayEvent,
-  PublicDisplayEvent,
-} from '../../models/Event.ts'
+import { Event, NewEvent, DisplayEvent } from '../../models/Event.ts'
 
 const rootURL = '/api/v1'
 
@@ -22,9 +17,10 @@ export async function addEvent({
   newEvent,
   token,
 }: AddEventParams): Promise<Event> {
-  console.log('api', newEvent )
-  const res = await request.post(`${rootURL}/events`).send(newEvent)
-  console.log('res.bodyAdd', res.body)
+  const res = await request
+    .post(`${rootURL}/events`)
+    .set('Authorization', `Bearer ${token}`)
+    .send(newEvent)
   return res.body
 }
 
@@ -50,7 +46,7 @@ export async function editEvent({
     .patch(`${rootURL}/events/${updatedEvent.id}`)
     .set('Authorization', `Bearer ${token}`)
     .send(updatedEvent)
-    console.log('res.body', res.body)
+  console.log('res.body', res.body)
   return res.body
 }
 
@@ -81,4 +77,23 @@ export async function deleteEvent({ numId, token }: deleteEventParams) {
 //     photo: 'mission_bay_cleanup.jpg',
 //   }
 //   return eventDetails
+// }
+
+// ----------- JOIN API FUNCTIONS ---pull out in refactor to put in separate file
+
+// type JoinEventParams = {
+//   newJoin: NewJoin
+//   token: string
+// }
+// export async function joinEvent({
+//   newJoin,
+//   token,
+// }: JoinEventParams): Promise<NewJoin> {
+//   // console.log(`newJoin`, newJoin)
+//   const res = await request
+//     .post(`${rootURL}/joins`)
+//     .set('Authorization', `Bearer ${token}`)
+//     .send(newJoin)
+//   // console.log('api return', res.body)
+//   return res.body
 // }

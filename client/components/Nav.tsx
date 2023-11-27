@@ -1,25 +1,16 @@
+import { Link } from 'react-router-dom'
+
 function Nav() {
   return (
     <nav className="nav-buttons">
-      <div>
-        <a href="find-events" className="nav">
-          Find Events
-        </a>
+      <div className="nav">
+        <Link to="/">Home</Link>
       </div>
-      <div>
-        <a href="blog" className="nav">
-          Blog
-        </a>
+      <div className="nav">
+        <Link to="/my-Events">My Events</Link>
       </div>
-      <div>
-        <a href="my-events" className="nav">
-          My Events
-        </a>
-      </div>
-      <div>
-        <a href="my-profile" className="nav">
-          My Profile
-        </a>
+      <div className="nav">
+        <Link to="/my-profile">My Profile</Link>
       </div>
     </nav>
   )

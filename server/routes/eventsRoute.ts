@@ -1,31 +1,43 @@
 import { Router } from 'express'
-import * as db from '../db/events.ts'
-import { newEvent } from '../db/events.ts'
 
-import checkJwt, { JwtRequest } from '../auth0.ts'
+import {
+  newEvent,
+  getEventList,
+  getEventDetails,
+  updateEvent,
+  deleteEvent,
+} from '../db/events.ts'
+import { addNewJoin } from '../db/joins.ts'
+
+import { JwtRequest } from '../auth0.ts'
 
 const router = Router()
 
-// route to get events list
-
+// get events route /api/v1/events
 router.get('/', async (req, res) => {
   try {
-    const events = await db.getEventList()
+    const events = await getEventList()
     res.json(events)
   } catch (error) {
     res.status(500).json('Internal server error')
   }
 })
 
+// post route /api/v1/events
 router.post('/', async (req: JwtRequest, res) => {
-  const newestEvent = req.body // Retrieve the new  data from the request body.
-  // console.log(req.body)
+  const newestEvent = req.body 
   const addedEvent = await newEvent(newestEvent)
+  const newJoin = {
+    event_id: addedEvent[0].id,
+    user: addedEvent[0].added_by_user,
+    is_creator: true,
+  }
+  await addNewJoin(newJoin)
   // Use the new function to add the new url to the database and await the promise it returns.
   res.json(addedEvent) // Respond with the data of the newly added data in JSON format.
 })
 
-// route to get event list by id
+// get events by id route
 router.get('/:id', async (req, res) => {
   const id = Number(req.params.id)
 
@@ -36,7 +48,7 @@ router.get('/:id', async (req, res) => {
 
   try {
     const id = Number(req.params.id)
-    const event = await db.getEventDetails(id)
+    const event = await getEventDetails(id)
     res.json(event)
   } catch (error) {
     console.error(error)
@@ -44,7 +56,7 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-//function to update an event, it checks if there is an id, then tries to update, catching errors if they happen
+// update an event route
 router.patch('/:id', async (req: JwtRequest, res) => {
   const id = Number(req.params.id)
 
@@ -54,7 +66,7 @@ router.patch('/:id', async (req: JwtRequest, res) => {
   }
 
   try {
-    const updatedEvent = await db.updateEvent(id, req.body)
+    const updatedEvent = await updateEvent(id, req.body)
     res.json(updatedEvent)
   } catch (error) {
     console.error(error)
@@ -62,7 +74,7 @@ router.patch('/:id', async (req: JwtRequest, res) => {
   }
 })
 
-//function to delete an event, checks id, trys and catches errors if they happen
+// delete an event route
 router.delete('/:id', async (req: JwtRequest, res) => {
   const id = Number(req.params.id)
 
@@ -72,7 +84,7 @@ router.delete('/:id', async (req: JwtRequest, res) => {
   }
 
   try {
-    const deletedEvent = await db.deleteEvent(id)
+    const deletedEvent = await deleteEvent(id)
     res.json(deletedEvent)
   } catch (error) {
     console.error(error)

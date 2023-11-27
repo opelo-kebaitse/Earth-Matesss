@@ -8,7 +8,6 @@ import { useAuth0 } from '@auth0/auth0-react'
 function AddEvent() {
   // Destructured getAccessTokenSilently
   const { getAccessTokenSilently, user } = useAuth0()
-  // console.log(user?.sub)
   const userId = user?.sub
 
   const initialForm: NewEvent = {
@@ -31,32 +30,23 @@ function AddEvent() {
   }
 
   const handleSubmit = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    e: React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault()
-   
-  //   const addEvent = { name: newEvent.name,
-  //   location: newEvent.location,
-  //   date: timestampDate,
-  //   description: newEvent.description,
-  //   added_by_user: newEvent.added_by_user,
-  //   photo: newEvent.photo,
-  // }
-  //   console.log(addEvent)
-    
-    // console.log('AddNewEventComponent', addEvent)
+
     // call getAccessTokenSilently to retrieve the access token
     const token: string = await getAccessTokenSilently()
 
     // pass the token as a second parameter of the add function
-    events.add.mutate({ newEvent, token })
+    const eventDetail = await events.add.mutate({ newEvent, token })
+    console.log('event post add', eventDetail)
     navigate('/')
   }
 
   return (
     <>
       <h2>Create event</h2>
-      <form className="form-group">
+      <form onSubmit={handleSubmit} className="form-group">
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -89,7 +79,7 @@ function AddEvent() {
           value={newEvent.description}
           onChange={handleChange}
         />
-        <button className="post-event" onClick={handleSubmit}>
+        <button type="submit" className="post-event">
           Post event!
         </button>
       </form>
@@ -100,7 +90,6 @@ function AddEvent() {
 //Would like to change the navigation to go to the individual event page, but need to work out how to give it the correct id
 //have just set this up to start with using the fields we have not the ones on the image as have realised on our wire frame it says time but we don't have that elsewhere
 //Also we talked about a drop down of suburbs, think this may have become stretch aye?
-//For date do we want a date picker?
-//Need to add Auth0 here still
+
 
 export default AddEvent
