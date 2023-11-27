@@ -29,7 +29,7 @@ export default function EventDetailsAuthenticated() {
   const events = useEvents()
   const joins = useJoin()
 
-  console.log('joins info for user:', joins.data)
+  // console.log('joins info for user:', joins.data)
   console.log('eventId', data.id)
 
   // const thisEvent = joins.data.find((join) => join.event_id === data.id)
@@ -49,10 +49,13 @@ export default function EventDetailsAuthenticated() {
   //   setIsEditing(!isEditing)
   // }
 
+  
 
   useEffect(() => {
+
     const fetchData = async () => {
-      const thisEvent = joins.data.find((join) => join.event_id === data.id);
+      const thisEvent = await joins.data.find((join) => join.event_id === data.id)
+      console.log('this event', thisEvent)
       if (thisEvent?.is_creator === true) {
         setIsContributor(true)
       }
@@ -60,9 +63,9 @@ export default function EventDetailsAuthenticated() {
         setIsJoined(true)
       }
     }
-
     fetchData()
-  }, [user, joins.data, data.id])
+  }, [data.id, joins.data ])
+
 
   // Function to handle the "Edit" button click and show the form
   const handleEditClick = () => {
