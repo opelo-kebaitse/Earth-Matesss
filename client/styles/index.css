@@ -279,9 +279,9 @@ body {
 }
 
 @media only screen and (min-width: 751px) and (max-width: 994px) {
-  .title-container {
+  /* .title-container {
     background-color: bisque;
-  }
+  } */
 
   .logo {
     font-size: .5em;
@@ -307,17 +307,17 @@ body {
   }
 
   .join-button, .crEve-button {
-    padding: 8px 16px;
+    padding: 8px 10px;
     font-size: 14px;
-    margin: 15px;
+    margin: 20px;
     align-items: center;
   }
 }
 
 @media only screen and (max-width: 750px) {
-  .title-container {
+  /* .title-container {
     background-color: rgb(251, 234, 213);
-  }
+  } */
 
   .logo {
     font-size: 0.5em;
@@ -343,9 +343,12 @@ body {
   }
 
   .join-button, .crEve-button {
-    padding: 6px 14px;
-    font-size: 12px;
-    margin: 10px;
+    padding: 6px 8px;
+    font-size: 10px;
+    margin: 8px;
+  }
+
+  .join-button span, .crEve-button span {
     text-align: center;
   }
 }
