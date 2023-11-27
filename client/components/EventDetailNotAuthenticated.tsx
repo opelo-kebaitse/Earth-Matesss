@@ -1,17 +1,17 @@
 import { useParams } from 'react-router-dom'
 
-import { useEvent } from '../hooks/useEvents.ts'
+import { useEvents } from '../hooks/useEvents.ts'
 
 export default function EventDetailsNotAuthenticated() {
   const { id } = useParams()
   const numId = Number(id)
-  const { data, isLoading, error } = useEvent(numId)
-
+  const { data, isLoading, error } = useEvents()
+  const currentEvent = data?.find((event) => event.id === numId)
   if (error) {
     return <p>Something went wrong!</p>
   }
 
-  if (!data || isLoading) {
+  if (!currentEvent || isLoading) {
     return <p>Loading...</p>
   }
 
@@ -19,18 +19,15 @@ export default function EventDetailsNotAuthenticated() {
     <div>
       <div className="evDet">
         <div className="eventBox">
-          <h3>{data.name}</h3>
-          <p>Location: {data.location}</p>
-          <p>Date: {data.date}</p>
-          <p>Description: {data.description}</p>
-          <p>Organiser: {data.added_by_user}</p>
+          <h3>{currentEvent.name}</h3>
+          <p>Location: {currentEvent.location}</p>
+          <p>Date: {currentEvent.date}</p>
+          <p>Description: {currentEvent.description}</p>
+          <p>Organiser: {currentEvent.added_by_user}</p>
         </div>
       </div>
     </div>
   )
 }
 
-// //join to come in function for this card to display the users name from the users table
-// //and a join button to populate the third table to do the many to many joins
-// //add photo
-// refactor!!!
+//filter events list to display info

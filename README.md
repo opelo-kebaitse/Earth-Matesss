@@ -18,24 +18,28 @@ A Boilerplate is already set up for you with everything you will need to get sta
 
 ### MVP
 
-As a non-registered user:
+As a non-registered user, I want to:
 
-* I want to register for the App under my name
-* I want to browse a list of all the events posted by other users
-* I want to click into an event and view the details
-* I want to sort the places by date
+* Register for the App under my name
+* Browse a list of all the events posted by other users
+* Click into an event and view the details
+* View the events ordered by date
+
+As a registered user, I want to:
+
+* Create an event
+* Be able to edit or delete an event I've created
+* Be able to join an event 
+* Be able to view my joined events in the 'myevents' page
+
+### Stretch
+
+As both a registered and non-registered user
 * Filter events by location
 
 As a registered user:
 * I want to save reviews to the 'myevents' component so I can remember my events too!
-* I want to view my joined events in the 'myevents' component
-* Be able to post about an event
-* Be able to register or join an event
 * As a user I want to save my event and view them on the 'myevents'
-
-### Stretch
-
-As a registered user:
 * Badges for users per events attended (every time you go to an event you get 'points' added to your profile, level up)
 * Community Forum - blog/ reviews page
 

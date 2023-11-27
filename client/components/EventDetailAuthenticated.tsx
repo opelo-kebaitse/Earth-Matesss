@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import EditEvent from './EditEvent'
 import { useEvents, useEvent } from '../hooks/useEvents.ts'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useJoin } from '../hooks/useJoins.ts'
 
 export default function EventDetailsAuthenticated() {
   const { id } = useParams()
@@ -13,30 +14,41 @@ export default function EventDetailsAuthenticated() {
   // State to manage whether to show the edit form
   const [isEditing, setIsEditing] = useState(false)
 
+  //
+  const [isJoined, setIsJoined] = useState(false)
+
   //get user and token
   const { getAccessTokenSilently, user } = useAuth0()
 
   //create a state for if user can edit/delete
   const [isContributor, setIsContributor] = useState(false)
 
-  // const {
-  //   data: event,
-  //   isLoading,
-  //   error,
-  // } = useQuery(['event', id], () => getEventDetail(numId))
-
   const { data, isLoading, error } = useEvent(numId)
   const events = useEvents()
+  const joins = useJoin()
+
+  // console.log('joins info for user:', joins.data)
+  console.log('eventId', data?.id)
 
   useEffect(() => {
-    if (user?.sub === data?.added_by_user) {
-      setIsContributor(true)
-    }
-  }, [user, data])
+    console.log('if you are seeing this then the contributor is', isContributor)
+  }, [isContributor])
 
-  const stopEditing = () => {
-    setIsEditing(!isEditing)
-  }
+  useEffect(() => {
+    console.log('joinsData', joins.data)
+
+    if (joins?.data) {
+      const thisEvent = joins.data.find((join) => join.id === numId)
+      if (thisEvent?.is_creator == true) {
+        setIsContributor(true)
+      }
+      if (thisEvent?.is_creator == false) {
+        setIsJoined(true)
+      }
+    } else {
+      console.log('we want data')
+    }
+  }, [numId, joins.data])
 
   // Function to handle the "Edit" button click and show the form
   const handleEditClick = () => {
@@ -49,10 +61,21 @@ export default function EventDetailsAuthenticated() {
     navigate('/')
   }
 
-  const handleJoin = () => {
-    console.log(
-      `user with ${user?.email} wants to join this lets write a function for that!`
-    )
+  // JOIN - HANDLE JOIN FUNCTION
+
+  const handleJoin = async () => {
+    if (user === undefined) {
+      return console.log('no data to make join')
+    }
+    const newJoin = { event_id: numId, is_creator: false }
+
+    const token = await getAccessTokenSilently()
+    joins.add.mutate({ newJoin, token })
+    // navigate('/my-events')
+  }
+
+  const stopEditing = () => {
+    setIsEditing(false)
   }
 
   if (error) {
@@ -68,25 +91,35 @@ export default function EventDetailsAuthenticated() {
       {isContributor === false ? (
         <div className="evDet">
           <div className="eventBox">
-            <h3>{data.name}</h3>
+            <h3>{data.eventName}</h3>
             <p>Location: {data.location}</p>
             <p>Date: {data.date}</p>
             <p>Description: {data.description}</p>
-            <p>Organiser: {data.added_by_user}</p>
-            <button onClick={handleJoin}>Join</button>
+            <p>Organiser: {data.userName}</p>
+            <button
+              className={`join-button ${isJoined ? 'joined' : ''}`}
+              onClick={handleJoin}
+            >
+              {' '}
+              {isJoined ? 'Joined' : 'Join'}
+            </button>
           </div>
         </div>
       ) : null}
       {isEditing === false && isContributor === true ? (
         <div className="evDet">
           <div className="eventBox">
-            <h3>{data.name}</h3>
+            <h3>{data.eventName}</h3>
             <p>Location: {data.location}</p>
             <p>Date: {data.date}</p>
             <p>Description: {data.description}</p>
-            <p>Organiser: {data.added_by_user}</p>
-            <button onClick={handleEditClick}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+            <p>Organiser: {data.userName}</p>
+            <button className="join-button" onClick={handleEditClick}>
+              Edit
+            </button>
+            <button className="join-button" onClick={handleDelete}>
+              Delete
+            </button>
           </div>
         </div>
       ) : null}
@@ -97,7 +130,4 @@ export default function EventDetailsAuthenticated() {
   )
 }
 
-// //join to come in function for this card to display the users name from the users table
-// //and a join button to populate the third table to do the many to many joins
-// //add photo
 // refactor!!!

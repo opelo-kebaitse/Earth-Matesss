@@ -1,17 +1,28 @@
 import connection from './connection.ts'
 
-import { NewEvent, Event } from '../../models/Event.ts'
+import { NewEvent, Event, DisplayEvent } from '../../models/Event.ts'
 
 //function to get the details we need for the list of events
-export async function getEventList(db = connection) {
-  // return db('events').select('name', 'location', 'date', 'id, 'photo')
+export function getEventList(db = connection) {
+  const currentDate = new Date().toISOString()
 
-  return db('events').select('*')
+  return db('events')
+    .join('users', 'users.auth0Id', 'events.added_by_user')
+    .where('date', '>=', currentDate)
+    .select(
+      'events.id',
+      'events.name as name',
+      'events.photo',
+      'events.date',
+      'events.location',
+      'events.description',
+      'users.name as added_by_user'
+    )
+    .orderBy('date')
 }
 
-//function to add a new event
-export function newEvent(newEventData: NewEvent) {
-  return connection('events')
+export function newEvent(newEventData: NewEvent, db = connection) {
+  return db('events')
     .insert({ ...newEventData })
     .returning([
       'id',
@@ -24,16 +35,43 @@ export function newEvent(newEventData: NewEvent) {
     ])
 }
 
-//function to get details of a single event
-export async function getEventDetails(
-  id: number,
-  db = connection
-): Promise<Event> {
-  return db('events').where({ id }).select('*').first()
+export function newJoin(newJoinData, db = connection) {
+  return db('users_attending_events')
+    .insert({ ...newJoinData })
+    .returning(['event_id', 'user'])
 }
 
-export async function updateEvent(id: number, updatedEventData: Event) {
-  return connection('events')
+export function userIsAttending(user: string, db = connection) {
+  return db('users_attending_events').where({ user }).select('*')
+}
+
+export function getEventDetails(
+  id: number,
+  db = connection
+): Promise<DisplayEvent> {
+  return db('events')
+    .join('users', 'events.added_by_user', 'users.auth0Id')
+    .where({ id })
+    .select(
+      'events.id',
+      'events.name as eventName',
+      'events.location',
+      'events.date',
+      'events.description',
+      'users.name as userName',
+      'users.email',
+      'events.photo',
+      'users.auth0Id'
+    )
+    .first()
+}
+
+export function updateEvent(
+  id: number,
+  updatedEventData: Event,
+  db = connection
+) {
+  return db('events')
     .where({ id })
     .update({ ...updatedEventData })
     .returning([
@@ -48,7 +86,6 @@ export async function updateEvent(id: number, updatedEventData: Event) {
 }
 
 //function to delete an event
-//I think this will need to delete the users_attending_as_well possibly
 export async function deleteEvent(id: number, db = connection) {
   await db('users_attending_events').where('event_id', id).del()
   return db('events').where({ id }).del()
