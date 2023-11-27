@@ -25,7 +25,8 @@ router.get('/', async (req, res) => {
 
 // post route /api/v1/events
 router.post('/', async (req: JwtRequest, res) => {
-  const newestEvent = req.body 
+    const newestEvent = req.body 
+ try {
   const addedEvent = await newEvent(newestEvent)
   const newJoin = {
     event_id: addedEvent[0].id,
@@ -33,8 +34,10 @@ router.post('/', async (req: JwtRequest, res) => {
     is_creator: true,
   }
   await addNewJoin(newJoin)
-  // Use the new function to add the new url to the database and await the promise it returns.
-  res.json(addedEvent) // Respond with the data of the newly added data in JSON format.
+  res.json(addedEvent)
+} catch (error) {
+  res.status(500).json('Internal server error')
+}
 })
 
 // get events by id route

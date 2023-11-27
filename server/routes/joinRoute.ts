@@ -17,13 +17,13 @@ router.get('/', checkJwt, async (req: JwtRequest, res) => {
     res.json(attendingList)
   } catch (error) {
     console.error(error)
-    res.status(500).send('Something went wrong')
-  }
+    res.status(500).json('Internal server error') }
 })
 
 //Post route /api/v1/joins
 router.post('/', checkJwt, async (req: JwtRequest, res) => {
-  const newestJoin = {...req.body, user: req.auth?.sub} // WHere should we be retrieving that data, we have the console.logs but this is TBC!!!!!
+  const newestJoin = {...req.body, user: req.auth?.sub} 
+  try {
   const attendingList = await userIsAttending(newestJoin.user)
   if (
     attendingList.some((listItem) => listItem.event_id === newestJoin.event_id)
@@ -32,9 +32,11 @@ router.post('/', checkJwt, async (req: JwtRequest, res) => {
     return res.status(409).send('User already attending event')
   }
   const addedJoin = await addNewJoin(newestJoin)
-  // Use the new function to add the new join to the database and await the promise it returns.
-  // console.log('route:addedJoin', addedJoin)
-  res.json(addedJoin) // Respond with the data of the newly added data in JSON format.
+
+  res.json(addedJoin) 
+} catch (error) {
+  res.status(500).json('Internal server error')
+} 
 })
 
 export default router
