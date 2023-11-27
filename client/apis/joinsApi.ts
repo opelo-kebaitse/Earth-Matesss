@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { NewJoin, JoinEventParams } from '../../models/Event'
+import { JoinEventParams } from '../../models/Event'
 
 const rootURL = '/api/v1/joins'
 
@@ -15,10 +15,7 @@ export async function getJoins(token: string) {
   }
 }
 
-export async function joinEvent({
-  newJoin,
-  token,
-}: JoinEventParams): Promise<NewJoin> {
+export async function joinEvent({ newJoin, token }: JoinEventParams) {
   // console.log(`newJoin`, newJoin)
   const res = await request
     .post(`${rootURL}`)
