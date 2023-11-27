@@ -45,7 +45,7 @@ function AddEvent() {
 
   return (
     <>
-      <h2>Create event</h2>
+      <h2 className="title-container">Create event</h2>
       <form onSubmit={handleSubmit} className="form-group">
         <label htmlFor="name">Name:</label>
         <input

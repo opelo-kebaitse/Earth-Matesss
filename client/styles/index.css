@@ -11,10 +11,12 @@ body {
   color: #004a8f;
 }
 
-.h2 {
+.h2, .p {
   padding: 10px;
   margin: 10px;
 }
+
+
 
 /* Styling for Header.tsx */
 .header-container {
@@ -28,6 +30,7 @@ body {
 
 .title-container {
   background-color: #ffffff;
+  color: #426B1F;
   width: 100vw;
   padding: 0px 50px;
   display: flex; 
