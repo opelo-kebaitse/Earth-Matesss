@@ -279,10 +279,6 @@ body {
 }
 
 @media only screen and (min-width: 751px) and (max-width: 994px) {
-  /* .title-container {
-    background-color: bisque;
-  } */
-
   .logo {
     font-size: .5em;
   }
@@ -315,10 +311,6 @@ body {
 }
 
 @media only screen and (max-width: 750px) {
-  /* .title-container {
-    background-color: rgb(251, 234, 213);
-  } */
-
   .logo {
     font-size: 0.5em;
   }
