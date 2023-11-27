@@ -16,11 +16,10 @@ export async function getJoins(token: string) {
 }
 
 export async function joinEvent({ newJoin, token }: JoinEventParams) {
-  // console.log(`newJoin`, newJoin)
   const res = await request
     .post(`${rootURL}`)
     .set('Authorization', `Bearer ${token}`)
     .send(newJoin)
-  // console.log('api return', res.body)
+
   return res.body
 }
