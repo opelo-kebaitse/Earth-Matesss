@@ -58,7 +58,7 @@ export default function Register() {
     <input id='lastName' name='lastName' type='text' onchange={handleChange} value={formData.lastName}/>
     <label HTMLfor='location'>Location</label>
     <input id='location' name='location' type='text' onchange={handleChange} value={formData.location}/> */}
-        <button className="post-event" onClick={handleRegister}>
+        <button className="button" onClick={handleRegister}>
           Register
         </button>
       </form>

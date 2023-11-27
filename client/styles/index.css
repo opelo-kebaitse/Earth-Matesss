@@ -273,7 +273,7 @@ body {
   .join-button, .crEve-button {
     padding: 10px 20px;
     font-size: 16px;
-    margin: 20px;
+    margin: 10px;
     text-align: center;
   }
 }
@@ -305,7 +305,7 @@ body {
   .join-button, .crEve-button {
     padding: 8px 10px;
     font-size: 14px;
-    margin: 20px;
+    margin: 8px;
     align-items: center;
   }
 }
@@ -337,7 +337,7 @@ body {
   .join-button, .crEve-button {
     padding: 6px 8px;
     font-size: 10px;
-    margin: 8px;
+    margin: 4px;
   }
 
   .join-button span, .crEve-button span {
