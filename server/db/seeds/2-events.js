@@ -127,7 +127,7 @@ export async function seed(knex) {
       date: '2022-12-05',
       description:
         'Recycling drive at The Square. Turning trash into treasure, one bottle at a time.',
-      added_by_user: 'auth0|652cb119071b925318906207',
+      added_by_user: 'google-oauth2|110018297537843173032',
       photo: '/images/placeholder.jpg',
     },
     {
