@@ -4,12 +4,20 @@ import { NewEvent, Event, DisplayEvent } from '../../models/Event.ts'
 
 //function to get the details we need for the list of events
 export function getEventList(db = connection) {
-  // return db('events').select('name', 'location', 'date', 'id, 'photo')
   const currentDate = new Date().toISOString()
 
   return db('events')
+    .join('users', 'users.auth0Id', 'events.added_by_user')
     .where('date', '>=', currentDate)
-    .select('*')
+    .select(
+      'events.id',
+      'events.name as name',
+      'events.photo',
+      'events.date',
+      'events.location',
+      'events.description',
+      'users.name as added_by_user'
+    )
     .orderBy('date')
 }
 
@@ -27,7 +35,7 @@ export function newEvent(newEventData: NewEvent, db = connection) {
     ])
 }
 
-export function newJoin(newJoinData: NewJoinEvent, db = connection) {
+export function newJoin(newJoinData, db = connection) {
   return db('users_attending_events')
     .insert({ ...newJoinData })
     .returning(['event_id', 'user'])
@@ -77,11 +85,7 @@ export function updateEvent(
     ])
 }
 
-// This needs some work. In this case, async await is probably appropriate since you need
-// one operation to finish first. And as noted, you should delete the users_attending_event entry as part
-// of this operation
 //function to delete an event
-//I think this will need to delete the users_attending_as_well possibly
 export async function deleteEvent(id: number, db = connection) {
   await db('users_attending_events').where('event_id', id).del()
   return db('events').where({ id }).del()
