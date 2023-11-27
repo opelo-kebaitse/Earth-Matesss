@@ -12,7 +12,7 @@ export async function seed(knex) {
     },
     {
       event_id: 3,
-      user: 'google-oauth2|110018297537843173032',
+      user: 'auth0|652cb119071b925318906207',
       is_creator: true,
     },
     {

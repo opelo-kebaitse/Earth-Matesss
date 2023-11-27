@@ -77,9 +77,11 @@ export default function EventDetailsAuthenticated() {
 
     const token = await getAccessTokenSilently()
     joins.add.mutate({ newJoin, token })
-    // setIsJoined(true)
-
     // navigate('/my-events')
+  }
+
+  const stopEditing = () => {
+    setIsEditing(false)
   }
 
   if (error) {
