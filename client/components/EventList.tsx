@@ -14,7 +14,7 @@ export default function EventList(events) {
   return (
     
     <div className="events-container">
-      {(events.events.data.length === 0) ? <p>No upcoming events</p> : events.events.data.map((event, index: number) => (
+      {(events.events.data.length === 0) ? <p>No upcoming events</p> : events.events.data.map((event: unknown, index: number) => (
         <div className="event-card" key={index}>
           {/* Display the event image */}
           <Link to={`/${event.id}`} className="event-details"><div
