@@ -261,3 +261,8 @@ body {
   background-color: rgb(247, 245, 242);
   color: #426B1F;
 }
+
+.join-button.joined {
+  background-color: rgb(7, 60, 112);
+  color: white;
+}

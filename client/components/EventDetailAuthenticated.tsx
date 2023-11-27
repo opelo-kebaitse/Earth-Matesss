@@ -5,6 +5,7 @@ import { useEvents, useEvent } from '../hooks/useEvents.ts'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useJoin } from '../hooks/useJoins.ts'
 import { NewJoinEvent } from '../../models/Event.ts'
+import { userIsAttending } from '../../server/db/events.ts'
 
 export default function EventDetailsAuthenticated() {
   const { id } = useParams()
@@ -14,6 +15,9 @@ export default function EventDetailsAuthenticated() {
 
   // State to manage whether to show the edit form
   const [isEditing, setIsEditing] = useState(false)
+
+  //
+  const [isJoined, setIsJoined] = useState(false)
 
   //get user and token
   const { getAccessTokenSilently, user } = useAuth0()
@@ -25,15 +29,40 @@ export default function EventDetailsAuthenticated() {
   const events = useEvents()
   const joins = useJoin()
 
-  useEffect(() => {
-    if (user?.sub === data?.auth0Id) {
-      setIsContributor(true)
-    }
-  }, [user, data])
+  console.log('joins info for user:', joins.data)
+  console.log('eventId', data.id)
 
-  const stopEditing = () => {
-    setIsEditing(!isEditing)
-  }
+  // const thisEvent = joins.data.find((join) => join.event_id === data.id)
+  // console.log(thisEvent)
+
+  // useEffect(() => {
+    
+  //   if (thisEvent?.is_creator === true) {
+  //     setIsContributor(true)
+  //   }
+  //   if (thisEvent?.is_creator === false) {
+  //     setIsJoined(true)
+  //   }
+  // }, [user, joins.data, data.id])
+
+  // const stopEditing = () => {
+  //   setIsEditing(!isEditing)
+  // }
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const thisEvent = joins.data.find((join) => join.event_id === data.id);
+      if (thisEvent?.is_creator === true) {
+        setIsContributor(true)
+      }
+      if (thisEvent?.is_creator === false) {
+        setIsJoined(true)
+      }
+    }
+
+    fetchData()
+  }, [user, joins.data, data.id])
 
   // Function to handle the "Edit" button click and show the form
   const handleEditClick = () => {
@@ -49,14 +78,14 @@ export default function EventDetailsAuthenticated() {
   // JOIN - HANDLE JOIN FUNCTION
 
   const handleJoin = async () => {
-    
-    if(user === undefined) {
+    if (user === undefined) {
       return console.log('no data to make join')
     }
     const newJoin = { event_id: numId, is_creator: false }
 
     const token = await getAccessTokenSilently()
     joins.add.mutate({ newJoin, token })
+    setIsJoined(true)
 
     // navigate('/my-events')
   }
@@ -79,8 +108,10 @@ export default function EventDetailsAuthenticated() {
             <p>Date: {data.date}</p>
             <p>Description: {data.description}</p>
             <p>Organiser: {data.userName}</p>
-            <button className="join-button" onClick={handleJoin}>
-              Join
+            <button className={`join-button ${isJoined ? 'joined' : ''}`}
+            onClick={handleJoin}>
+              {' '}
+              {isJoined ? 'Joined' : 'Join'}
             </button>
           </div>
         </div>
