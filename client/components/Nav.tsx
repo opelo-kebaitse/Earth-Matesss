@@ -1,16 +1,16 @@
-
+import { Link } from 'react-router-dom'
 
 function Nav() {
   return (
     <nav className="nav-buttons">
       <div className="nav">
-        <a href="/">Home</a>
+        <Link to="/">Home</Link>
       </div>
       <div className="nav">
-        <a href="/my-Events">My Events</a>
+        <Link to="/my-Events">My Events</Link>
       </div>
       <div className="nav">
-        <a href="/my-profile">My Profile</a>
+        <Link to="/my-profile">My Profile</Link>
       </div>
     </nav>
   )
