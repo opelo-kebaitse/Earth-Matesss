@@ -1,18 +1,16 @@
-// Remove unused code
-// Consider a more user friendly way to desginate log in vs. register. Once the user is 
-// Once the user is registered, they shouldn't need to see the register button anymore.
+import { Link } from 'react-router-dom'
 
 function Nav() {
   return (
     <nav className="nav-buttons">
       <div className="nav">
-        <a href="/">Home</a>
+        <Link to="/">Home</Link>
       </div>
       <div className="nav">
-        <a href="/my-events">My Events</a>
+        <Link to="/my-Events">My Events</Link>
       </div>
       <div className="nav">
-        <a href="/my-profile">My Profile</a>
+        <Link to="/my-profile">My Profile</Link>
       </div>
     </nav>
   )

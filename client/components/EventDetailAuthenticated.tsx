@@ -4,8 +4,6 @@ import EditEvent from './EditEvent'
 import { useEvents, useEvent } from '../hooks/useEvents.ts'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useJoin } from '../hooks/useJoins.ts'
-import { NewJoinEvent } from '../../models/Event.ts'
-
 
 export default function EventDetailsAuthenticated() {
   const { id } = useParams()
@@ -34,27 +32,23 @@ export default function EventDetailsAuthenticated() {
 
   useEffect(() => {
     console.log('if you are seeing this then the contributor is', isContributor)
-  },
-    [isContributor])
-
+  }, [isContributor])
 
   useEffect(() => {
     console.log('joinsData', joins.data)
 
-    if(joins?.data) {      
-      const thisEvent = joins.data.find((join) => join.event_id === data?.id)
+    if (joins?.data) {
+      const thisEvent = joins.data.find((join) => join.id === numId)
       if (thisEvent?.is_creator == true) {
         setIsContributor(true)
       }
       if (thisEvent?.is_creator == false) {
         setIsJoined(true)
-        console.log('this should be now joined', isJoined)
       }
-    } else { 
+    } else {
       console.log('we want data')
     }
-  }, [data?.id, joins.data, isJoined ])
-
+  }, [numId, joins.data])
 
   // Function to handle the "Edit" button click and show the form
   const handleEditClick = () => {
@@ -102,8 +96,10 @@ export default function EventDetailsAuthenticated() {
             <p>Date: {data.date}</p>
             <p>Description: {data.description}</p>
             <p>Organiser: {data.userName}</p>
-            <button className={`join-button ${isJoined ? 'joined' : ''}`}
-            onClick={handleJoin}>
+            <button
+              className={`join-button ${isJoined ? 'joined' : ''}`}
+              onClick={handleJoin}
+            >
               {' '}
               {isJoined ? 'Joined' : 'Join'}
             </button>
