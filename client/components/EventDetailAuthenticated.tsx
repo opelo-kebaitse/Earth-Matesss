@@ -5,7 +5,7 @@ import { useEvents, useEvent } from '../hooks/useEvents.ts'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useJoin } from '../hooks/useJoins.ts'
 import { NewJoinEvent } from '../../models/Event.ts'
-import { userIsAttending } from '../../server/db/events.ts'
+
 
 export default function EventDetailsAuthenticated() {
   const { id } = useParams()

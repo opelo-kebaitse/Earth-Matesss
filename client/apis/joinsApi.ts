@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { NewJoin } from '../../models/Event'
+import { NewJoin, JoinEventParams } from '../../models/Event'
 
 const rootURL = '/api/v1/joins'
 
@@ -13,11 +13,6 @@ export async function getJoins(token: string) {
   } catch (error) {
     console.error(error)
   }
-}
-
-type JoinEventParams = {
-  newJoin: NewJoin
-  token: string
 }
 
 export async function joinEvent({
