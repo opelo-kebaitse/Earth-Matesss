@@ -169,8 +169,6 @@ body {
   color: black;
 }
 
-
-
 /* EventDetail.tsx */
 .evDet {
   display: flex;
@@ -260,4 +258,94 @@ body {
   cursor: pointer;
   background-color: rgb(247, 245, 242);
   color: #426B1F;
+}
+
+@media only screen and (min-width: 995px) {
+  .event-card {
+    margin: 10px;
+  }
+
+  .page-title {
+    margin: 40px 20px;
+    font-size: 3em;
+  }
+
+  .join-button, .crEve-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 20px;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 751px) and (max-width: 994px) {
+  .title-container {
+    background-color: bisque;
+  }
+
+  .logo {
+    font-size: .5em;
+  }
+
+  .button {
+    padding: 8px 16px;
+    font-size: 12px;
+    margin: 12px;
+  }
+
+  .page-title {
+    margin: 30px 15px;
+    font-size: 2.5em;
+  }
+
+  .event-card {
+    margin: 10px;
+  }
+
+  .event-image {
+    height: 100px;
+  }
+
+  .join-button, .crEve-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    margin: 15px;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .title-container {
+    background-color: rgb(251, 234, 213);
+  }
+
+  .logo {
+    font-size: 0.5em;
+  }
+
+  .button {
+    padding: 6px 14px;
+    font-size: 12px;
+    margin: 10px;
+  }
+
+  .page-title {
+    margin: 30px 15px;
+    font-size: 2.5em;
+  }
+
+  .event-card {
+    margin: 5px;
+  }
+
+  .event-image {
+    height: 100px;
+  }
+
+  .join-button, .crEve-button {
+    padding: 6px 14px;
+    font-size: 12px;
+    margin: 10px;
+    text-align: center;
+  }
 }
