@@ -1,20 +1,20 @@
-import { useEvents } from '../hooks/useEvents.ts'
+
 import { Link } from 'react-router-dom'
 
-export default function EventList() {
-  const { data: events, isLoading, error } = useEvents()
-  
-  if (error) {
+export default function EventList(events) {
+  console.log(events.events.data)
+  if (events.error) {
     return <p>Something went wrong!</p>
   }
 
-  if (!events || isLoading) {
+  if (!events.events.data || events.isLoading) {
     return <p> Loading... </p>
   }
 
   return (
+    
     <div className="events-container">
-      {(events.length === 0) ? <p>No upcoming events</p> : events.map((event, index: number) => (
+      {(events.events.data.length === 0) ? <p>No upcoming events</p> : events.events.data.map((event, index: number) => (
         <div className="event-card" key={index}>
           {/* Display the event image */}
           <Link to={`/${event.id}`} className="event-details"><div

@@ -2,8 +2,10 @@ import { useNavigate } from 'react-router-dom'
 import EventList from './EventList'
 import { IfNotAuthenticated, IfAuthenticated } from './Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useEvents } from '../hooks/useEvents'
 
 function Home() {
+  const events = useEvents()
   const navigate = useNavigate()
   const { loginWithRedirect } = useAuth0()
   
@@ -27,7 +29,7 @@ function Home() {
 
         </IfNotAuthenticated>
       </div>
-      <EventList />
+      <EventList events= {events}/>
     </>
   )
 }
