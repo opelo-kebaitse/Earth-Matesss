@@ -21,4 +21,5 @@ export function userIsAttending(user: string, db = connection) {
       'users_attending_events.user',
       'users_attending_events.id as join_id'
     )
+    .orderBy('events.date')
 }
