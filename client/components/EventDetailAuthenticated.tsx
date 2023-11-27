@@ -33,23 +33,26 @@ export default function EventDetailsAuthenticated() {
   console.log('eventId', data?.id)
 
   useEffect(() => {
+    console.log('if you are seeing this then the contributor is', isContributor)
+  },
+    [isContributor])
 
-    const fetchData = async () => {
-      if(joins.data) {      
-      const thisEvent = await joins.data.find((join) => join.event_id === data?.id)
-      console.log('if undefined then not joined yet', thisEvent)
-      if (thisEvent?.is_creator === true) {
+
+  useEffect(() => {
+    console.log('joinsData', joins.data)
+
+    if(joins?.data) {      
+      const thisEvent = joins.data.find((join) => join.event_id === data?.id)
+      if (thisEvent?.is_creator == true) {
         setIsContributor(true)
       }
-      if (thisEvent?.is_creator === false) {
+      if (thisEvent?.is_creator == false) {
         setIsJoined(true)
         console.log('this should be now joined', isJoined)
       }
     } else { 
       console.log('we want data')
     }
-  }
-    fetchData()
   }, [data?.id, joins.data, isJoined ])
 
 
@@ -74,7 +77,7 @@ export default function EventDetailsAuthenticated() {
 
     const token = await getAccessTokenSilently()
     joins.add.mutate({ newJoin, token })
-    setIsJoined(true)
+    // setIsJoined(true)
 
     // navigate('/my-events')
   }
