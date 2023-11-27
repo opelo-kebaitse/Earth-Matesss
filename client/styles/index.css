@@ -246,14 +246,21 @@ body {
 /* EventDetailAuthenticated.tsx */
 .join-button {
   margin: 10px;
-  border: none;
   width: 10%;
   align-items: center;
   color: #ffffff;
   background-color: #426B1F;
-  padding: 12px 22px;
   border-radius: 5px;
   font-weight: lighter;
+  padding: 10px;
+  margin: 20px;
+}
+
+.join-button.joined {
+  cursor: pointer;
+  background-color: rgb(247, 245, 242);
+  color: #426B1F;
+  border-color: #426B1F;
 }
 
 .join-button:hover {
@@ -261,3 +268,4 @@ body {
   background-color: rgb(247, 245, 242);
   color: #426B1F;
 }
+
