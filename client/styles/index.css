@@ -43,6 +43,11 @@ body {
   align-items: center;
 }
 
+label {
+  padding: 5px;
+  color: #426B1F;
+}
+
 .title-link {
   text-decoration: none;
   color: #426B1F;
@@ -190,6 +195,7 @@ body {
   margin: 20px;
   width: 80vw;
   background-color: rgb(247, 245, 242);
+  color: #426B1F;
   border-radius: 5px;
 }
 

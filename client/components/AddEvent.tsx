@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 
 function AddEvent() {
-  // Destructured getAccessTokenSilently
   const { getAccessTokenSilently, user } = useAuth0()
   const userId = user?.sub
 
@@ -33,11 +32,8 @@ function AddEvent() {
     e: React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault()
-
-    // call getAccessTokenSilently to retrieve the access token
     const token: string = await getAccessTokenSilently()
 
-    // pass the token as a second parameter of the add function
     const eventDetail = await events.add.mutate({ newEvent, token })
     console.log('event post add', eventDetail)
     navigate('/')
@@ -86,10 +82,5 @@ function AddEvent() {
     </>
   )
 }
-
-//Would like to change the navigation to go to the individual event page, but need to work out how to give it the correct id
-//have just set this up to start with using the fields we have not the ones on the image as have realised on our wire frame it says time but we don't have that elsewhere
-//Also we talked about a drop down of suburbs, think this may have become stretch aye?
-
 
 export default AddEvent

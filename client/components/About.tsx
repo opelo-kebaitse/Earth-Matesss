@@ -21,7 +21,7 @@ export default function About() {
         Empowering Communities: By fostering a community of Earth-mates, we aim
         to empower people from all walks of life to take meaningful steps
         towards environmental stewardship. Our platform is more than just an
-        event coordination tool; it's a movement towards creating lasting change
+        event coordination tool; it is a movement towards creating lasting change
         in our local and global communities.
       </p>
       <p className="title-container">
@@ -35,7 +35,7 @@ export default function About() {
         and accessibility. We strive to ensure that every event and activity is
         accessible to all, regardless of physical ability or background. We
         believe that everyone has a role to play in environmental conservation.
-        Join Us in Making a Difference: Whether you're an eco-enthusiast, a
+        Join Us in Making a Difference: Whether you are an eco-enthusiast, a
         community leader, or someone just beginning their journey in
         environmental advocacy, Earth-mates welcomes you. Join our community
         today and be part of a collective effort to protect and cherish our

@@ -15,15 +15,10 @@ export function useEvents() {
     ...query,
     add: useAddEvent(),
     delete: useDeleteEvent(),
-    // join: useJoinEvent(), ////// ????????????????????
+    
   }
 }
 
-// // -- JOIN HOOK FUNCTINOS
-
-// export function useJoinEvent() {
-//   return useEventsMutation(clientApi.joinEvent)
-// }
 
 export function useEventsMutation<TData = unknown, TVariables = unknown>(
   mutationFn: MutationFunction<TData, TVariables>
