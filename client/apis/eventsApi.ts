@@ -4,14 +4,15 @@ import {
   EditEventParams,
   DeleteEventParams,
   AddEventParams,
+  PublicDisplayEvent,
 } from '../../models/Event.ts'
 import { logError } from './utils.ts'
 
-const rootURL = '/api/v1'
+const rootURL = '/api/v1/events/'
 
-export async function getEventList(): Promise<Event[]> {
+export async function getEventList(): Promise<PublicDisplayEvent[]> {
   return request
-    .get(rootURL + '/events')
+    .get(rootURL)
     .then((res) => res.body)
     .catch(logError)
 }
@@ -20,8 +21,8 @@ export async function addEvent({
   newEvent,
   token,
 }: AddEventParams): Promise<Event> {
- return request
-    .post(`${rootURL}/events`)
+  return request
+    .post(rootURL)
     .set('Authorization', `Bearer ${token}`)
     .send(newEvent)
     .then((res) => res.body.newEvent)
@@ -30,23 +31,22 @@ export async function addEvent({
 
 export async function getEventDetail(id: number) {
   return request
-    .get(`${rootURL}/events/${id}`)
+    .get(`${rootURL}${id}`)
     .then((res) => res.body)
     .catch(logError)
 }
 
 export async function editEvent({ updatedEvent, token }: EditEventParams) {
- 
   return request
-  .patch(`${rootURL}/events/${updatedEvent.id}`)
-      .set('Authorization', `Bearer ${token}`)
-      .send(updatedEvent)
-      .then((res) => res.body)
-      .catch(logError)
+    .patch(`${rootURL}${updatedEvent.id}`)
+    .set('Authorization', `Bearer ${token}`)
+    .send(updatedEvent)
+    .then((res) => res.body)
+    .catch(logError)
 }
 export async function deleteEvent({ numId, token }: DeleteEventParams) {
   return request
-    .delete(`${rootURL}/events/${numId}`)
+    .delete(`${rootURL}${numId}`)
     .set('Authorization', `Bearer ${token}`)
     .then((res) => res.body)
     .catch(logError)

@@ -19,7 +19,7 @@ export default function EventDetailsNotAuthenticated() {
     <div>
       <div className="evDet">
         <div className="eventBox">
-          <h3>{currentEvent.name}</h3>
+          <h3>{currentEvent.eventName}</h3>
           <p>Location: {currentEvent.location}</p>
           <p>Date: {currentEvent.date}</p>
           <p>Description: {currentEvent.description}</p>
