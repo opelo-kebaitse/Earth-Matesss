@@ -10,7 +10,7 @@ export function getEventList(db = connection) {
     .where('date', '>=', currentDate)
     .select(
       'events.id',
-      'events.name as name',
+      'events.name as eventName',
       'events.photo',
       'events.date',
       'events.location',
