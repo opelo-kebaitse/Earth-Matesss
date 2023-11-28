@@ -7,7 +7,7 @@ export interface NewEvent {
   photo: string
 }
 
-export interface Event extends NewEvent{
+export interface Event extends NewEvent {
   id: number
 }
 
@@ -21,11 +21,10 @@ export interface PublicDisplayEvent {
   photo: string
 }
 
-export interface DisplayEvent extends PublicDisplayEvent{
+export interface DisplayEvent extends PublicDisplayEvent {
   email: string
   auth0Id: string
 }
-
 
 export interface NewJoinEvent {
   event_id: number
@@ -38,29 +37,26 @@ export interface NewUser {
   email: string
 }
 
-
 //type for add event
-export interface AddEventParams {
+export type AddEventParams = {
   newEvent: NewEvent
   token: string
 }
 
-
 //type for edit event
-export interface EditEventParams {
+export type EditEventParams = {
   updatedEvent: Event
   token: string
 }
 
-
 //type for delete event
-export interface DeleteEventParams {
+export type DeleteEventParams = {
   numId: number
   token: string
 }
 
 // type for join
-export interface JoinEventParams {
+export type JoinEventParams = {
   newJoin: NewJoinEvent
   token: string
 }

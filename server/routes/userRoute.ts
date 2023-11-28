@@ -12,21 +12,23 @@ router.get('/', checkJwt, async (req: JwtRequest, res) => {
   }
 
   try {
-    // console.log(checkJwt)
-    // const auth0Id = 'auth0|652cb119071b92531890627'
     const userDetail = await getUserDetail(auth0Id)
     res.json({ userDetail })
   } catch (error) {
     console.error(error)
-    res.status(500).send('Something went wrong')
+    res.status(500).json('Internal server error')
   }
 })
 
 // post route /api/v1/users
 router.post('/', async (req: JwtRequest, res) => {
   const newestUser = req.body
+  try { 
   const addedUser = await newUser(newestUser)
   res.json(addedUser)
+  } catch (error) {
+  res.status(500).json('Internal server error')
+  }
 })
 
 export default router
