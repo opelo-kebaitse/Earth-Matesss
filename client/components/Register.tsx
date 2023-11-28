@@ -33,13 +33,6 @@ export default function Register() {
     userDB.add.mutate({ formData, token })
     navigate('/')
   }
-  // to do:
-  // mutation that adds user --> use add from useEvents
-  // write api function in apis/users
-  // write the post call in routes to call db function
-  // write a db function
-
-  // also we need to run lint and fix the errors and warnings before code review
 
   return (
     <>
@@ -54,10 +47,6 @@ export default function Register() {
           value={formData.name}
           required
         />
-        {/* <label HTMLfor='lastName'>Last Name</label>
-    <input id='lastName' name='lastName' type='text' onchange={handleChange} value={formData.lastName}/>
-    <label HTMLfor='location'>Location</label>
-    <input id='location' name='location' type='text' onchange={handleChange} value={formData.location}/> */}
         <button className="button" onClick={handleRegister}>
           Register
         </button>

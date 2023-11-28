@@ -11,32 +11,18 @@ export default function EventDetailsAuthenticated() {
 
   const navigate = useNavigate()
 
-  // State to manage whether to show the edit form
+  // State to manage form
   const [isEditing, setIsEditing] = useState(false)
-
-  //
   const [isJoined, setIsJoined] = useState(false)
-
-  //get user and token
-  const { getAccessTokenSilently, user } = useAuth0()
-
-  //create a state for if user can edit/delete
   const [isContributor, setIsContributor] = useState(false)
+
+  const { getAccessTokenSilently, user } = useAuth0()
 
   const { data, isLoading, error } = useEvent(numId)
   const events = useEvents()
   const joins = useJoin()
 
-  // console.log('joins info for user:', joins.data)
-  console.log('eventId', data?.id)
-
   useEffect(() => {
-    console.log('if you are seeing this then the contributor is', isContributor)
-  }, [isContributor])
-
-  useEffect(() => {
-    console.log('joinsData', joins.data)
-
     if (joins?.data) {
       const thisEvent = joins.data.find((join) => join.id === numId)
       if (thisEvent?.is_creator == true) {
@@ -45,12 +31,9 @@ export default function EventDetailsAuthenticated() {
       if (thisEvent?.is_creator == false) {
         setIsJoined(true)
       }
-    } else {
-      console.log('we want data')
     }
   }, [numId, joins.data])
 
-  // Function to handle the "Edit" button click and show the form
   const handleEditClick = () => {
     setIsEditing(true)
   }
@@ -61,8 +44,6 @@ export default function EventDetailsAuthenticated() {
     navigate('/')
   }
 
-  // JOIN - HANDLE JOIN FUNCTION
-
   const handleJoin = async () => {
     if (user === undefined) {
       return console.log('no data to make join')
@@ -71,7 +52,6 @@ export default function EventDetailsAuthenticated() {
 
     const token = await getAccessTokenSilently()
     joins.add.mutate({ newJoin, token })
-    // navigate('/my-events')
   }
 
   const stopEditing = () => {
@@ -129,5 +109,3 @@ export default function EventDetailsAuthenticated() {
     </div>
   )
 }
-
-// refactor!!!

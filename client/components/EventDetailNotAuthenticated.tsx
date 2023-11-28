@@ -29,5 +29,3 @@ export default function EventDetailsNotAuthenticated() {
     </div>
   )
 }
-
-//filter events list to display info
