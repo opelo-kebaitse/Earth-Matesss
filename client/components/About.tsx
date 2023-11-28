@@ -1,10 +1,10 @@
-export default function About() { 
+export default function About() {
   return (
     <>
       <h1 className="title-container">About Earth-mates</h1>
       <p className="title-container">
-        Welcome to Earth-mates, a dynamic platform dedicated to nurturing
-        a healthier planet through collective action. At Earth-mates, we believe
+        Welcome to Earth-mates, a dynamic platform dedicated to nurturing a
+        healthier planet through collective action. At Earth-mates, we believe
         that every individual has the power to make a significant impact in
         preserving and enhancing our environment. Our mission is to connect
         like-minded individuals who are passionate about ecological
@@ -21,8 +21,8 @@ export default function About() {
         Empowering Communities: By fostering a community of Earth-mates, we aim
         to empower people from all walks of life to take meaningful steps
         towards environmental stewardship. Our platform is more than just an
-        event coordination tool; it is a movement towards creating lasting change
-        in our local and global communities.
+        event coordination tool; it is a movement towards creating lasting
+        change in our local and global communities.
       </p>
       <p className="title-container">
         Sustainable Collaboration: Collaboration is at the heart of Earth-mates.
