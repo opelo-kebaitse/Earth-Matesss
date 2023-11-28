@@ -16,8 +16,7 @@ type AddUserParams = {
   formData: NewUser
   token: string
 }
-// Post route to add a user api/v1/users
-//receive info and send to backend the return
+
 export async function addNewUser({ formData, token }: AddUserParams) {
   return request
     .post(rootURL)

@@ -16,8 +16,6 @@ export async function getEventList(): Promise<Event[]> {
     .catch(logError)
 }
 
-//function to call the server route to add an event and send the event data to it, then sent that data back to the component function
-
 export async function addEvent({
   newEvent,
   token,
@@ -30,7 +28,6 @@ export async function addEvent({
     .catch(logError)
 }
 
-//clientside api call to get details for one event
 export async function getEventDetail(id: number) {
   return request
     .get(`${rootURL}/events/${id}`)
@@ -38,7 +35,6 @@ export async function getEventDetail(id: number) {
     .catch(logError)
 }
 
-//clientside api call to edit an event
 export async function editEvent({ updatedEvent, token }: EditEventParams) {
  
   return request
@@ -48,7 +44,6 @@ export async function editEvent({ updatedEvent, token }: EditEventParams) {
       .then((res) => res.body)
       .catch(logError)
 }
-//clientside api call to delete an event
 export async function deleteEvent({ numId, token }: DeleteEventParams) {
   return request
     .delete(`${rootURL}/events/${numId}`)

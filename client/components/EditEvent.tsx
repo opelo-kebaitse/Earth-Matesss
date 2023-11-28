@@ -98,5 +98,3 @@ function EditEvent({ id, data, fn }: EditEventProps) {
 }
 
 export default EditEvent
-
-//errors and cant edit due to new namings from the new call 

@@ -1,11 +1,11 @@
 import request from 'superagent'
-import { JoinEventParams } from '../../models/Event'
+import { JoinEventParams, DisplayEvent } from '../../models/Event'
 import { logError } from './utils'
 
 const rootURL = '/api/v1/joins'
 
 
-export async function getJoins(token: string) {
+export async function getJoins(token: string):Promise<DisplayEvent[]| null> {
 
     return request
       .get(`${rootURL}`)
