@@ -12,8 +12,8 @@ const router = createBrowserRouter(routes)
 const root = createRoot(document.getElementById('app') as HTMLElement)
 root.render(
   <Auth0Provider
-    domain="https://pikopiko-mark.au.auth0.com"
-    clientId="Qb0GqgLH1x49XRt4KmYYne3tTfn7wXHB"
+    domain="https://pikopiko-opelo-23.au.auth0.com"
+    clientId="WeLR7dP9Oq684OLqE33FrZMS6yplXncY"
     authorizationParams={{
       redirect_uri: window.location.origin,
       audience: 'https://earth-mates/api',
